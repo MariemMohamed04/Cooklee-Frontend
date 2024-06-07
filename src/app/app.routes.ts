@@ -7,31 +7,36 @@ import { ChefPageFormComponent } from './Profiles/chef-page-form/chef-page-form.
 import { ChefPageComponent } from './Profiles/chef-page/chef-page.component';
 import { ChefMealsComponent } from './Profiles/chef-meals/chef-meals.component';
 import { RequestedMealsComponent } from './Profiles/requested-meals/requested-meals.component';
+import { LoginFormComponent } from './Registeration/login-form/login-form.component';
 
 export const routes: Routes = [
 
 
-    { path: '', redirectTo: 'ClientForm', pathMatch: 'full' },
-    { path: 'ClientForm', component:ClientProfleFormComponent },
+  // { path: '', redirectTo: 'ClientForm', pathMatch: 'full' },
+  // { path: 'ClientForm', component: ClientProfleFormComponent },
 
-  { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
-  { path: 'profile', component:ClientProfleComponent,children:[
+  // { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
+  // {
+  //   path: 'profile', component: ClientProfleComponent, children: [
 
-    {path: '', component:ClientFavouriteComponent},
-    {path: 'Favourites', component:ClientFavouriteComponent},
-    {path: 'Orders', component:ClientOrderComponent},
-]
- },
- { path: 'ChefPageForm', component:ChefPageFormComponent },
+  //     { path: '', component: ClientFavouriteComponent },
+  //     { path: 'Favourites', component: ClientFavouriteComponent },
+  //     { path: 'Orders', component: ClientOrderComponent },
+  //   ]
+  // },
+  // { path: 'ChefPageForm', component: ChefPageFormComponent },
 
- { path: 'ChefPage', redirectTo: 'ChefPage/chefMeals', pathMatch: 'full' },
- { path: 'ChefPage', component:ChefPageComponent ,children:[
+  // { path: 'ChefPage', redirectTo: 'ChefPage/chefMeals', pathMatch: 'full' },
+  // {
+  //   path: 'ChefPage', component: ChefPageComponent, children: [
 
-  {path: '', component:ChefMealsComponent},
-  {path: 'chefMeals', component:ChefMealsComponent},
-  {path: 'requestedMeals', component:RequestedMealsComponent},
- ]},
+  //     { path: '', component: ChefMealsComponent },
+  //     { path: 'chefMeals', component: ChefMealsComponent },
+  //     { path: 'requestedMeals', component: RequestedMealsComponent },
+  //   ]
+  // },
 
-
+  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "login", component: LoginFormComponent },
 
 ];
