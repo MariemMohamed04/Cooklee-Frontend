@@ -8,6 +8,7 @@ import { ChefPageComponent } from './Profiles/chef-page/chef-page.component';
 import { ChefMealsComponent } from './Profiles/chef-meals/chef-meals.component';
 import { RequestedMealsComponent } from './Profiles/requested-meals/requested-meals.component';
 import { LoginFormComponent } from './Registeration/login-form/login-form.component';
+import { RegisterFormComponent } from './Registeration/register-form/register-form.component';
 
 export const routes: Routes = [
 
@@ -36,7 +37,8 @@ export const routes: Routes = [
   //   ]
   // },
 
-  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "", redirectTo: "register", pathMatch: "full" },
+  { path: "register", component: RegisterFormComponent },
   { path: "login", component: LoginFormComponent },
 
 ];
