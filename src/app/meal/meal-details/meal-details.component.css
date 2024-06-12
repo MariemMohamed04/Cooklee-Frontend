@@ -3,15 +3,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 20px; /* Add margin at the top if needed */
 }
 
 /* Reuse the rounded corners style */
 .rounded-corners {
   border-radius: 15px; /* Adjust this value as needed */
   background-color: #F2F2F2; /* Use the main color variable */
-  margin-top: 0;
-  margin-bottom: 10;
+  margin: 20px;
   padding: 20px;
 }
 
@@ -74,6 +72,7 @@
   border: none;
   padding: 10px 20px;
   margin-right: 20px;
+  margin-top: 10px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
