@@ -178,7 +178,16 @@
   height: auto; /* Adjust height */
   margin: 0px; /* Use the same margin as meal-details container */
 }
-
+.review {
+  display: flex;
+  align-items: center;
+}
+.review-user-photo {
+  width: 50px; /* Set the width of the user photo */
+  height: 50px; /* Set the height of the user photo */
+  border-radius: 50%; /* Make the photo circular */
+  margin-right: 10px; /* Add some space between the photo and the text */
+}
 
 /* Responsive styles */
 @media screen and (max-width: 600px) {
@@ -206,5 +215,7 @@
   .reviews-container {
     width: 100%; /* Full width on small screens */
     padding: 10px;
+
   }
+
 }
