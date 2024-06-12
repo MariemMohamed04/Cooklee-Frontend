@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-meal-list',
   standalone: true,
-  imports: [RouterLink, HeaderComponent, CommonModule], //CommonModule
+  imports: [RouterLink, CommonModule], //CommonModule
   templateUrl: './meal-list.component.html',
   styleUrl: './meal-list.component.css',
 })

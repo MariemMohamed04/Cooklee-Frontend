@@ -7,7 +7,7 @@ import { HeaderComponent } from '../../Core/header/header.component';
 @Component({
   selector: 'app-meal-details',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [],
   templateUrl: './meal-details.component.html',
   styleUrl: './meal-details.component.css'
 })

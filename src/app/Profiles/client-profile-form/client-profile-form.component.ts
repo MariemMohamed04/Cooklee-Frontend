@@ -8,7 +8,7 @@ import { HeaderComponent } from '../../Core/header/header.component';
 @Component({
   selector: 'app-client-profile-form',
   standalone: true,
-  imports: [FormsModule,CommonModule,HeaderComponent],
+  imports: [FormsModule,CommonModule],
   templateUrl: './client-profile-form.component.html',
   styleUrl: './client-profile-form.component.css'
 })
