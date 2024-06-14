@@ -19,9 +19,14 @@ body {
     overflow-x:hidden;
 }
 
+.page-cover{
+
+    background-image:url("../../../assets/imgs/Chef/White\ &\ Brown\ Simple\ Cooking\ Channel\ Youtube\ Channel\ Art\ \(3\).png") ;
+}
 .page-name{
     font-size: 5rem;
-    color:rgb(41, 41, 41);
+    margin-top: 5rem;
+    color:white;
 
 }
 
@@ -115,4 +120,6 @@ body {
         display: block;
         margin-left: 1rem;
     }
+
+
 }
