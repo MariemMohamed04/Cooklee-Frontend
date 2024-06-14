@@ -54,9 +54,9 @@ export class MealListComponent implements OnInit {
 
   constructor(public mealServices: MealService) {}
   ngOnInit(): void {
-    // this.mealServices.getAllMeal().subscribe(data => {
-    //   console.log(data);
-    //   this.meals = data;
-    // })
+    this.mealServices.getAllMeal().subscribe(data => {
+      console.log(data);
+      this.meals = data;
+    })
   }
 }

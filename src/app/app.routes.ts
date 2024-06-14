@@ -34,7 +34,7 @@ export const routes: Routes = [
   {path: 'requestedMeals', component:RequestedMealsComponent},
 ]},
 { path: 'Meals', component: MealListComponent },
-//  {path:'Meals/Details/:id',component:MealDetailsComponent,title:"Details of meal"}
-{path:'Meals/Details',component:MealDetailsComponent,title:"Details of meal"},
+ {path:'Meals/Details/:id',component:MealDetailsComponent,title:"Details of meal"}
+// {path:'Meals/Details',component:MealDetailsComponent,title:"Details of meal"},
   // {path:'**',component:NotfoundComponent} //component notfound
 ];
