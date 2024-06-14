@@ -2,8 +2,8 @@
     <div class="col-md-12 mx-auto mb-5">
       <!-- Profile widget -->
       <div class="bg-white shadow rounded ">
-        <div class="px-4 pt-0 pb-4 cover d-flex justify-content-center align-items-center">
-          <div class="page-name"> Page Name Here</div>
+        <div class="px-4 pt-0 pb-4 cover d-flex justify-content-center align-items-center page-cover">
+          <div class="page-name"> {{chef.displayName}}</div>
          
         </div>
     
@@ -31,24 +31,16 @@
   
              <br>
             <div>
-              <h6 class="card-text">Owner:</h6>
-              <p class="card-text">{{client.fName}} {{client.lName}}</p>
+              <h6 class="card-text">Page Name:</h6>
+              <p class="card-text">{{chef.displayName}} </p>
             </div>
              <br>
             <div>
-              <h6 class="card-text">Email:</h6>
-              <p class="card-text">{{client.email}}</p>
+              <h6 class="card-text">Active status:</h6>
+              <p class="card-text">{{chef.isActive}}</p>
             </div>
                <br>
-            <div>
-              <h6 class="card-text">Number:</h6>
-              <p class="card-text">{{client.number}}</p>
-            </div>
-                <br>
-            <div>
-              <h6 class="card-text">Address:</h6>
-              <p class="card-text">{{client.address}}</p>
-            </div>
+        
   
   
           </div>

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './Core/footer/footer.component';
@@ -12,6 +13,6 @@ import { HeaderComponent } from './Core/header/header.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Frontend';
+  title = 'COOKLEE';
 }
 

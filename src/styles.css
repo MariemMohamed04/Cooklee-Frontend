@@ -18,6 +18,8 @@ body {
 
 a {
   text-decoration: none;
+  cursor: pointer;
+  color: var(--main-color);
 }
 
 ul {
