@@ -40,8 +40,12 @@ export const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch: "full" },
   { path: "login", component: LoginFormComponent },
   { path: "register", component: RegisterFormComponent },
+
+
+
   { path: 'ClientForm', component: ClientProfleFormComponent },
   { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
+
   {
     path: 'profile', component: ClientProfleComponent, children: [
 

@@ -52,6 +52,7 @@ export class LoginFormComponent /*implements OnInit*/ {
       .then(({ success, error }) => {
         if (success) {
           this.isLoading = true;
+          
           this._router.navigate(['/ClientForm']);
           // Handle successful registration
         } else {
