@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Client } from '../../models/client';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../../Core/header/header.component';
 import { AuthService } from '../../services/auth.service';
 import { ClientProfileService } from '../../services/client-profile.service';
-
 @Component({
   selector: 'app-client-profile-form',
   standalone: true,

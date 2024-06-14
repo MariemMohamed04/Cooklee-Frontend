@@ -1,0 +1,91 @@
+/* Rounded corners for the header div */
+.header {
+  border-radius: 15px; /* Adjust this value as needed */
+  padding: 10px; /* Reduce padding for a shorter header */
+  margin: 5px; /* Add some margin for spacing */
+  background-color: var(--main-color); /* Adding background color */
+}
+
+/* Make Font Awesome icons white */
+.fa-heart, .fa-shopping-cart {
+  color: white;
+}
+
+/* Styling for h1 and p elements */
+.header h1, .header p {
+  margin: 0 20px; /* Reduce margin between the elements */
+  color: white; /* Set text color to white */
+  font-weight: bold; /* Set text to bold */
+}
+
+/* Add margin between paragraphs */
+.header p {
+  margin-bottom: 0px; /* Adjust the value to set space between paragraphs */
+}
+
+/* Bootstrap utility classes */
+.header {
+  padding-top: 1.5rem; /* Reduce padding as needed */
+  padding-bottom: 1.5rem; /* Reduce padding as needed */
+}
+
+@media (max-width: 600px) {
+  .header {
+    text-align: center; /* Center text */
+  }
+
+  .header h1, .header p {
+    margin: 10px 0; /* Add some margin for vertical spacing */
+  }
+  .header p {
+    font-size: 0.8em;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+/* Medium devices (portrait tablets and small desktops, 600px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .header h1, .header p {
+    margin: 5px 10px; /* Adjust margin for medium devices */
+  }
+}
+
+/* Large devices (large desktops, 1025px and up) */
+@media (min-width: 1025px) {
+  .header h1, .header p {
+    margin: 0 10px; /* Default margin for large devices */
+  }
+}
+
+.quote {
+  font-size: 1.5em; /* Reduce font size for the quote */
+  flex-grow: 1; /* Make the quote grow to fill available space */
+  text-align: center; /* Center the quote text */
+}
+
+/* Header buttons styles */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  color: var(--main-color);
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.btn-login {
+  background-color: var(--light-color);
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.btn-login:hover, .btn-wishlist:hover, .btn-cart:hover {
+  background-color: var(-light-color);
+}

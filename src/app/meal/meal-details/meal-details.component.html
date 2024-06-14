@@ -1,0 +1,62 @@
+<div class="meal-details-container d-flex flex-column align-items-center">
+  <div class="meal-details rounded-corners d-flex align-items-center p-3">
+    <img src="{{ meal.Image }}" alt="Meal Photo" class="meal-photo" />
+    <div class="meal-info ms-3 flex-grow-1">
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <div class="d-flex align-items-center">
+          <h2 class="meal-name mb-0 me-2">{{ meal.MealName }}</h2>
+          <p class="meal-price mb-0">
+            <i class="fa-solid fa-coins"></i> {{ meal.Price }} EGP
+          </p>
+          <i
+            class="fa fa-heart favorite-icon ms-2"
+            [class.favorited]="meal.Availibility"
+          ></i>
+          <!-- //meal.isFavorited -->
+        </div>
+        <div class="mb-0">
+          <button class="order-now-btn">Order Now</button>
+        </div>
+      </div>
+      <p class="meal-availability mb-2">
+        <span class="highlight">Availability :</span>
+        {{ meal.Availibility ? "&#9989;" : "&#10060;" }}
+      </p>
+      <p class="meal-healthy mb-2">
+        <span class="highlight">Healthy :</span>
+        {{ meal.Healthy ? "&#9989;" : "&#10060;" }}
+      </p>
+      <p class="meal-description mb-2">This is a delicious meal description.</p>
+    </div>
+  </div>
+
+  <!-- New Reviews Section -->
+  <div class="reviews-container rounded-corners d-flex flex-column p-3">
+    <div class="container">
+      <h3 class="reviews-title mb-3">Customer Reviews</h3>
+      <div class="review d-flex align-items-center mb-3">
+        <img src="../../../assets/client.png" alt="User Photo" class="review-user-photo me-3" />
+        <div>
+          <p class="review-text mb-1">"Great meal! Very delicious and healthy."</p>
+        </div>
+      </div>
+      <div class="review d-flex align-items-center mb-3">
+        <img src="../../../assets/client.png" alt="User Photo" class="review-user-photo me-3" />
+        <div>
+          <p class="review-text mb-1">"I enjoyed every bite. Highly recommend!"</p>
+        </div>
+      </div>
+
+      <!-- Add more reviews as needed -->
+
+      <div class="add-review mt-3">
+        <input
+          type="text"
+          class="review-input"
+          placeholder="Write your comment here..."
+        />
+        <button class="submit-review-btn mt-2">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
