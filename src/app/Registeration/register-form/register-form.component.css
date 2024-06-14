@@ -1,0 +1,54 @@
+.w-50[_ngcontent-ng-c3241913289] {
+  width: 58% !important;
+}
+
+.layer {
+  width: 1354px;
+  height: 1534px;
+  background-color: var(--main-color);
+  transform: rotate(-10deg) skewY(-59deg);
+  right: -414px;
+  bottom: 0px;
+  z-index: 1;
+}
+
+.logo {
+  z-index: 2;
+  position: relative;
+}
+
+.w-50 {
+  width: 58% !important;
+}
+
+.register-form-container {
+  height: 100vh;
+  background-color: var(--bg-color);
+  z-index: 3;
+}
+
+.form-control {
+  border: none;
+  border-radius: 0px;
+  border-bottom: 2px solid var(--dark-color);
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.form-label .form-control:focus  {
+  color: var(--main-color)
+}
+
+.error {
+	/* border: 1px solid; */
+	margin: 10px auto;
+	padding: 10px 10px 10px 10px;
+  color: #D8000C;
+	background-color: #FFBABA;
+	/* background-repeat: no-repeat; */
+	/* background-position: 10px center; */
+	/* max-width: 460px; */
+}

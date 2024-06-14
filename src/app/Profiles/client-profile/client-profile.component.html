@@ -5,10 +5,10 @@
         <div class="px-4 pt-0 pb-4 cover">
           <div class="media align-items-end profile-head">
             <div class="profile">
-              <img class="rounded-circle" src="../../../assets/ClientPP.png" />
+              <img class="rounded-circle" [src]="client.imgURL" />
             </div>
             <div class="media-body text-dark">
-              <h4 class=" profi-text mt-5">{{ client.fName }} {{ client.lName }}</h4>
+              <h4 class=" profi-text mt-5">{{ client.firstName }} {{ client.lastName }}</h4>
               <p class="small profi-text mt-0">
                 <i class="fas  fa-map-marker-alt "></i> {{ client.address }}
               </p>
@@ -41,7 +41,7 @@
   <br>
             <div>
               <h6 class="card-text">Name:</h6>
-              <p class="card-text">{{client.fName}} {{client.lName}}</p>
+              <p class="card-text">{{client.firstName}} {{client.lastName}}</p>
             </div>
   <br>
             <div>
@@ -51,7 +51,7 @@
   <br>
             <div>
               <h6 class="card-text">Number:</h6>
-              <p class="card-text">{{client.number}}</p>
+              <p class="card-text">{{client.phoneNumber}}</p>
             </div>
   <br>
             <div>

@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Client } from '../../models/client';
+import { Chef } from '../../models/chef';
+import { AuthService } from '../../services/auth.service';
+import { ChefPageService } from '../../services/chef-page.service';
 
 @Component({
   selector: 'app-chef-page',
@@ -9,11 +12,22 @@ import { Client } from '../../models/client';
   templateUrl: './chef-page.component.html',
   styleUrl: './chef-page.component.css'
 })
-export class ChefPageComponent {
-  constructor(public router:Router){
+export class ChefPageComponent implements OnInit {
 
+  chef!:Chef
+  id!:string
+  constructor(public router:Router,private authService:AuthService, private chefService:ChefPageService){
+    
   }
-  client:Client=new Client("omnia","khalil","01010101010","omnia@gmail.com","angu/src/assets/website-maintenance.png","alex");
+
+
+  ngOnInit(): void {
+    this.id = this.authService.getClaims().UserId
+    this.chefService.getPage(this.id).subscribe(
+      data => this.chef = data,
+      error => console.error('Error: ', error)
+    );
+  }
 
   Editpage(){
  this.router.navigateByUrl("/ChefPageForm")
