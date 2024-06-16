@@ -1,4 +1,4 @@
-/* Centering the meal details container */
+Centering the meal details container
 .meal-details-container {
   display: flex;
   flex-direction: column;
