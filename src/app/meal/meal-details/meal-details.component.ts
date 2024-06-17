@@ -9,6 +9,8 @@ import {
 } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Review } from '../../models/review';
+import { ReviewService } from '../../services/review.service';
 
 @Component({
   selector: 'app-meal-details',
@@ -24,72 +26,69 @@ import { CommonModule } from '@angular/common';
   styleUrl: './meal-details.component.css',
 })
 export class MealDetailsComponent implements OnInit {
-  @Input() meal: Meal = {
+  meal: Meal = new Meal();
+  reviews: Review[] = [];
+  newReview: Review = {
+    comment: '',
+    rate: 1,
+    clientId: 1, // Example client ID, replace with actual user ID
+    mealId: 0 // Initialize with 0 or any placeholder
   };
 
   constructor(
-    private mealService: MealService,
-    private activatedRoute: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    public mealService: MealService,
+    public reviewService: ReviewService,
+    public activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      const id = +params['id'];
-      this.mealService.getMealById(id).subscribe({ next: (data) => {
-        this.meal = data;
-        console.log(data);
-      },
-      error: (e) => console.error(e)});
-  })
-}
-}
-// export class MealDetailsComponent implements OnInit {
-//   meal:Meal=new Meal(0,"","",false,false,0,"");
-//   // reviews: Review[] = [];
-//   // newReview: Review = {
-//   //   id: 0,
-//   //   comment: '',
-//   //   rate: 0,
-//   //   clientId: 1, // Example client ID, replace with actual user ID
-//   //   mealId: this.meal.MealId
-//   // };
-//   constructor (public mealService:MealService,public activatedRoute:ActivatedRoute){}
-//   ngOnInit(): void {
-//     this.activatedRoute.params.subscribe(m=>{
-//       this.mealService.getMealById(m['id']).subscribe(m=>{
-//         this.meal=m;
-//       })
-//     })
-//     // this.loadReviews();
-//   }
-//   // loadReviews(): void {
-//   //   this.mealService.getAllReviews().subscribe(
-//   //     (reviews: Review[]) => {
-//   //       this.reviews = reviews;
-//   //     },
-//   //     (error) => {
-//   //       console.log('Error loading reviews:', error);
-//   //     }
-//   //   );
-//   // }
-//   // submitReview(): void {
-//   //   this.mealService.postReview(this.newReview).subscribe(
-//   //     (response) => {
-//   //       console.log('Review submitted successfully:', response);
-//   //       this.loadReviews(); // Refresh reviews after submission
-//   //       this.newReview = {
-//   //         id: 0,
-//   //         comment: '',
-//   //         rate: 0,
-//   //         clientId: 1, // Reset client ID for next review (example)
-//   //         mealId: this.meal.MealId
-//   //       };
-//   //     },
-//   //     (error) => {
-//   //       console.log('Error submitting review:', error);
-//   //     }
-//   //   );
+    this.activatedRoute.params.subscribe(params => {
+      const mealId = +params['id']; // Use '+' to convert to a number
+      if (mealId) {
+        this.getMeal(mealId);
+      }
+    });
+  }
 
-// // }
-// }
+  getMeal(mealId: number): void {
+    this.mealService.getMealById(mealId).subscribe(
+      meal => {
+        this.meal = meal;
+        this.newReview.mealId = meal.id ?? 0; // Ensure mealId is not undefined
+        this.getReviews(meal.id??0); // Fetch reviews after meal is loaded
+      },
+      error => {
+        console.error('Error fetching meal', error);
+      }
+    );
+  }
+
+  getReviews(mealId: number): void {
+    this.reviewService.getReviewsByMealId(mealId).subscribe(
+      reviews => {
+        this.reviews = reviews;
+      },
+      error => {
+        console.error('Error fetching reviews', error);
+      }
+    );
+  }
+
+  submitReview(): void {
+    this.reviewService.addReview(this.newReview).subscribe(
+      (response) => {
+        console.log('Review submitted successfully:', response);
+        this.getReviews(this.newReview.mealId); // Refresh reviews after submission
+        this.newReview = {
+          comment: '',
+          rate: 1,
+          clientId: 1, // Reset client ID for next review (example)
+          mealId: this.meal.id??0
+        };
+      },
+      (error) => {
+        console.log('Error submitting review:', error);
+      }
+    );
+  }
+}

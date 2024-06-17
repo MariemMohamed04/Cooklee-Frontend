@@ -115,7 +115,30 @@ Centering the meal details container
 .quantity {
   margin-top: 20px;
 }
+/* Reviews container specific styles */
 
+.reviews-details {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #F2F2F2; /* Use the same background color as header */
+  width: 80%; /* Adjust width as needed */
+  max-width: 800px; /* Maximum width */
+  height: auto;
+  margin: 0px;
+}
+.reviews-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #F2F2F2; /* Use the same background color as header */
+  width: 80%; /* Set width to match meal-details container */
+  max-width: 800px; /* Maximum width */
+  height: auto; /* Adjust height */
+  margin: 0px; /* Use the same margin as meal-details container */
+}
 
 /* Reviews container specific styles */
 .reviews-title, .add-review-title {
@@ -166,18 +189,7 @@ Centering the meal details container
 .submit-review-btn:hover {
   background-color: var(--main-color);
 }
-/* Reviews container specific styles */
-.reviews-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background-color: #F2F2F2; /* Use the same background color as header */
-  width: 80%; /* Set width to match meal-details container */
-  max-width: 800px; /* Maximum width */
-  height: auto; /* Adjust height */
-  margin: 0px; /* Use the same margin as meal-details container */
-}
+
 .review {
   display: flex;
   align-items: center;

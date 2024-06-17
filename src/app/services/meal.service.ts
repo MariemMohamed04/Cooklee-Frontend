@@ -16,24 +16,8 @@ export class MealService {
   getMealById(id: number): Observable<Meal> {
     return this.http.get<Meal>(this.baseurl + id);
   }
-  // getMealById(id:number){
-  //   return this.http.get<Meal>(this.baseurl+id);
-  // }
   getAllMeal() {
     return this.http.get<Meal[]>(this.baseurl);
   }
-  // postReview(review: Review): Observable<any> {
-  //   return this.http.post<any>(this.baseurl, review);
-  // }
-  // getAllReviews(): Observable<Review[]> {
-  //   return this.http.get<Review[]>(this.baseurl + 'reviews');
-  // }
 
-  // getReview(id: number): Observable<Review> {
-  //   return this.http.get<Review>(this.baseurl + id);
-  // }
-
-  // deleteReview(id: number): Observable<any> {
-  //   return this.http.delete<any>(this.baseurl + id + '/reviews');
-  // }
 }

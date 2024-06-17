@@ -1,8 +1,7 @@
-<div
-  *ngIf="meal"
-  class="meal-details-container d-flex flex-column align-items-center"
->
+<div class="meal-details-container d-flex flex-column align-items-center">
   <div class="meal-details rounded-corners d-flex align-items-center p-3">
+    <img [src]="meal.image" alt="Meal Photo" class="meal-photo" />
+
     <div class="meal-info ms-3 flex-grow-1">
       <div class="d-flex align-items-center justify-content-between mb-2">
         <div class="d-flex align-items-center">
@@ -29,6 +28,40 @@
         {{ meal.isHealthy ? "&#9989;" : "&#10060;" }}
       </p>
       <p class="meal-description mb-2">{{ meal.mealDescription }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- New Reviews Section -->
+<div class="meal-details-container d-flex flex-column align-items-center">
+  <div class="reviews-details rounded-corners d-flex align-items-center">
+    <div class="container">
+      <h3 class="reviews-title mb-3">Customer Reviews</h3>
+      <div
+        class="review d-flex align-items-center mb-3"
+        *ngFor="let review of reviews"
+      >
+        <img
+          [src]="newReview.clientId"
+          alt="User Photo"
+          class="review-user-photo me-3"
+        />
+
+        <div>
+          <p class="review-text mb-1">"{{ review.comment }}"</p>
+        </div>
+      </div>
+      <div class="add-review mt-3">
+        <input
+          type="text"
+          class="review-input"
+          placeholder="Write your comment here..."
+          [(ngModel)]="newReview.comment"
+        />
+        <button class="submit-review-btn mt-2" (click)="submitReview()">
+          Submit
+        </button>
+      </div>
     </div>
   </div>
 </div>
