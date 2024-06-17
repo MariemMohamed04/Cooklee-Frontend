@@ -1,16 +1,18 @@
-<div *ngIf="meal" class="meal-details-container d-flex flex-column align-items-center">
+<div
+  *ngIf="meal"
+  class="meal-details-container d-flex flex-column align-items-center"
+>
   <div class="meal-details rounded-corners d-flex align-items-center p-3">
-    <img [src]="meal.Image" alt="Meal Photo" class="meal-photo" />
     <div class="meal-info ms-3 flex-grow-1">
       <div class="d-flex align-items-center justify-content-between mb-2">
         <div class="d-flex align-items-center">
-          <h2 class="meal-name mb-0 me-2">{{ meal.MealName }}</h2>
+          <h2 class="meal-name mb-0 me-2">{{ meal.mealName }}</h2>
           <p class="meal-price mb-0">
-            <i class="fa-solid fa-coins"></i> {{ meal.Price }} EGP
+            <i class="fa-solid fa-coins"></i> {{ meal.price }} EGP
           </p>
           <i
             class="fa fa-heart favorite-icon ms-2"
-            [class.favorited]="meal.Availibility"
+            [class.favorited]="meal.isHealthy"
           ></i>
           <!-- //meal.isFavorited -->
         </div>
@@ -20,13 +22,13 @@
       </div>
       <p class="meal-availability mb-2">
         <span class="highlight">Availability :</span>
-        {{ meal.Availibility ? "&#9989;" : "&#10060;" }}
+        {{ meal.isHealthy ? "&#9989;" : "&#10060;" }}
       </p>
       <p class="meal-healthy mb-2">
         <span class="highlight">Healthy :</span>
-        {{ meal.Healthy ? "&#9989;" : "&#10060;" }}
+        {{ meal.isHealthy ? "&#9989;" : "&#10060;" }}
       </p>
-      <p class="meal-description mb-2">{{ meal.MealDescription }}</p>
+      <p class="meal-description mb-2">{{ meal.mealDescription }}</p>
     </div>
   </div>
 </div>

@@ -1,20 +1,32 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { Meal } from '../../models/meal';
 import { MealService } from '../../services/meal.service';
-import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-meal-details',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink,RouterLinkActive, RouterOutlet],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+  ],
   templateUrl: './meal-details.component.html',
-  styleUrl: './meal-details.component.css'
+  styleUrl: './meal-details.component.css',
 })
-
 export class MealDetailsComponent implements OnInit {
-  meal: Meal = new Meal(0, "", "", false, false, 0, "", 0.0, []);
+  @Input() meal: Meal = {
+  };
+
   constructor(
     private mealService: MealService,
     private activatedRoute: ActivatedRoute,
@@ -22,15 +34,15 @@ export class MealDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params) => {
       const id = +params['id'];
-      this.mealService.getMealById(id).subscribe(data => {
+      this.mealService.getMealById(id).subscribe({ next: (data) => {
         this.meal = data;
-        this.cdr.detectChanges(); // Manually trigger change detection
-        console.log(this.meal);
-      });
-    });
-  }
+        console.log(data);
+      },
+      error: (e) => console.error(e)});
+  })
+}
 }
 // export class MealDetailsComponent implements OnInit {
 //   meal:Meal=new Meal(0,"","",false,false,0,"");
