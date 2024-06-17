@@ -31,7 +31,7 @@ export class MealDetailsComponent implements OnInit {
   newReview: Review = {
     comment: '',
     rate: 1,
-    clientId: 1, // Example client ID, replace with actual user ID
+    clientId: 2, // Example client ID, replace with actual user ID
     mealId: 0 // Initialize with 0 or any placeholder
   };
 
@@ -82,7 +82,7 @@ export class MealDetailsComponent implements OnInit {
         this.newReview = {
           comment: '',
           rate: 1,
-          clientId: 1, // Reset client ID for next review (example)
+          clientId: 2, // Reset client ID for next review (example)
           mealId: this.meal.id??0
         };
       },
