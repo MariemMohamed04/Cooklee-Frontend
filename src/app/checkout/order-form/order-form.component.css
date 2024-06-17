@@ -1,0 +1,26 @@
+.form-control:focus {
+  color: rgba(255,255,255,.5);
+  background-color: transparent;
+  border-color: var(--main-color);
+  outline: 0;
+  box-shadow: none;
+}
+
+input[type=text], select {
+  height: 45px;
+  border: 1px solid #dddddd;
+  padding: 5px 20px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #666666;
+  transition: all 0.3s ease-in-out;
+  background: #fff;
+  width: 100%;
+}
+
+.error {
+	margin: 10px auto;
+	padding: 10px 10px 10px 10px;
+  color: #D8000C;
+	background-color: #FFBABA;
+}

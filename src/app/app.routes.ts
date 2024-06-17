@@ -15,6 +15,7 @@ import { RegisterFormComponent } from './Registeration/register-form/register-fo
 import { FavoriteComponent } from './favorite/favorite.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout/checkout.component';
 export const routes: Routes = [
 
 
@@ -46,7 +47,8 @@ export const routes: Routes = [
   // { path: "register", component: RegisterFormComponent },
   // { path: "login", component: LoginFormComponent },
   // { path: 'ClientForm', component: ClientProfleFormComponent },
-  { path: "", redirectTo: "cart", pathMatch: "full" },
+  { path: "", redirectTo: "checkout", pathMatch: "full" },
+  { path: "checkout", component: CheckoutComponent },
   { path: "cart", component: CartComponent },
   { path: "favorite", component: FavoriteComponent },
   {
