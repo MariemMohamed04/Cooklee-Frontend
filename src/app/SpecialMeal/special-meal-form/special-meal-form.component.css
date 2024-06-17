@@ -1,0 +1,43 @@
+
+
+
+.form-label {
+  color: #000;
+}
+
+.form-control {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #e8af8e;
+
+
+}
+
+.btn-primary {
+  background-color: #FC8019;
+  border-color: #e8ae8e;
+ }
+
+
+.btn-primary:hover {
+  background-color: #d0ae77;
+  border-color: #d0ae77;
+}
+
+.container{
+  position: relative;
+  bottom: 201px;
+
+}
+.custom-form {
+  max-width: 50%;
+  margin-left: 0; /* لإزاحة الفورم إلى اليسار */
+  border: 1px solid #ddd; /* يمكنك تخصيص الحدود هنا */
+  padding: 20px; /* يمكنك تخصيص الحشوة الداخلية هنا */
+  border-radius: 10px; /* يمكنك تخصيص زوايا الحواف هنا */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* يمكنك تخصيص الظل هنا */
+}
+
+.custom-form .btn {
+  width: 48%; /* ضبط عرض الأزرار لتكون بجانب بعضها البعض */
+}

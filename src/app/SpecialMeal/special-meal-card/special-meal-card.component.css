@@ -1,0 +1,46 @@
+
+.moved-container {
+  position: relative;
+  top: 217px;
+}
+
+.custom-div {
+   background-color:#ffe29d ;
+  color:black ;
+  padding: 20px;
+}
+
+.custom-label {
+  font-size: 1rem;
+}
+.custom-h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  background-color: #FC8019;
+  border-color: #e8ae8e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn2 {
+  position: fixed;
+  bottom: 20px;
+  right: 125px;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  background-color: #FC8019;
+  border-color: #e8ae8e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -1,6 +1,7 @@
 export class Chef {
     constructor(
-        public displayName:string,
-        public isActive:boolean
+      public id: number,
+      public displayName:string,
+      public isActive:boolean
     ){}
 }

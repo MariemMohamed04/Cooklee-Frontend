@@ -1,0 +1,33 @@
+<form [formGroup]="mealForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="mealName" class="form-label">Meal Name</label>
+    <input type="text" class="form-control" id="mealName" formControlName="s_MealName" placeholder="Enter Meal Name">
+  </div>
+  <div class="mb-3">
+    <label for="mealDesc" class="form-label">Meal Description</label>
+    <textarea class="form-control" id="mealDesc" formControlName="description" rows="3" placeholder="Enter Meal Description"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="mealMin" class="form-label">Minimum Price</label>
+    <input type="number" class="form-control" id="mealMin" formControlName="minPrice" placeholder="Enter Minimum Price">
+  </div>
+  <div class="mb-3">
+    <label for="mealMax" class="form-label">Maximum Price</label>
+    <input type="number" class="form-control" id="mealMax" formControlName="maxPrice" placeholder="Enter Maximum Price">
+  </div>
+  <div class="mb-3">
+    <label for="chefPageId" class="form-label">Chef</label>
+    <select class="form-select" id="chefPageId" formControlName="chefPageId">
+      <option selected>Choose a Chef</option>
+      <option *ngFor="let chef of chefs" [value]="chef.displayName">{{ chef.displayName }}</option>
+    </select>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 mb-3">
+      <button type="submit" class="btn btn-primary">Apply</button>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <button type="button" class="btn btn-primary">Edit</button>
+    </div>
+  </div>
+</form>
