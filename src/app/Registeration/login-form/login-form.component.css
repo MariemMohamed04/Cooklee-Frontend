@@ -1,7 +1,3 @@
-/* .w-50[_ngcontent-ng-c3241913289] {
-  width: 58% !important;
-}
-
 .layer {
   width: 1354px;
   height: 1534px;
@@ -26,72 +22,7 @@
   height: 100vh;
   background-color: var(--bg-color);
   z-index: 3;
-}
-
-.form-control {
-  border: none;
-  border-radius: 0px;
-  border-bottom: 2px solid var(--dark-color);
-  box-shadow: none;
-}
-
-.form-control:focus {
-  border-bottom: 2px solid var(--main-color);
-}
-
-.form-label .form-control:focus  {
-  color: var(--main-color)
-}
-
-.back {
-  z-index: 9999;
-}
-
-@media screen and (max-width: 1120px){
-  .layer {
-    left: -486px;
-  }
-}
-
-@media screen and (max-width: 992px){
-  .layer {
-    display: none;
-  }
-
-  .login-form-container {
-    height: auto;
-  }
-} */
-
-/* .w-50[_ngcontent-ng-c3241913289] {
-  width: 58% !important;
-} */
-
-.layer {
-  width: 1354px;
-  height: 1534px;
-  background-color: var(--main-color);
-  transform: rotate(10deg) skewY(59deg);
-  left: -414px;
-  bottom: 0px;
-  z-index: 1;
-  display: block;
-}
-
-.logo {
-  z-index: 2;
   position: relative;
-}
-
-.w-50 {
-  width: 58% !important;
-}
-
-.login-form-container {
-  height: 100vh;
-  background-color: var(--bg-color);
-  z-index: 3;
-  position: relative; /* Make it the containing block for absolute positioning */
 }
 
 .form-control {
@@ -114,8 +45,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: auto; /* Ensure the aspect ratio is maintained */
-  z-index: 999; /* Ensure it is behind the content */
+  height: auto;
+  z-index: 999;
 }
 
 .error {
@@ -141,8 +72,8 @@
   }
 
   .login-form-container {
-    height: auto; /* Adjust the height to auto */
-    min-height: 100vh; /* Ensure it still takes the full viewport height if content is less */
+    height: auto;
+    min-height: 100vh;
   }
 }
 
