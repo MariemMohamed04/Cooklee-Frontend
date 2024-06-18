@@ -59,5 +59,6 @@ export const routes: Routes = [
       { path: 'requestedMeals', component: RequestedMealsComponent },
     ]
   },
-  {path:'**',component:NotfoundComponent}
+  { path: "meals", component:MealListComponent },
+  { path:'**',component:NotfoundComponent }
 ]

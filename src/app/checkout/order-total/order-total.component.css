@@ -44,7 +44,7 @@
 }
 
 .check-tbl {
-  /* width: 100%; */
+  width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.125);
   vertical-align: middle;
 }
@@ -55,18 +55,6 @@
   overflow-x: auto;
 }
 
-.table > thead {
-  vertical-align: bottom;
-}
-
-.check-tbl thead th {
-  font-size: 16px;
-  font-weight: 600;
-  padding: 15px 15px;
-  color: var(--light-color);
-  background: var(--dark-color);
-}
-
 .table > tbody {
   vertical-align: inherit;
 }
@@ -74,7 +62,8 @@
 .check-tbl tbody td {
   padding: 15px;
   font-weight: 500;
-  border: 1px solid var(--shadow);
+  border: 1px solid var(--grey-color);
+  color: var(--dark-color);
 }
 
 img {
