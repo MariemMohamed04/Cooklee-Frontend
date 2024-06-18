@@ -40,28 +40,28 @@ export class FavoriteComponent implements OnInit {
     );
   }
 
-  removeFromFavorites(item: FavoriteItem): void {
-    const userId = this.authService.getClaims().UserId;
-    this.favoriteService.deleteFavoriteItem(userId, item).subscribe(
-      (response) => {
-        this.favoriteItems = this.favoriteItems.filter(i => i.id !== item.id);
-        console.log('Removed from favorites:', response);
+  // removeFromFavorites(item: FavoriteItem): void {
+  //   const userId = this.authService.getClaims().UserId;
+  //   this.favoriteService.deleteFavoriteItem(userId, item).subscribe(
+  //     (response) => {
+  //       this.favoriteItems = this.favoriteItems.filter(i => i.id !== item.id);
+  //       console.log('Removed from favorites:', response);
 
-        // Also remove from cart if exists
-        this.cartService.removeFromCart(userId, item).subscribe(
-          (cartResponse) => {
-            console.log('Removed from cart:', cartResponse);
-            // Update cart list if needed
-          },
-          (cartError) => {
-            console.error('Error removing from cart:', cartError);
-          }
-        );
+  //       // Also remove from cart if exists
+  //       this.cartService.removeFromCart(userId, item).subscribe(
+  //         (cartResponse) => {
+  //           console.log('Removed from cart:', cartResponse);
+  //           // Update cart list if needed
+  //         },
+  //         (cartError) => {
+  //           console.error('Error removing from cart:', cartError);
+  //         }
+  //       );
 
-      },
-      (error) => {
-        console.error('Error removing from favorites:', error);
-      }
-    );
-  }
+  //     },
+  //     (error) => {
+  //       console.error('Error removing from favorites:', error);
+  //     }
+  //   );
+  // }
 }
