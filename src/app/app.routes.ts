@@ -12,8 +12,10 @@ import { MealDetailsComponent } from './meal/meal-details/meal-details.component
 //import { NotfoundComponent } from './notfound/notfound.component';
 import { LoginFormComponent } from './Registeration/login-form/login-form.component';
 import { RegisterFormComponent } from './Registeration/register-form/register-form.component';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout/checkout.component';
 export const routes: Routes = [
 
 
@@ -57,16 +59,22 @@ export const routes: Routes = [
   { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
 
   {
-    path: 'profile', component: ClientProfleComponent, children: [
+    path: 'ChefPage', component: ChefPageComponent, children: [
 
-      { path: '', component: ClientFavouriteComponent },
-      { path: 'Favourites', component: ClientFavouriteComponent },
-      { path: 'Orders', component: ClientOrderComponent },
+      { path: '', component: ChefMealsComponent },
+      { path: 'chefMeals', component: ChefMealsComponent },
+      { path: 'requestedMeals', component: RequestedMealsComponent },
     ]
   },
-  { path: 'ChefPageForm', component: ChefPageFormComponent },
 
-  { path: 'ChefPage', redirectTo: 'ChefPage/chefMeals', pathMatch: 'full' },
+  // { path: "", redirectTo: "register", pathMatch: "full" },
+  // { path: "register", component: RegisterFormComponent },
+  // { path: "login", component: LoginFormComponent },
+  // { path: 'ClientForm', component: ClientProfleFormComponent },
+  { path: "", redirectTo: "checkout", pathMatch: "full" },
+  { path: "checkout", component: CheckoutComponent },
+  { path: "cart", component: CartComponent },
+  { path: "favorite", component: FavoriteComponent },
   {
     path: 'ChefPage', component: ChefPageComponent, children: [
 
@@ -75,11 +83,7 @@ export const routes: Routes = [
       { path: 'requestedMeals', component: RequestedMealsComponent },
     ]
   },
-];
+  {path:'**',component:NotfoundComponent}
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes),HttpClientModule],
-  exports: [RouterModule]
-})
+]
 
-export class AppRoutingModule { }
