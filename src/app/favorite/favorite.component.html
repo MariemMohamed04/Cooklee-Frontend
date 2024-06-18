@@ -9,55 +9,20 @@
                 <th>Meal</th>
                 <th>Meal Name</th>
                 <th>Unit Price</th>
-                <th>Add to cart </th>
+                <th>Add to cart</th>
                 <th class="text-end">Remove</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="favourite-item-img"><img src="../../assets/imgs/Meals/pic1.jpg" alt="/"></td>
-                <td class="favourite-item-name">Cheese Pizza</td>
-                <td class="favourite-item-price">$35.00</td>
-                <td class="favourite-item-totle">
-                  <a href="shop-cart.html" class="btn btn-cart">
-                    <button class="btn">
-                      Add To Cart
-                    </button>
-                    </a></td>
-                <td class="favourite-item-close">
-                  <button class="btn">
-                    <i class="fa fa-close"></i>
-                  </button>
+              <tr *ngFor="let item of favoriteItems">
+                <td class="favourite-item-img"><img [src]="item.pictureUrl" alt="{{item.mealName}}"></td>
+                <td class="favourite-item-name">{{item.mealName}}</td>
+                <td class="favourite-item-price">{{item.price}} EGP</td>
+                <td class="favourite-item-total">
+                  <button class="btn btn-cart" (click)="addToCart(item)">Add To Cart</button>
                 </td>
-              </tr>
-              <tr>
-                <td class="favourite-item-img"><img src="../../assets/imgs/Meals/pic1.jpg" alt="/"></td>
-                <td class="favourite-item-name">Cheese Pizza</td>
-                <td class="favourite-item-price">$35.00</td>
-                <td class="favourite-item-totle">
-                  <a href="shop-cart.html" class="btn btn-cart">
-                    <button class="btn">
-                      Add To Cart
-                    </button>
-                    </a></td>
                 <td class="favourite-item-close">
-                  <button class="btn">
-                    <i class="fa fa-close"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="favourite-item-img"><img src="../../assets/imgs/Meals/pic1.jpg" alt="/"></td>
-                <td class="favourite-item-name">Cheese Pizza</td>
-                <td class="favourite-item-price">$35.00</td>
-                <td class="favourite-item-totle">
-                  <a href="shop-cart.html" class="btn btn-cart">
-                    <button class="btn">
-                      Add To Cart
-                    </button>
-                    </a></td>
-                <td class="favourite-item-close">
-                  <button class="btn">
+                  <button class="btn" (click)="removeFromFavorites(item)">
                     <i class="fa fa-close"></i>
                   </button>
                 </td>

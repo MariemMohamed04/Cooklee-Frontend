@@ -8,73 +8,19 @@
           </div>
         </div>
         <div class="table-responsive">
-          <div class="cart-item p-3">
+          <div class="cart-item p-3" *ngFor="let item of cartItems">
             <div class="cart-item-image">
-              <img src="../../assets/imgs/Meals/pic1.jpg" class="" alt="/">
+              <img [src]="item.pictureUrl" alt="{{item.mealName}}"/>
             </div>
             <div class="cart-item-content p-3 d-flex flex-column justify-content-between">
               <div class="cart-item-name">
-                <a routerLink="/meal" routerLinkActive="active" class="fs-5">Double Patty Burger</a>
+                <a routerLink="/meal" routerLinkActive="active" class="fs-5">{{item.mealName}}</a>
               </div>
-              <h6 class="price mb-0">$14.20</h6>
+              <h6 class="price mb-0">{{item.price}} EGP</h6>
             </div>
             <div class="cart-item-content p-3 d-flex flex-column justify-content-between align-items-center ms-auto">
               <div class="cart-item-remove ms-auto">
-                <button class="">
-                  <i class="fa fa-close"></i>
-                </button>
-              </div>
-              <div class="cart-item-quantity d-flex align-items-center">
-                <button class="btn btn-outline-dark btn-sm me-2" onclick="decreaseQuantity(this)">
-                  <i class="fa fa-minus"></i>
-                </button>
-                <span class="quantity">1</span>
-                <button class="btn btn-outline-dark btn-sm ms-2" onclick="increaseQuantity(this)">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item p-3">
-            <div class="cart-item-image">
-              <img src="../../assets/imgs/Meals/pic1.jpg" class="" alt="/">
-            </div>
-            <div class="cart-item-content p-3 d-flex flex-column justify-content-between">
-              <div class="cart-item-name">
-                <a routerLink="/meal" routerLinkActive="active" class="fs-5">Double Patty Burger</a>
-              </div>
-              <h6 class="price mb-0">$14.20</h6>
-            </div>
-            <div class="cart-item-content p-3 d-flex flex-column justify-content-between align-items-center ms-auto">
-              <div class="cart-item-remove ms-auto">
-                <button class="">
-                  <i class="fa fa-close"></i>
-                </button>
-              </div>
-              <div class="cart-item-quantity d-flex align-items-center">
-                <button class="btn btn-outline-dark btn-sm me-2" onclick="decreaseQuantity(this)">
-                  <i class="fa fa-minus"></i>
-                </button>
-                <span class="quantity">1</span>
-                <button class="btn btn-outline-dark btn-sm ms-2" onclick="increaseQuantity(this)">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="cart-item p-3">
-            <div class="cart-item-image">
-              <img src="../../assets/imgs/Meals/pic1.jpg" class="" alt="/">
-            </div>
-            <div class="cart-item-content p-3 d-flex flex-column justify-content-between">
-              <div class="cart-item-name">
-                <a routerLink="/meal" routerLinkActive="active" class="fs-5">Double Patty Burger</a>
-              </div>
-              <h6 class="price mb-0">$14.20</h6>
-            </div>
-            <div class="cart-item-content p-3 d-flex flex-column justify-content-between align-items-center ms-auto">
-              <div class="cart-item-remove ms-auto">
-                <button class="">
+                <button (click)="removeFromCarts(item)">
                   <i class="fa fa-close"></i>
                 </button>
               </div>

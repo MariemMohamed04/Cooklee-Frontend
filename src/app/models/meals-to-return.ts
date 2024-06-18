@@ -11,6 +11,6 @@ export class MealsToReturn {
     public image: string,
     public tags: string[],
     public chefPageName: string,
-    public chefPageId: number,
+    public chefPageId: number
   ) {}
 }
