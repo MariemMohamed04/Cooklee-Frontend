@@ -14,8 +14,13 @@ export class FavoriteService {
 
   // Add favorite item
   addFavoriteItem(favoriteId: string, item: FavoriteItem): Observable<Favorite> {
+    console.log("6");
     const url = `${this.baseUrl}/FavouriteItem?favouriteId=${encodeURIComponent(favoriteId)}`;
+    console.log("7");
+
     return this.http.post<Favorite>(url, item).pipe(catchError(this.handleError));
+    console.log("8");
+
   }
 
   // Delete favorite item
@@ -41,4 +46,16 @@ export class FavoriteService {
     console.error('API error occurred:', error);
     return throwError('Something bad happened; please try again later.');
   }
+
+  removeFromCart(userId: string, item: FavoriteItem): Observable<any> {
+    const url = `${this.baseUrl}/CartItem/${encodeURIComponent(userId)}`;
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: item
+    };
+    return this.http.delete(url, options).pipe(catchError(this.handleError));
+  }
+
 }
