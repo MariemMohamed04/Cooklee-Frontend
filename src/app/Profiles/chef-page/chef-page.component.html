@@ -1,0 +1,83 @@
+<div class="container col-11  py-5 px-4">
+    <div class="col-md-12 mx-auto mb-5">
+      <!-- Profile widget -->
+      <div class="bg-white shadow rounded ">
+        <div class="px-4 pt-0 pb-4 cover d-flex justify-content-center align-items-center page-cover">
+          <div class="page-name"> {{chef.displayName}}</div>
+         
+        </div>
+    
+        <div class="bg-light p-4 d-flex justify-content-end text-center">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <button class="btn btn-primary profile-button position-relative z-3 " (click)="Editpage()">Edit page</button>
+            </li>
+            <li class="list-inline-item">
+              <button class="btn btn-primary profile-button position-relative z-3" (click)="BackToProfile()">BackToProfile</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">
+            <h4 >About Page</h4>
+          </div>
+  
+             <br>
+            <div>
+              <h6 class="card-text">Page Name:</h6>
+              <p class="card-text">{{chef.displayName}} </p>
+            </div>
+             <br>
+            <div>
+              <h6 class="card-text">Active status:</h6>
+              <p class="card-text">{{chef.isActive}}</p>
+            </div>
+               <br>
+        
+  
+  
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="container">
+              <div class="d-flex flex-row justify-content-evenly">
+                <div class="login-tab d-flex justify-content-evenly">
+                  <a
+                    [routerLink]="['/ChefPage', 'chefMeals']"
+                    routerLinkActive="active-link"
+                  class="fav-txt"
+                    >My meals</a
+                  >
+                </div>
+                <div class="login-tab d-flex justify-content-evenly">
+                  <a
+                    [routerLink]="['/ChefPage', 'requestedMeals']"
+                    routerLinkActive="active-link"
+                    class="fav-txt"
+                    >Requested Meals</a
+                  >
+                </div>
+              </div>
+                <div class="fav-form">
+                  <router-outlet></router-outlet>
+                </div>
+              </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+

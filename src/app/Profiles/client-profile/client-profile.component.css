@@ -1,0 +1,125 @@
+.profile-head {
+    transform: translateY(5rem)
+    
+}
+
+.cover {
+    background-color:  rgb(217, 217, 217) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    height: 35vh;
+    
+}
+
+body {
+    background: #654ea3;
+    background: linear-gradient(to right, #e96443, #904e95);
+    min-height: 100vh;
+    overflow-x:hidden;
+}
+
+.profile{
+   color:black;
+}
+.profi-text{
+ margin-top: 2rem;
+ 
+}
+.rounded-circle{
+
+    width: 15%;
+    height: 20.5vh;
+}
+
+.profile-button {
+    background: var(--main-color);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: var(--main-color);
+}
+
+.profile-button:focus {
+    background:var(--main-color);
+    box-shadow: none
+}
+
+.profile-button:active {
+    background:var(--main-color);
+    box-shadow: none
+}
+.card-title{
+
+    display: flex;
+    justify-content: center;
+}
+
+.card-text{
+    display: inline;
+    margin-left: 2rem;
+    
+}
+
+
+
+.login-tab{
+    align-items: center;
+    width: 50%;
+    height: 6vh;
+    background-color: white;
+    border-bottom: 1.5px solid var(  --shadow);
+    
+}
+
+.active-link{
+
+    border-bottom: 3px solid var(  --main-color);
+    
+}
+
+.fav-txt{
+    height: 100%;
+    width: 100%;
+    color: var( --main-color);
+    text-align: center;
+    font-size: 1.6rem;
+    text-decoration:none ;
+}
+
+.fav-form{
+    height: 80%;
+    width: 100%;
+    margin-top: 4%;
+
+}
+
+@media screen and (max-width:900px) {
+
+
+    .profile-head {
+        transform: translateY(13rem)
+    }
+    .rounded-circle{
+
+        width: 15%;
+        height: 10.5vh;
+    }
+
+   .profi-text{
+    margin-top: 0 !important;
+    font-size: smaller;
+   }
+    .card-title{
+
+        font-size:1rem;
+    }
+
+    .card-text{
+        font-size: x-small;
+        display: block;
+        margin-left: 1rem;
+    }
+}

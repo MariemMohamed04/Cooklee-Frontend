@@ -1,0 +1,99 @@
+<div class="container col-11  py-5 px-4">
+    <div class="col-md-12 mx-auto mb-5">
+      <!-- Profile widget -->
+      <div class="bg-white shadow rounded ">
+        <div class="px-4 pt-0 pb-4 cover">
+          <div class="media align-items-end profile-head">
+            <div class="profile">
+              <img class="rounded-circle" [src]="client.imgURL" />
+            </div>
+            <div class="media-body text-dark">
+              <h4 class=" profi-text mt-5">{{ client.firstName }} {{ client.lastName }}</h4>
+              <p class="small profi-text mt-0">
+                <i class="fas  fa-map-marker-alt "></i> {{ client.address }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-light p-4 d-flex justify-content-end text-center">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <button class="btn btn-primary profile-button position-relative z-3 " (click)="EditProfile()">Edit Profile</button>
+            </li>
+            <li class="list-inline-item">
+              <button class="btn btn-primary profile-button position-relative z-3" (click)="CreateChefPage()">Add Chef Page</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">
+            <h4 >About</h4>
+          </div>
+
+  <br>
+            <div>
+              <h6 class="card-text">Name:</h6>
+              <p class="card-text">{{client.firstName}} {{client.lastName}}</p>
+            </div>
+  <br>
+            <div>
+              <h6 class="card-text">Email:</h6>
+              <p class="card-text">{{client.email}}</p>
+            </div>
+  <br>
+            <div>
+              <h6 class="card-text">Number:</h6>
+              <p class="card-text">{{client.phoneNumber}}</p>
+            </div>
+  <br>
+            <div>
+              <h6 class="card-text">Address:</h6>
+              <p class="card-text">{{client.address}}</p>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="container">
+              <div class="d-flex flex-row justify-content-evenly">
+                <div class="login-tab d-flex justify-content-evenly">
+                  <a
+                    [routerLink]="['/profile', 'Favourites']"
+                    routerLinkActive="active-link"
+                  class="fav-txt"
+                    >Favourites</a
+                  >
+                </div>
+                <div class="login-tab d-flex justify-content-evenly">
+                  <a
+                    [routerLink]="['/profile', 'Orders']"
+                    routerLinkActive="active-link"
+                    class="fav-txt"
+                    >Orders</a
+                  >
+                </div>
+              </div>
+                <div class="fav-form">
+                  <router-outlet></router-outlet>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

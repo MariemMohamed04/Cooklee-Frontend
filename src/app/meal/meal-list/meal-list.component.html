@@ -1,0 +1,37 @@
+<div class="container">
+  <h3>Meals</h3>
+  <div class="container-card d-flex">
+    <div
+      *ngFor="let item of meals; let $index = index"
+      class="col-lg-3 col-md-6 col-sm-12"
+    >
+      <div
+        class="my-card bg-light border border-1 shadow-sm mb-5 bg-white rounded"
+      >
+        <!-- <img src="{{ item.Image }}" class="shadow-sm bg-dark rounded" alt="" /> -->
+         <!-- Joud -->
+        <img
+          src="{{ item.Image }}"
+          class="shadow-sm bg-dark rounded"
+          alt="Description of Image"
+        />
+        <div class="details ps-1">
+          <h5 class="card-title">{{ item.MealName }}</h5>
+          <h6 class="text-muted">Card subtitle</h6>
+          <p class="card-text description">{{ item.MealDescription }}</p>
+          <div class="">
+            <!--tags d-flex justify-content-between -->
+            <div class="d-inline-flex me-3">
+              <i class="fa-solid fa-coins"></i>
+              <p class="ps-1">{{ item.Price }} <span>Egp</span></p>
+            </div>
+            <div class="d-inline-flex">
+              <i class="fa-solid fa-hand-holding"></i>
+              <p class="ps-10">60 <span>min</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

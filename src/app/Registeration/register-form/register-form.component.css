@@ -1,0 +1,82 @@
+.layer {
+  width: 1354px;
+  height: 1534px;
+  background-color: var(--main-color);
+  transform: rotate(10deg) skewY(59deg);
+  left: -414px;
+  bottom: 0px;
+  z-index: 1;
+  display: block;
+}
+
+.logo {
+  z-index: 2;
+  position: relative;
+}
+
+.w-50 {
+  width: 58% !important;
+}
+
+.register-form-container {
+  height: 100vh;
+  background-color: var(--bg-color);
+  z-index: 3;
+  position: relative;
+}
+
+.form-control {
+  border: none;
+  border-radius: 50px;
+  border: 2px solid var(--dark-color);
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.form-label .form-control:focus  {
+  color: var(--main-color)
+}
+
+.svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999;
+}
+
+.error {
+	/* border: 1px solid; */
+	margin: 10px auto;
+	padding: 10px 10px 10px 10px;
+  color: #D8000C;
+	background-color: #FFBABA;
+	/* background-repeat: no-repeat; */
+	/* background-position: 10px center; */
+	/* max-width: 460px; */
+}
+
+@media screen and (max-width: 1120px) {
+  .layer {
+    left: -486px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .layer {
+    display: none;
+  }
+
+  .register-form-container {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+.nsm7Bb-HzV7m-LgbsSe {
+  border: 5px solid lawngreen;
+}
