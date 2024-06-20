@@ -87,5 +87,10 @@ export const routes: Routes = [
   //   ]
   // },
   { path: "meals", component:MealListComponent },
+  {
+    path: 'Meals/Details/:id',
+    component: MealDetailsComponent,
+    title: 'Details of meal',
+  },
   { path:'**',component:NotfoundComponent }
 ]

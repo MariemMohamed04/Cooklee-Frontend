@@ -1,10 +1,12 @@
 export class Meal {
-  constructor(
-    public MealId:number,
-    public MealName:string,
-    public MealDescription:string,
-    public Healthy:Boolean,
-    public Availibility:Boolean,
-    public Price:number,
-    public Image:string){}
-}
+  id?: number;
+  mealName?: string;
+  mealDescription?: string;
+  isHealthy?: boolean;
+  price?: number;
+  rate?: number;
+  image?:string;
+  tags?:string[];
+  chefPageName?:string;
+  chefPageId?:number;
+} //public Image: string, public Rate:Number, public Tags:Array<String>

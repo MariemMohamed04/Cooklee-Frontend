@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeMeal, MealService } from '../_services/meal.service';
 import { Meal } from '../models/meal';
 // import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CommonModule } from '@angular/common';
+import { HomeMeal } from '../interfaces/home-meal';
+import { MealService } from '../services/meal.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class HomeMealsComponent implements OnInit {
     meals: HomeMeal[] = [];
     constructor(private mealService: MealService) { }
     ngOnInit(): void {
-        this.mealService.getAllMeal().subscribe((data: HomeMeal[]) => {
+        this.mealService.getMeals().subscribe((data: HomeMeal[]) => {
             this.meals = data;
             console.log(data);
         });

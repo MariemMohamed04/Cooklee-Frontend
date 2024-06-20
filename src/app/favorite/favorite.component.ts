@@ -25,20 +25,20 @@ export class FavoriteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadFavorites();
+    // this.loadFavorites();
   }
 
-  loadFavorites(): void {
-    const userId = this.authService.getClaims().UserId;
-    this.favoriteService.getUserFavorites(userId).subscribe(
-      (data: Favorite) => {
-        this.favoriteItems = data.items;
-      },
-      (error) => {
-        console.error('Error fetching favorite items:', error);
-      }
-    );
-  }
+  // loadFavorites(): void {
+  //   const userId = this.authService.getClaims().UserId;
+  //   this.favoriteService.getUserFavorites(userId).subscribe(
+  //     (data: Favorite) => {
+  //       this.favoriteItems = data.items;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching favorite items:', error);
+  //     }
+  //   );
+  // }
 
   // removeFromFavorites(item: FavoriteItem): void {
   //   const userId = this.authService.getClaims().UserId;

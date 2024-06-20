@@ -2,13 +2,21 @@
   <h3>Meals</h3>
   <div class="container-card d-flex">
     <div *ngFor="let meal of meals" class="col-lg-3 col-md-6 col-sm-12">
-      <div class="my-card bg-light border border-1 shadow-sm mb-5 bg-white rounded">
-        <img [src]="meal.image" class="shadow-sm bg-dark rounded" alt="{{meal.mealDescription}}" />
+      <div
+        class="my-card bg-light border border-1 shadow-sm mb-5 bg-white rounded"
+        (click)="goToMealDetails(meal.id)"
+        style="cursor: pointer;"
+      >
+        <img
+          [src]="meal.image"
+          class="shadow-sm bg-dark rounded"
+          alt="{{meal.mealDescription}}"
+        />
         <div class="details ps-1">
           <h5 class="card-title">{{meal.mealName}}</h5>
           <h6 class="text-muted">{{meal.chefPageName}}</h6>
           <p class="card-text description">{{meal.mealDescription}}</p>
-          <div class="">
+          <div>
             <div class="d-inline-flex me-3">
               <i class="fa-solid fa-coins"></i>
               <p class="ps-1"><span>{{meal.price}}</span> Egp</p>
@@ -17,14 +25,6 @@
               <i class="fa-solid fa-hand-holding"></i>
               <p class="ps-10">{{meal.rate}} <span>rate</span></p>
             </div>
-            <!-- <div class="d-inline-flex me-3">
-              <button class="me-5" (click)="addToFavorites(meal)">
-                <i class="fa fa-heart fs-4"></i>
-              </button>
-              <button class="" (click)="addToCart(meal)">
-                <i class="fa fa-cart-shopping fs-4"></i>
-              </button>
-            </div> -->
           </div>
         </div>
       </div>
