@@ -57,6 +57,7 @@ export class MealDetailsComponent implements OnInit {
         this.getMeal(mealId);
       }
     });
+    // console.log(this.authService.claims.UserId);
   }
 
   getMeal(mealId: number): void {
