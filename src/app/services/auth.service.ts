@@ -9,17 +9,17 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class AuthService {
 
-  public claims=new session(false,"","",[],"")
-  user!: {isAuthenticated:boolean; Name: string; Email: string; Roles: string[]; UserId: string; };
+  public claims = new session(false, "", "", [], "")
+  user!: { isAuthenticated: boolean; Name: string; Email: string; Roles: string[]; UserId: string; };
   private baseUrl = "https://localhost:7212/api/Account";
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   register(email: string, password: string, confirmPassword: string): Promise<{ success: boolean, error?: string }> {
     const url = `${this.baseUrl}/register`;
     return new Promise<{ success: boolean, error?: string }>((resolve) => {
       this.http.post(url, { email, password, confirmPassword }).subscribe(
-        (response) => {
-          localStorage.setItem("token", response as string);
+        (response: any) => {
+          localStorage.setItem("token", response.token);
           resolve({ success: true });
         },
         (error) => {
@@ -58,13 +58,9 @@ export class AuthService {
     console.log("debug1");
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     console.log("debug2");
-
     return this.http.post(`${this.baseUrl}/loginWithGoogle`, { credential: credentials.credential }, { headers });
     console.log("debug3");
-
   }
-
-
 
   logoutExternal = () => {
     localStorage.removeItem("token");
@@ -73,21 +69,14 @@ export class AuthService {
 
   getClaims(): session {
     let token = localStorage.getItem("token");
-    
-    if (typeof token === 'string' && token ) {
-      this.claims.isAuthenticated=true
+    if (typeof token === 'string' && token) {
+      this.claims.isAuthenticated = true
       this.user = jwtDecode(token);
-  
-      this.claims.Email=this.user?.Email
-      this.claims.Name=this.user.Name
-      this.claims.UserId=this.user.UserId
-      this.claims.Roles=this.user.Roles
+      this.claims.Email = this.user?.Email
+      this.claims.Name = this.user.Name
+      this.claims.UserId = this.user.UserId
+      this.claims.Roles = this.user.Roles
     }
-   
-    
-
     return this.claims;
-    
   }
-
 }
