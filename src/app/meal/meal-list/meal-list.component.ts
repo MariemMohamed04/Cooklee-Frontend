@@ -56,8 +56,7 @@ export class MealListComponent implements OnInit {
       image: meal.image,
       price: meal.price
     };
-    // `${claims.UserId}Fav`
-    this.favoriteId = `${this.authService.getClaims().UserId}Fav`;
+    this.favoriteId = `${this.authService.getClaims().UserId}-fav`;
     this.favoriteService.addFavoriteItem(this.favoriteId, favoriteItem).subscribe(
       (response) => {
         console.log('Meal added to favorites:', response);

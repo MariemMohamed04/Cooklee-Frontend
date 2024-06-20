@@ -21,33 +21,20 @@ export class FavoriteComponent implements OnInit {
 
   constructor(
     private favoriteService: FavoriteService,
-    private authService: AuthService,
-    private cartService: CartService
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    console.log("7");
-
     this.loadFavoriteItems();
-    console.log("8");
-
   }
 
   loadFavoriteItems(): void {
     this.favoriteId = `${this.authService.getClaims().UserId}Fav`;
-    console.log("1");
     this.favoriteService.getFavoriteItems(this.favoriteId).subscribe(
-
-      (items: FavoriteItem[]) => {
-    console.log("4");
-
-        this.favoriteItems = items;
-    console.log("5");
-
+      (favorite) => {
+        this.favoriteItems = favorite.items; // Assuming 'items' is the property containing favorite meals
       },
       (error) => {
-    console.log("6");
-
         console.error('Error fetching favorite items:', error);
       }
     );

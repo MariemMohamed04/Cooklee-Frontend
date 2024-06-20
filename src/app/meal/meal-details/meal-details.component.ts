@@ -31,8 +31,8 @@ export class MealDetailsComponent implements OnInit {
   newReview: Review = {
     comment: '',
     rate: 1,
-    clientId: 2, // Example client ID, replace with actual user ID
-    mealId: 0 // Initialize with 0 or any placeholder
+    clientId: 2,
+    mealId: 0
   };
 
   constructor(
@@ -43,7 +43,7 @@ export class MealDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      const mealId = +params['id']; // Use '+' to convert to a number
+      const mealId = +params['id'];
       if (mealId) {
         this.getMeal(mealId);
       }
@@ -54,8 +54,8 @@ export class MealDetailsComponent implements OnInit {
     this.mealService.getMealById(mealId).subscribe(
       meal => {
         this.meal = meal;
-        this.newReview.mealId = meal.id ?? 0; // Ensure mealId is not undefined
-        this.getReviews(meal.id??0); // Fetch reviews after meal is loaded
+        this.newReview.mealId = meal.id ?? 0;
+        this.getReviews(meal.id??0);
       },
       error => {
         console.error('Error fetching meal', error);
@@ -78,11 +78,11 @@ export class MealDetailsComponent implements OnInit {
     this.reviewService.addReview(this.newReview).subscribe(
       (response) => {
         console.log('Review submitted successfully:', response);
-        this.getReviews(this.newReview.mealId); // Refresh reviews after submission
+        this.getReviews(this.newReview.mealId);
         this.newReview = {
           comment: '',
           rate: 1,
-          clientId: 2, // Reset client ID for next review (example)
+          clientId: 2,
           mealId: this.meal.id??0
         };
       },
