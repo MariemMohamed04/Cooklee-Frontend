@@ -2,28 +2,23 @@
   <h3>Meals</h3>
   <div class="container-card d-flex">
     <div
-      *ngFor="let item of meals; let $index = index"
-      class="col-lg-3 col-md-6 col-sm-12"
+      *ngFor="let item of displayedMeals; let $index = index"
+        class="col-lg-3 col-md-6 col-sm-12 meal-card"
     >
       <div
         class="my-card bg-light border border-1 shadow-sm mb-5 bg-white rounded"
       >
-        <!-- <img src="{{ item.Image }}" class="shadow-sm bg-dark rounded" alt="" /> -->
-         <!-- Joud -->
-        <img
-          src="{{ item.Image }}"
-          class="shadow-sm bg-dark rounded"
-          alt="Description of Image"
-        />
-        <div class="details ps-1">
-          <h5 class="card-title">{{ item.MealName }}</h5>
+
+         <img src="{{ item.image }}" class="shadow-sm bg-dark " alt="Description of Image" />
+
+        <div class="details px-3">
+          <h5 class="card-title">{{ item.mealName }}</h5>
           <h6 class="text-muted">Card subtitle</h6>
-          <p class="card-text description">{{ item.MealDescription }}</p>
-          <div class="">
-            <!--tags d-flex justify-content-between -->
+          <p class="card-text description">{{ item.mealDescription }}</p>
+          <div class="tags d-flex justify-content-around">
             <div class="d-inline-flex me-3">
               <i class="fa-solid fa-coins"></i>
-              <p class="ps-1">{{ item.Price }} <span>Egp</span></p>
+              <p class="ps-1">{{ item.price }} <span>Egp</span></p>
             </div>
             <div class="d-inline-flex">
               <i class="fa-solid fa-hand-holding"></i>
@@ -35,3 +30,34 @@
     </div>
   </div>
 </div>
+
+<!--
+<table class="table table-bordered table-hover">
+   <thead>
+    <tr>
+      <th>Id</th>
+      <th>name</th>
+      <th>loc</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of meals; track $index) {
+    <tr>
+      <td>{{ item.mealId }}</td>
+      <td>{{ item.mealName }}</td>
+      <td>{{ item.mealDescription }}</td>
+
+      <td>
+        <a class="btn btn-info" [routerLink]="['/departments/details',item.id]">Details</a>|
+                <a class="btn btn-danger" [routerLink]="['/departments/delete',item.id]">Delete</a>|
+                <a  class="btn btn-primary" [routerLink]="['/departments/edit',item.id]">Edit</a>|
+      </td>
+    </tr>
+    }@empty {
+    <tr>
+      <td colspan="4">no depts found</td>
+    </tr>
+    }
+  </tbody>
+</table> -->

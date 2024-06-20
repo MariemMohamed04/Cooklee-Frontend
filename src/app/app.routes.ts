@@ -17,47 +17,31 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CartComponent } from './cart/cart.component';
 import { SpecialMealComponent } from './SpecialMeal/special-meal/special-meal.component';
 export const routes: Routes = [
-
-
-  // { path: '', redirectTo: 'ClientForm', pathMatch: 'full' },
-  // { path: 'ClientForm', component: ClientProfleFormComponent },
-
-  // { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
-  // {
-  //   path: 'profile', component: ClientProfleComponent, children: [
-
-  //     { path: '', component: ClientFavouriteComponent },
-  //     { path: 'Favourites', component: ClientFavouriteComponent },
-  //     { path: 'Orders', component: ClientOrderComponent },
-  //   ]
-  // },
-  // { path: 'ChefPageForm', component: ChefPageFormComponent },
-
-  // { path: 'ChefPage', redirectTo: 'ChefPage/chefMeals', pathMatch: 'full' },
   {
-    path: 'ChefPage', component: ChefPageComponent, children: [
-
+    path: 'ChefPage',
+    component: ChefPageComponent,
+    children: [
       { path: '', component: ChefMealsComponent },
       { path: 'chefMeals', component: ChefMealsComponent },
       { path: 'requestedMeals', component: RequestedMealsComponent },
-    ]
+    ],
   },
 
   // { path: "", redirectTo: "register", pathMatch: "full" },
   // { path: "register", component: RegisterFormComponent },
   // { path: "login", component: LoginFormComponent },
   // { path: 'ClientForm', component: ClientProfleFormComponent },
-  { path: "", redirectTo: "SpecialMeal", pathMatch: "full" },
   // { path: "cart", component: CartComponent },
   // { path: "favorite", component: FavoriteComponent },
   // {
   //   path: 'ChefPage', component: ChefPageComponent, children: [
 
-  //     { path: '', component: ChefMealsComponent },
   //     { path: 'chefMeals', component: ChefMealsComponent },
   //     { path: 'requestedMeals', component: RequestedMealsComponent },
   //   ]
   // },
-  { path: "SpecialMeal", component: SpecialMealComponent },
-  {path:'**',component:NotfoundComponent}
-]
+  { path: 'SpecialMeal', component: SpecialMealComponent },
+  { path: 'meals', component: MealListComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', component: NotfoundComponent },
+];
