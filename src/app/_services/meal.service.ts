@@ -8,18 +8,20 @@ import { MealsToReturn } from '../models/meals-to-return';
   providedIn: 'root'
 })
 export class MealService {
-  private baseurl="https://localhost:7020/api/Meal/"
   private homeMealsApiUrl = 'https://localhost:7212/api/HomePageMeals';
 
   meals: Meal[] = [];
-  private baseUrl="https://localhost:7212/meals/list"
+  private baseUrl="https://localhost:7212/meals/list";
 
   constructor(public http:HttpClient) { }
 
   getAllMeal() {
     return this.http.get<HomeMeal[]>(this.homeMealsApiUrl);
   }
-
+  getMealsOrderedByRate(): Observable<MealsToReturn[]> {
+    console.log("1");
+    return this.http.get<MealsToReturn[]>(`${this.baseUrl}`);
+  }
 }
 
 
@@ -36,11 +38,9 @@ export interface HomeMeal {
   chefPageId: number;
 }
 
-  getMealsOrderedByRate(): Observable<MealsToReturn[]> {
-    return this.http.get<MealsToReturn[]>(`${this.baseUrl}`);
-  }
 
-}
+
+
 // getAllMeal() {
   //   return this.http.get<Meal[]>(this.baseUrl);
   // }
