@@ -15,7 +15,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of favoriteItems">
-                <td class="favourite-item-img"><img [src]="item.pictureUrl" alt="{{item.mealName}}"></td>
+                <td class="favourite-item-img"><img [src]="item.image" alt="{{item.mealName}}"></td>
                 <td class="favourite-item-name">{{item.mealName}}</td>
                 <td class="favourite-item-price">{{item.price}} EGP</td>
                 <!-- <td class="favourite-item-total">

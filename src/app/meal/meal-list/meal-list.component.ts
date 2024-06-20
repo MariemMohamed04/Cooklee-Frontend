@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  MealsToReturn,
-  FavoriteItem,
-  CartItem,
+  MealsToReturn
 } from '../../models/meals-to-return';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
@@ -12,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Meal } from '../../models/meal';
 import { RouterLink, Router } from '@angular/router';
+import { FavoriteItem } from '../../models/favorite-item';
 
 @Component({
   selector: 'app-meal-list',
@@ -22,6 +21,7 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class MealListComponent implements OnInit {
   meals: MealsToReturn[] = [];
+  favoriteId: string = '';
 
   constructor(
     private mealService: MealService,
@@ -48,110 +48,23 @@ export class MealListComponent implements OnInit {
   goToMealDetails(mealId: number): void {
     this.router.navigate(['/Meals/Details', mealId]);
   }
+  addToFavorite(meal: MealsToReturn): void {
+
+    const favoriteItem: FavoriteItem = {
+      id: meal.id,
+      mealName: meal.mealName,
+      image: meal.image,
+      price: meal.price
+    };
+    // `${claims.UserId}Fav`
+    this.favoriteId = `${this.authService.getClaims().UserId}Fav`;
+    this.favoriteService.addFavoriteItem(this.favoriteId, favoriteItem).subscribe(
+      (response) => {
+        console.log('Meal added to favorites:', response);
+      },
+      (error) => {
+        console.error('Error adding meal to favorites:', error);
+      }
+    );
+  }
 }
-
-// favoriteItems: any;
-// cartItems: any;
-// constructor(
-//   private authService: AuthService,
-//   private cartService: CartService,
-//   private favoriteService: FavoriteService
-// ) {}
-
-// addToFavorites(meal: MealsToReturn): void {
-//   if (this.isInFavorites(meal)) {
-//     console.log('Item is already in favorites');
-//     return;
-//   }
-
-//   const favoriteItem: FavoriteItem = { ...meal, pictureUrl: meal.image };
-//   this.favoriteService.addFavoriteItem(this.authService.getClaims().UserId, favoriteItem)
-//     .subscribe(
-//       (response) => {
-//         console.log('Added to favorites:', response);
-//         this.favoriteItems.push(favoriteItem);
-
-//         if (!this.isInCart(meal)) {
-//           this.addToCartInternal(meal);
-//         }
-//       },
-//       (error) => {
-//         console.error('Error adding to favorites:', error);
-//       }
-//     );
-// }
-
-// addToCart(meal: MealsToReturn): void {
-//   if (this.isInCart(meal)) {
-//     console.log('Item is already in cart');
-//     return;
-//   }
-
-//   this.addToCartInternal(meal);
-// }
-
-// private addToCartInternal(meal: MealsToReturn): void {
-//   const cartItem: CartItem = { ...meal, pictureUrl: meal.image, quantity: 1 };
-//   this.cartService.addCartItem(this.authService.getClaims().UserId, cartItem)
-//     .subscribe(
-//       (response) => {
-//         console.log('Added to Cart:', response);
-//         this.cartItems.push(cartItem);
-//       },
-//       (error) => {
-//         console.error('Error adding to cart:', error);
-//       }
-//     );
-// }
-
-// isInFavorites(meal: MealsToReturn): boolean {
-//   return this.favoriteItems.some(item => item.id === meal.id);
-// }
-
-// isInCart(meal: MealsToReturn): boolean {
-//   return this.cartItems.some(item => item.id === meal.id);
-// }
-
-// removeFromFavorites(item: FavoriteItem): void {
-//   const userId = this.authService.getClaims().UserId;
-//   this.favoriteService.deleteFavoriteItem(userId, item).subscribe(
-//     (response) => {
-//       this.favoriteItems = this.favoriteItems.filter(i => i.id !== item.id);
-//       console.log('Removed from favorites:', response);
-
-//       this.cartService.removeFromFavorites(userId, item).subscribe(
-//         (cartResponse) => {
-//           console.log('Removed from cart:', cartResponse);
-//         },
-//         (cartError) => {
-//           console.error('Error removing from cart:', cartError);
-//         }
-//       );
-//     },
-//     (error) => {
-//       console.error('Error removing from favorites:', error);
-//     }
-//   );
-// }
-
-// removeFromCart(item: CartItem): void {
-//   const userId = this.authService.getClaims().UserId;
-//   this.cartService.deleteCartItem(userId, item).subscribe(
-//     (response) => {
-//       this.cartItems = this.cartItems.filter(i => i.id !== item.id);
-//       console.log('Removed from cart:', response);
-
-//       this.favoriteService.removeFromCart(userId, item).subscribe(
-//         (favResponse) => {
-//           console.log('Removed from favorites:', favResponse);
-//         },
-//         (favError) => {
-//           console.error('Error removing from favorites:', favError);
-//         }
-//       );
-//     },
-//     (error) => {
-//       console.error('Error removing from cart:', error);
-//     }
-//   );
-// }

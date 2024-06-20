@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { FavoriteItem } from '../models/favorite-item';
+import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Favorite } from '../models/favorite';
+import { FavoriteItem } from '../models/favorite-item';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,38 +20,16 @@ export class FavoriteService {
     );
   }
 
-  // deleteFavoriteItem(favoriteId: string, item: FavoriteItem): Observable<Favorite> {
-  //   const url = `${this.baseUrl}/FavouriteItem/${encodeURIComponent(favoriteId)}`;
-  //   const options = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //     }),
-  //     body: { ...item } // Using spread operator
-  //   };
-  //   return this.http.delete<Favorite>(url, options).pipe(
-  //     catchError(this.handleError)
-  //   );
-  // }
+  getFavoriteItems(favoriteId: string): Observable<FavoriteItem[]> {
+    console.log("2");
 
-  // getUserFavorites(userId: string): Observable<Favorite> {
-  //   const url = `${this.baseUrl}/Favourite/${encodeURIComponent(userId)}`;
-  //   return this.http.get<Favorite>(url).pipe(
-  //     catchError(this.handleError)
-  //   );
-  // }
+    const url = `${this.baseUrl}/FavouriteItem?favouriteId=${encodeURIComponent(favoriteId)}`;
+    console.log("3");
 
-  // removeFromCart(userId: string, item: FavoriteItem): Observable<any> {
-  //   const url = `${this.baseUrl}/CartItem/${encodeURIComponent(userId)}`;
-  //   const options = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //     }),
-  //     body: { ...item } // Using spread operator
-  //   };
-  //   return this.http.delete(url, options).pipe(
-  //     catchError(this.handleError)
-  //   );
-  // }
+    return this.http.get<FavoriteItem[]>(url).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(error: any) {
     console.error('API error occurred:', error);

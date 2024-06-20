@@ -17,6 +17,7 @@ import { RouterLink } from '@angular/router';
 })
 export class FavoriteComponent implements OnInit {
   favoriteItems: FavoriteItem[] = [];
+  favoriteId: string = '';
 
   constructor(
     private favoriteService: FavoriteService,
@@ -25,43 +26,30 @@ export class FavoriteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.loadFavorites();
+    console.log("7");
+
+    this.loadFavoriteItems();
+    console.log("8");
+
   }
 
-  // loadFavorites(): void {
-  //   const userId = this.authService.getClaims().UserId;
-  //   this.favoriteService.getUserFavorites(userId).subscribe(
-  //     (data: Favorite) => {
-  //       this.favoriteItems = data.items;
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching favorite items:', error);
-  //     }
-  //   );
-  // }
+  loadFavoriteItems(): void {
+    this.favoriteId = `${this.authService.getClaims().UserId}Fav`;
+    console.log("1");
+    this.favoriteService.getFavoriteItems(this.favoriteId).subscribe(
 
-  // removeFromFavorites(item: FavoriteItem): void {
-  //   const userId = this.authService.getClaims().UserId;
-  //   this.favoriteService.deleteFavoriteItem(userId, item).subscribe(
-  //     (response) => {
-  //       this.favoriteItems = this.favoriteItems.filter(i => i.id !== item.id);
-  //       console.log('Removed from favorites:', response);
+      (items: FavoriteItem[]) => {
+    console.log("4");
 
-  //       // Also remove from cart if exists
-  //       this.cartService.removeFromCart(userId, item).subscribe(
-  //         (cartResponse) => {
-  //           console.log('Removed from cart:', cartResponse);
-  //           // Update cart list if needed
-  //         },
-  //         (cartError) => {
-  //           console.error('Error removing from cart:', cartError);
-  //         }
-  //       );
+        this.favoriteItems = items;
+    console.log("5");
 
-  //     },
-  //     (error) => {
-  //       console.error('Error removing from favorites:', error);
-  //     }
-  //   );
-  // }
+      },
+      (error) => {
+    console.log("6");
+
+        console.error('Error fetching favorite items:', error);
+      }
+    );
+  }
 }

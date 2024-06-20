@@ -4,13 +4,13 @@
     <div *ngFor="let meal of meals" class="col-lg-3 col-md-6 col-sm-12">
       <div
         class="my-card bg-light border border-1 shadow-sm mb-5 bg-white rounded"
-        (click)="goToMealDetails(meal.id)"
+
         style="cursor: pointer;"
       >
         <img
           [src]="meal.image"
           class="shadow-sm bg-dark rounded"
-          alt="{{meal.mealDescription}}"
+          alt="{{meal.mealDescription}}" (click)="goToMealDetails(meal.id)"
         />
         <div class="details ps-1">
           <h5 class="card-title">{{meal.mealName}}</h5>
@@ -25,6 +25,7 @@
               <i class="fa-solid fa-hand-holding"></i>
               <p class="ps-10">{{meal.rate}} <span>rate</span></p>
             </div>
+            <button (click)="addToFavorite(meal)">Add to Favorites</button>
           </div>
         </div>
       </div>
