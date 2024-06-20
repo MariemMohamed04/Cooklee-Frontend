@@ -78,6 +78,7 @@ export const routes: Routes = [
   { path: "checkout", component: CheckoutComponent },
   { path: "cart", component: CartComponent },
   { path: "favorite", component: FavoriteComponent },
+  { path: "home", component: HomeMealsComponent },
   // {
   //   path: 'ChefPage', component: ChefPageComponent, children: [
 
