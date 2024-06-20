@@ -41,6 +41,7 @@ export class MealDetailsComponent implements OnInit {
     mealId: 0
   };
   cart: Cart = new Cart();
+  cartoId: string = `${this.authService.getClaims().UserId}-cart`;
 
   constructor(
     public mealService: MealService,
@@ -102,7 +103,29 @@ export class MealDetailsComponent implements OnInit {
     );
   }
 
+  createCartItem(meal: Meal): CartItem {
+    return {
+      id: meal.id,
+      mealName: meal.mealName,
+      image: meal.image,
+      quantity: 1,
+      price: meal.price
+    };
+  }
 
+  addItemToCart(cartId: string, newItem: CartItem): void {
+    this.cartService.addCartItem(cartId, newItem)
+      .subscribe(
+        (cart: Cart) => {
+          console.log('Item added successfully:', cart);
+          // Handle success, maybe update UI
+        },
+        (error) => {
+          console.error('Error adding item to cart:', error);
+          // Handle error, show error message to user
+        }
+      );
+  }
 
 }
 

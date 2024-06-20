@@ -34,6 +34,7 @@ export class MealListComponent implements OnInit {
   ngOnInit(): void {
     this.loadMeals();
     // this.loadFavoriteItemsFromLocalStorage();
+    console.log(this.authService.getClaims().UserId);
   }
 
   // loadFavoriteItemsFromLocalStorage(): void {
