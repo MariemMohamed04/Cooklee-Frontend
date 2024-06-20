@@ -14,9 +14,8 @@ import { LoginFormComponent } from './Registeration/login-form/login-form.compon
 import { RegisterFormComponent } from './Registeration/register-form/register-form.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { MealListComponent } from './meal/meal-list/meal-list.component';
 export const routes: Routes = [
-
-
   // { path: '', redirectTo: 'ClientForm', pathMatch: 'full' },
   // { path: 'ClientForm', component: ClientProfleFormComponent },
 
@@ -41,45 +40,50 @@ export const routes: Routes = [
   //   ]
   // },
 
-  { path: "", redirectTo: "login", pathMatch: "full" },
-  { path: "login", component: LoginFormComponent },
-  { path: "register", component: RegisterFormComponent },
-  {path: 'chefMeals', component:ChefMealsComponent},
-  {path: 'requestedMeals', component:RequestedMealsComponent},
-//{ path: 'Meals', component: MealListComponent },
- {path:'Meals/Details/:id',component:MealDetailsComponent,title:"Details of meal"},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginFormComponent },
+  { path: 'register', component: RegisterFormComponent },
+  { path: 'chefMeals', component: ChefMealsComponent },
+  { path: 'requestedMeals', component: RequestedMealsComponent },
+  { path: 'meals', component: MealListComponent },
+  {
+    path: 'Meals/Details/:id',
+    component: MealDetailsComponent,
+    title: 'Details of meal',
+  },
 
-//  {path:'Meals/Details/:id',component:MealDetailComponent,title:"Details of meal"},
-// {path:'Meals/Details',component:MealDetailsComponent,title:"Details of meal"},
+  //  {path:'Meals/Details/:id',component:MealDetailComponent,title:"Details of meal"},
+  // {path:'Meals/Details',component:MealDetailsComponent,title:"Details of meal"},
   // {path:'**',component:NotfoundComponent} //component notfound
 
   { path: 'ClientForm', component: ClientProfleFormComponent },
   { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
 
   {
-    path: 'profile', component: ClientProfleComponent, children: [
-
+    path: 'profile',
+    component: ClientProfleComponent,
+    children: [
       { path: '', component: ClientFavouriteComponent },
       { path: 'Favourites', component: ClientFavouriteComponent },
       { path: 'Orders', component: ClientOrderComponent },
-    ]
+    ],
   },
   { path: 'ChefPageForm', component: ChefPageFormComponent },
 
   { path: 'ChefPage', redirectTo: 'ChefPage/chefMeals', pathMatch: 'full' },
   {
-    path: 'ChefPage', component: ChefPageComponent, children: [
-
+    path: 'ChefPage',
+    component: ChefPageComponent,
+    children: [
       { path: '', component: ChefMealsComponent },
       { path: 'chefMeals', component: ChefMealsComponent },
       { path: 'requestedMeals', component: RequestedMealsComponent },
-    ]
+    ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),HttpClientModule],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes), HttpClientModule],
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}
