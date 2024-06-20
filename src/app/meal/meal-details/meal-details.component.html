@@ -9,10 +9,8 @@
           <p class="meal-price mb-0">
             <i class="fa-solid fa-coins"></i> {{ meal.price }} EGP
           </p>
-          <i
-            class="fa fa-heart favorite-icon ms-2"
-            [class.favorited]="meal.isHealthy"
-          ></i>
+          <i class="fa fa-heart favorite-icon ms-2" [class.favorited]="meal.isHealthy"></i>
+          <button (click)="addToCart(meals)"><i class="fa fa-cart-shopping ms-2"></i></button>
           <!-- //meal.isFavorited -->
         </div>
         <div class="mb-0">
@@ -37,27 +35,16 @@
   <div class="reviews-details rounded-corners d-flex align-items-center">
     <div class="container">
       <h3 class="reviews-title mb-3">Customer Reviews</h3>
-      <div
-        class="review d-flex align-items-center mb-3"
-        *ngFor="let review of reviews"
-      >
-        <img
-          [src]="newReview.clientId"
-          alt="User Photo"
-          class="review-user-photo me-3"
-        />
+      <div class="review d-flex align-items-center mb-3" *ngFor="let review of reviews">
+        <img [src]="newReview.clientId" alt="User Photo" class="review-user-photo me-3" />
 
         <div>
           <p class="review-text mb-1">"{{ review.comment }}"</p>
         </div>
       </div>
       <div class="add-review mt-3">
-        <input
-          type="text"
-          class="review-input"
-          placeholder="Write your comment here..."
-          [(ngModel)]="newReview.comment"
-        />
+        <input type="text" class="review-input" placeholder="Write your comment here..."
+          [(ngModel)]="newReview.comment" />
         <button class="submit-review-btn mt-2" (click)="submitReview()">
           Submit
         </button>

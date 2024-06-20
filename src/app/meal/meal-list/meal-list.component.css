@@ -27,5 +27,21 @@
   }
 }
 
-/* --bs-card-border-width: var(--bs-border-width); */
-/* shadow-sm p-3 mb-5 bg-white rounded */
+.btn-favorite {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.btn-favorite i.fa-heart {
+  color: #ccc; /* Default heart color */
+}
+
+.btn-favorite i.fa-heart.active {
+  color: red; /* Red color when active (meal is in favorites) */
+}
+
+.btn-favorite[disabled] {
+  cursor: not-allowed;
+}

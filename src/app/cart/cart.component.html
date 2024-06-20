@@ -10,7 +10,7 @@
         <div class="table-responsive">
           <div class="cart-item p-3" *ngFor="let item of cartItems">
             <div class="cart-item-image">
-              <img [src]="item.pictureUrl" alt="{{item.mealName}}"/>
+              <img [src]="item.image" alt="{{item.mealName}}"/>
             </div>
             <div class="cart-item-content p-3 d-flex flex-column justify-content-between">
               <div class="cart-item-name">
@@ -20,9 +20,9 @@
             </div>
             <div class="cart-item-content p-3 d-flex flex-column justify-content-between align-items-center ms-auto">
               <div class="cart-item-remove ms-auto">
-                <button (click)="removeFromCarts(item)">
+                <!-- <button (click)="removeFromCarts(item)">
                   <i class="fa fa-close"></i>
-                </button>
+                </button> -->
               </div>
               <div class="cart-item-quantity d-flex align-items-center">
                 <button class="btn btn-outline-dark btn-sm me-2" onclick="decreaseQuantity(this)">

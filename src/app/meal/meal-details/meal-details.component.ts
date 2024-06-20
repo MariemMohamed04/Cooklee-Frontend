@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { Meal } from '../../models/meal';
 import { MealService } from '../../services/meal.service';
@@ -11,6 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Review } from '../../models/review';
 import { ReviewService } from '../../services/review.service';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../models/cart-item';
+import { MealsToReturn } from '../../models/meals-to-return';
+import { Cart } from '../../models/cart';
 
 @Component({
   selector: 'app-meal-details',
@@ -27,6 +32,7 @@ import { ReviewService } from '../../services/review.service';
 })
 export class MealDetailsComponent implements OnInit {
   meal: Meal = new Meal();
+  meals: MealsToReturn[] = [];
   reviews: Review[] = [];
   newReview: Review = {
     comment: '',
@@ -34,11 +40,14 @@ export class MealDetailsComponent implements OnInit {
     clientId: 2,
     mealId: 0
   };
+  cart: Cart = new Cart();
 
   constructor(
     public mealService: MealService,
     public reviewService: ReviewService,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    public cartService: CartService,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -91,4 +100,41 @@ export class MealDetailsComponent implements OnInit {
       }
     );
   }
+
+  addToCart(meal: MealsToReturn): void {
+    const cartItem = new CartItem(meal.id, meal.mealName, meal.image, 1, meal.price);
+    const cartId = `${this.authService.claims.UserId}-cart`;
+    this.cartService.addCartItem(cartId, cartItem).subscribe(
+      cart => {
+        this.cart = cart;
+        console.log('Item added to cart:', cart);
+      },
+      error => {
+        console.error('Error adding item to cart:', error);
+      }
+    );
+  }
 }
+
+// cartId: string = `${this.authService.getClaims().UserId}-c`;
+// addToCart(cartId: string, meals: MealsToReturn) {
+//   this.cartId = cartId;
+//     //   const favoriteItem: FavoriteItem = {
+// //     id: meal.id,
+// //     mealName: meal.mealName,
+// //     image: meal.image,
+// //     price: meal.price
+// //   };
+// const qyt = 1;
+// const cartItem: CartItem = {
+//   id: meals.id,
+//   mealName: meals.mealName,
+//   image: meals.image,
+//   quantity: qyt,
+//   price: meals.price
+// }
+//   this.cartService.addCartItem(cartId, cartItem).subscribe({
+//     next: (res) => console.log(res),
+//     error: (err) => console.log(err)
+//   })
+// }

@@ -29,7 +29,7 @@ export class FavoriteComponent implements OnInit {
   }
 
   loadFavoriteItems(): void {
-    this.favoriteId = `${this.authService.getClaims().UserId}Fav`;
+    this.favoriteId = `${this.authService.getClaims().UserId}-fav`;
     this.favoriteService.getFavoriteItems(this.favoriteId).subscribe(
       (favorite) => {
         this.favoriteItems = favorite.items; // Assuming 'items' is the property containing favorite meals

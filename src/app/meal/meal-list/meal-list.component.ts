@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  MealsToReturn
-} from '../../models/meals-to-return';
+import { MealsToReturn } from '../../models/meals-to-return';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 import { FavoriteService } from '../../services/favorite.service';
@@ -22,6 +20,7 @@ import { FavoriteItem } from '../../models/favorite-item';
 export class MealListComponent implements OnInit {
   meals: MealsToReturn[] = [];
   favoriteId: string = '';
+  favoriteItems: FavoriteItem[] = [];
 
   constructor(
     private mealService: MealService,
@@ -33,6 +32,14 @@ export class MealListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMeals();
+    this.loadFavoriteItemsFromLocalStorage();
+  }
+
+  loadFavoriteItemsFromLocalStorage(): void {
+    const storedItems = localStorage.getItem('favoriteItems');
+    if (storedItems) {
+      this.favoriteItems = JSON.parse(storedItems);
+    }
   }
 
   loadMeals(): void {
@@ -45,18 +52,63 @@ export class MealListComponent implements OnInit {
       }
     );
   }
-  goToMealDetails(mealId: number): void {
-    this.router.navigate(['/Meals/Details', mealId]);
-  }
-  addToFavorite(meal: MealsToReturn): void {
 
+  loadFavoriteItems(): void {
+    this.favoriteId = `${this.authService.getClaims().UserId}-f`;
+    this.favoriteService.getFavoriteItems(this.favoriteId).subscribe(
+      (favorite) => {
+        this.favoriteItems = favorite.items;
+      },
+      (error) => {
+        console.error('Error fetching favorite items:', error);
+      }
+    );
+  }
+
+  // addToFavorite(meal: MealsToReturn): void {
+  //   const favoriteItem: FavoriteItem = {
+  //     id: meal.id,
+  //     mealName: meal.mealName,
+  //     image: meal.image,
+  //     price: meal.price
+  //   };
+
+  //   if (this.isMealInFavorites(meal.id)) {
+  //     console.log('Meal is already in favorites.');
+  //     return;
+  //   }
+
+  //   this.favoriteService.addFavoriteItem(this.favoriteId, favoriteItem).subscribe(
+  //     (response) => {
+  //       console.log('Meal added to favorites:', response);
+  //       this.favoriteItems.push(favoriteItem);
+  //     },
+  //     (error) => {
+  //       console.error('Error adding meal to favorites:', error);
+  //     }
+  //   );
+  // }
+
+  addToFavorite(meal: MealsToReturn): void
+  {
     const favoriteItem: FavoriteItem = {
       id: meal.id,
       mealName: meal.mealName,
       image: meal.image,
       price: meal.price
     };
-    this.favoriteId = `${this.authService.getClaims().UserId}-fav`;
+
+    if (this.isMealInFavorites(meal.id)) {
+      console.log('Meal is already in favorites.');
+      return;
+    }
+
+    // Add the favorite item to the array in memory
+    this.favoriteItems.push(favoriteItem);
+
+    // Store updated favorite items in localStorage
+    localStorage.setItem('favoriteItems', JSON.stringify(this.favoriteItems));
+
     this.favoriteService.addFavoriteItem(this.favoriteId, favoriteItem).subscribe(
       (response) => {
         console.log('Meal added to favorites:', response);
@@ -65,5 +117,14 @@ export class MealListComponent implements OnInit {
         console.error('Error adding meal to favorites:', error);
       }
     );
+  }
+
+  isMealInFavorites(mealId: number): boolean {
+    return this.favoriteItems.some(item => item.id === mealId);
+  }
+
+
+  goToMealDetails(mealId: number): void {
+    this.router.navigate(['/Meals/Details', mealId]);
   }
 }
