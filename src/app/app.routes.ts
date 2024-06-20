@@ -74,7 +74,7 @@ export const routes: Routes = [
   // { path: "register", component: RegisterFormComponent },
   // { path: "login", component: LoginFormComponent },
   // { path: 'ClientForm', component: ClientProfleFormComponent },
-  { path: "", redirectTo: "register", pathMatch: "full" },
+  { path: "", redirectTo: "meals", pathMatch: "full" },
   { path: "register", component: RegisterFormComponent },
   { path: "login", component: LoginFormComponent },
   { path: 'ClientForm', component: ClientProfleFormComponent },
