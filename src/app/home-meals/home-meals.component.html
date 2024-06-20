@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal Display</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .meal-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .meal-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 300px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .meal-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .meal-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .meal-details {
+      padding: 20px;
+    }
+
+    .meal-name {
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    .meal-price {
+      font-size: 1.2em;
+      color: #28a745;
+      margin-left: 10px;
+    }
+
+    .favorite-icon {
+      font-size: 1.5em;
+      color: #dc3545;
+      cursor: pointer;
+    }
+
+    .favorite-icon.favorited {
+      color: #ffc107;
+    }
+
+    .order-now-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px; /* Smaller padding */
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 0.9em; /* Smaller font size */
+    }
+
+    .order-now-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .meal-availability,
+    .meal-healthy,
+    .meal-description {
+      margin: 10px 0;
+    }
+
+    .highlight {
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .meal-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="meal-container" *ngIf="meals.length > 0">
+    <div class="meal-card" *ngFor="let meal of meals">
+      <img src="{{ meal.image }}" alt="Meal Photo" class="meal-photo" />
+      <div class="meal-details">
+        <h2 class="meal-name">{{ meal.mealName }}</h2>
+        <p class="meal-price">
+          <i class="fa-solid fa-coins"></i> {{ meal.price }} EGP
+        </p>
+        <i
+          class="fa fa-heart favorite-icon"
+          [class.favorited]="meal.isAvailable"
+        ></i>
+        <button class="order-now-btn">Order Now</button>
+        <p class="meal-availability">
+          <span class="highlight">Availability :</span>
+          {{ meal.isAvailable ? "&#9989;" : "&#10060;" }}
+        </p>
+        <p class="meal-healthy">
+          <span class="highlight">Healthy :</span>
+          {{ meal.isHealthy ? "&#9989;" : "&#10060;" }}
+        </p>
+        <p class="meal-description">This is a delicious meal description.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
