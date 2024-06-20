@@ -8,13 +8,20 @@ import { CartItem } from '../models/cart-item';
   providedIn: 'root'
 })
 export class CartService {
-  private baseUrl = 'https://localhost:7212/api/cart';
+  private baseUrl = 'https://localhost:7212/api';
 
   constructor(private http: HttpClient) {}
 
   private handleError(error: HttpErrorResponse) {
     console.error('API error occurred:', error);
     return throwError('Something bad happened; please try again later.');
+  }
+
+  addCartItem(cartId: string, item: CartItem): Observable<Cart> {
+    return this.http.post<Cart>(`${this.baseUrl}/CartItem?cartId=${cartId}`, item)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   getCart(cartId: string): Observable<Cart> {
@@ -32,10 +39,6 @@ export class CartService {
       .pipe(catchError(this.handleError));
   }
 
-  addCartItem(cartId: string, item: CartItem): Observable<Cart> {
-    return this.http.post<Cart>(`${this.baseUrl}/item/${cartId}`, item)
-      .pipe(catchError(this.handleError));
-  }
 
   updateCartItemQuantity(cartId: string, item: CartItem): Observable<Cart> {
     return this.http.patch<Cart>(`${this.baseUrl}/item/${cartId}`, item)

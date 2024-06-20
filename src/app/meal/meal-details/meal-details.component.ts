@@ -31,8 +31,8 @@ import { Cart } from '../../models/cart';
   styleUrl: './meal-details.component.css',
 })
 export class MealDetailsComponent implements OnInit {
-  meal: Meal = new Meal();
-  meals: MealsToReturn[] = [];
+  // meal: Meal = new Meal();
+  meal: Meal = new Meal(0, "", "", false, 0, 0, "", [], "", 0);
   reviews: Review[] = [];
   newReview: Review = {
     comment: '',
@@ -101,19 +101,8 @@ export class MealDetailsComponent implements OnInit {
     );
   }
 
-  addToCart(meal: MealsToReturn): void {
-    const cartItem = new CartItem(meal.id, meal.mealName, meal.image, 1, meal.price);
-    const cartId = `${this.authService.claims.UserId}-cart`;
-    this.cartService.addCartItem(cartId, cartItem).subscribe(
-      cart => {
-        this.cart = cart;
-        console.log('Item added to cart:', cart);
-      },
-      error => {
-        console.error('Error adding item to cart:', error);
-      }
-    );
-  }
+
+
 }
 
 // cartId: string = `${this.authService.getClaims().UserId}-c`;

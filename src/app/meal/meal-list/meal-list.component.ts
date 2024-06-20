@@ -22,6 +22,7 @@ export class MealListComponent implements OnInit {
   favoriteId: string = '';
   favoriteItems: FavoriteItem[] = [];
 
+
   constructor(
     private mealService: MealService,
     private favoriteService: FavoriteService,
@@ -32,15 +33,15 @@ export class MealListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMeals();
-    this.loadFavoriteItemsFromLocalStorage();
+    // this.loadFavoriteItemsFromLocalStorage();
   }
 
-  loadFavoriteItemsFromLocalStorage(): void {
-    const storedItems = localStorage.getItem('favoriteItems');
-    if (storedItems) {
-      this.favoriteItems = JSON.parse(storedItems);
-    }
-  }
+  // loadFavoriteItemsFromLocalStorage(): void {
+  //   const storedItems = localStorage.getItem('favoriteItems');
+  //   if (storedItems) {
+  //     this.favoriteItems = JSON.parse(storedItems);
+  //   }
+  // }
 
   loadMeals(): void {
     this.mealService.getMealsOrderedByRate().subscribe(
@@ -53,17 +54,17 @@ export class MealListComponent implements OnInit {
     );
   }
 
-  loadFavoriteItems(): void {
-    this.favoriteId = `${this.authService.getClaims().UserId}-f`;
-    this.favoriteService.getFavoriteItems(this.favoriteId).subscribe(
-      (favorite) => {
-        this.favoriteItems = favorite.items;
-      },
-      (error) => {
-        console.error('Error fetching favorite items:', error);
-      }
-    );
-  }
+  // loadFavoriteItems(): void {
+  //   this.favoriteId = `${this.authService.getClaims().UserId}-f`;
+  //   this.favoriteService.getFavoriteItems(this.favoriteId).subscribe(
+  //     (favorite) => {
+  //       this.favoriteItems = favorite.items;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching favorite items:', error);
+  //     }
+  //   );
+  // }
 
   // addToFavorite(meal: MealsToReturn): void {
   //   const favoriteItem: FavoriteItem = {
@@ -89,39 +90,39 @@ export class MealListComponent implements OnInit {
   //   );
   // }
 
-  addToFavorite(meal: MealsToReturn): void
-  {
-    const favoriteItem: FavoriteItem = {
-      id: meal.id,
-      mealName: meal.mealName,
-      image: meal.image,
-      price: meal.price
-    };
+  // addToFavorite(meal: MealsToReturn): void
+  // {
+  //   const favoriteItem: FavoriteItem = {
+  //     id: meal.id,
+  //     mealName: meal.mealName,
+  //     image: meal.image,
+  //     price: meal.price
+  //   };
 
-    if (this.isMealInFavorites(meal.id)) {
-      console.log('Meal is already in favorites.');
-      return;
-    }
+  //   if (this.isMealInFavorites(meal.id)) {
+  //     console.log('Meal is already in favorites.');
+  //     return;
+  //   }
 
-    // Add the favorite item to the array in memory
-    this.favoriteItems.push(favoriteItem);
+  //   // Add the favorite item to the array in memory
+  //   this.favoriteItems.push(favoriteItem);
 
-    // Store updated favorite items in localStorage
-    localStorage.setItem('favoriteItems', JSON.stringify(this.favoriteItems));
+  //   // Store updated favorite items in localStorage
+  //   localStorage.setItem('favoriteItems', JSON.stringify(this.favoriteItems));
 
-    this.favoriteService.addFavoriteItem(this.favoriteId, favoriteItem).subscribe(
-      (response) => {
-        console.log('Meal added to favorites:', response);
-      },
-      (error) => {
-        console.error('Error adding meal to favorites:', error);
-      }
-    );
-  }
+  //   this.favoriteService.addFavoriteItem(this.favoriteId, favoriteItem).subscribe(
+  //     (response) => {
+  //       console.log('Meal added to favorites:', response);
+  //     },
+  //     (error) => {
+  //       console.error('Error adding meal to favorites:', error);
+  //     }
+  //   );
+  // }
 
-  isMealInFavorites(mealId: number): boolean {
-    return this.favoriteItems.some(item => item.id === mealId);
-  }
+  // isMealInFavorites(mealId: number): boolean {
+  //   return this.favoriteItems.some(item => item.id === mealId);
+  // }
 
 
   goToMealDetails(mealId: number): void {
