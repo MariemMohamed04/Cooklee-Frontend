@@ -128,4 +128,24 @@ export class MealListComponent implements OnInit {
   goToMealDetails(mealId: number): void {
     this.router.navigate(['/Meals/Details', mealId]);
   }
+  addToFavorite(meal: MealsToReturn): void {
+    const favoriteItem: FavoriteItem = {
+      id: meal.id,
+      mealName: meal.mealName,
+      image: meal.image,
+      price: meal.price,
+    };
+    // `${claims.UserId}Fav`
+    this.favoriteId = `${this.authService.getClaims().UserId}Fav`;
+    this.favoriteService
+      .addFavoriteItem(this.favoriteId, favoriteItem)
+      .subscribe(
+        (response) => {
+          console.log('Meal added to favorites:', response);
+        },
+        (error) => {
+          console.error('Error adding meal to favorites:', error);
+        }
+      );
+  }
 }
