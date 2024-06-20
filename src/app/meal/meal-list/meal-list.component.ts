@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  MealsToReturn
-} from '../../models/meals-to-return';
+import { MealsToReturn } from '../../models/meals-to-return';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 import { FavoriteService } from '../../services/favorite.service';
@@ -49,22 +47,23 @@ export class MealListComponent implements OnInit {
     this.router.navigate(['/Meals/Details', mealId]);
   }
   addToFavorite(meal: MealsToReturn): void {
-
     const favoriteItem: FavoriteItem = {
       id: meal.id,
       mealName: meal.mealName,
       image: meal.image,
-      price: meal.price
+      price: meal.price,
     };
     // `${claims.UserId}Fav`
     this.favoriteId = `${this.authService.getClaims().UserId}Fav`;
-    this.favoriteService.addFavoriteItem(this.favoriteId, favoriteItem).subscribe(
-      (response) => {
-        console.log('Meal added to favorites:', response);
-      },
-      (error) => {
-        console.error('Error adding meal to favorites:', error);
-      }
-    );
+    this.favoriteService
+      .addFavoriteItem(this.favoriteId, favoriteItem)
+      .subscribe(
+        (response) => {
+          console.log('Meal added to favorites:', response);
+        },
+        (error) => {
+          console.error('Error adding meal to favorites:', error);
+        }
+      );
   }
 }
