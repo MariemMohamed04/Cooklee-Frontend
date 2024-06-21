@@ -16,6 +16,9 @@ import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../models/cart-item';
 import { MealsToReturn } from '../../models/meals-to-return';
 import { Cart } from '../../models/cart';
+import { Favorite } from '../../models/favorite';
+import { FavoriteService } from '../../services/favorite.service';
+import { FavoriteItem } from '../../models/favorite-item';
 
 @Component({
   selector: 'app-meal-details',
@@ -30,8 +33,8 @@ import { Cart } from '../../models/cart';
   templateUrl: './meal-details.component.html',
   styleUrl: './meal-details.component.css',
 })
+
 export class MealDetailsComponent implements OnInit {
-  // meal: Meal = new Meal();
   meal: Meal = new Meal(0, "", "", false, 0, 0, "", [], "", 0);
   reviews: Review[] = [];
   newReview: Review = {
@@ -42,13 +45,16 @@ export class MealDetailsComponent implements OnInit {
   };
   cart: Cart = new Cart();
   cartId: string = `${this.authService.getClaims().UserId}-cart`;
+  favorite: Favorite = new Favorite();
+  favoriteId: string = `${this.authService.getClaims().UserId}-fav`;
 
   constructor(
     public mealService: MealService,
     public reviewService: ReviewService,
     public activatedRoute: ActivatedRoute,
     public cartService: CartService,
-    public authService: AuthService
+    public authService: AuthService,
+    public favoriteService: FavoriteService
   ) {}
 
   ngOnInit(): void {
@@ -58,7 +64,6 @@ export class MealDetailsComponent implements OnInit {
         this.getMeal(mealId);
       }
     });
-    // console.log(this.authService.claims.UserId);
   }
 
   getMeal(mealId: number): void {
@@ -111,7 +116,6 @@ export class MealDetailsComponent implements OnInit {
       quantity: 1,
       price: this.meal.price
     };
-
     this.cartService.addToCart(this.cartId, cartItem).subscribe(
       (cart) => {
         console.log('Item added to cart:', cart);
@@ -120,5 +124,22 @@ export class MealDetailsComponent implements OnInit {
         console.error('Error adding item to cart:', error);
       }
     );
+  }
+
+  addToFavorite(): void {
+    const favoriteItem: FavoriteItem = {
+      id: this.meal.id,
+      mealName: this.meal.mealName,
+      image: this.meal.image,
+      price: this.meal.price
+    };
+    this.favoriteService.addFavoriteItem(this.favoriteId, favoriteItem).subscribe(
+      (favorite) => {
+        console.log('Item added to favorite:', favorite);
+      },
+      (error) => {
+        console.error('Error adding item to favorite:', error);
+      }
+    )
   }
 }

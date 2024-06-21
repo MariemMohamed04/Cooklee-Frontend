@@ -9,12 +9,15 @@
           <p class="meal-price mb-0">
             <i class="fa-solid fa-coins"></i> {{ meal.price }} EGP
           </p>
-          <i class="fa fa-heart favorite-icon ms-2" [class.favorited]="meal.isHealthy"></i>
+          <!-- <i class="fa fa-heart favorite-icon ms-2" [class.favorited]="meal.isHealthy"></i> -->
           <!-- <button>
             <i class="fa fa-cart-shopping ms-2"></i>
           </button> -->
+          <button (click)="addToFavorite()">
+            <i class="fa fa-heart"></i>
+          </button>
           <button (click)="addToCart()">
-            <i class="fa fa-cart-shopping ms-2"></i>
+            <i class="fa fa-cart-shopping"></i>
           </button>
 
           <!-- //meal.isFavorited -->

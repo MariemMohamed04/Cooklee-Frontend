@@ -9,13 +9,11 @@ import { CartItem } from '../models/cart-item';
 })
 export class CartService {
   private baseUrl = 'https://localhost:7212/api';
-  private cart: Cart = new Cart(); // Local storage of cart
-
-  // Subject to notify subscribers when cart changes
+  private cart: Cart = new Cart();
   private cartSubject = new BehaviorSubject<Cart>(this.cart);
   cart$ = this.cartSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
     console.error('API error occurred:', error);
@@ -26,46 +24,41 @@ export class CartService {
     return this.http.get<Cart>(`${this.baseUrl}/Cart/${cartId}`);
   }
 
-    // Update local cart and notify subscribers
-    updateCart(cart: Cart): void {
-      this.cart = cart;
-      this.cartSubject.next(this.cart);
-    }
+  updateCart(cart: Cart): void {
+    this.cart = cart;
+    this.cartSubject.next(this.cart);
+  }
 
-    // Calculate and return the count of cart items
-    getCartItemsCount(): number {
-      if (this.cart && this.cart.items) {
-        return this.cart.items.length;
-      }
-      return 0;
+  getCartItemsCount(): number {
+    if (this.cart && this.cart.items) {
+      return this.cart.items.length;
     }
+    return 0;
+  }
 
-    addToCart(cartId: string, item: CartItem): Observable<Cart> {
-      const url = `${this.baseUrl}/CartItem?cartId=${cartId}`;
-      return this.http.post<Cart>(url, item).pipe(
-        catchError(this.handleError),
-        switchMap((updatedCart: Cart) => {
-          // Assuming the backend returns the updated cart with items
-          // Update the local cart in the service
-          this.cartSubject.next(updatedCart); // Update the cart in BehaviorSubject
+  addToCart(cartId: string, item: CartItem): Observable<Cart> {
+    const url = `${this.baseUrl}/CartItem?cartId=${cartId}`;
+    return this.http.post<Cart>(url, item).pipe(
+      catchError(this.handleError),
+      switchMap((updatedCart: Cart) => {
+        this.cartSubject.next(updatedCart);
+        return of(updatedCart);
+      })
+    );
+  }
 
-          return of(updatedCart); // Return observable with updated cart
-        })
-      );
-    }
-
-    updateCartItemQuantity(cartId: string, item: CartItem): Observable<Cart> {
-      const url = `${this.baseUrl}/CartItem/${cartId}`;
-      return this.http.patch<Cart>(url, item).pipe(
-        catchError((error) => {
-          console.error('Error updating item quantity in cart:', error);
-          return throwError(error);
-        })
-      );
-    }
+  updateCartItemQuantity(cartId: string, item: CartItem): Observable<Cart> {
+    const url = `${this.baseUrl}/CartItem/${cartId}`;
+    return this.http.patch<Cart>(url, item).pipe(
+      catchError((error) => {
+        console.error('Error updating item quantity in cart:', error);
+        return throwError(error);
+      })
+    );
+  }
 
   removeCartItem(cartId: string, item: CartItem): Observable<Cart> {
     return this.http.delete<Cart>(`${this.baseUrl}/CartItem/${cartId}`, { body: item })
-    .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 }

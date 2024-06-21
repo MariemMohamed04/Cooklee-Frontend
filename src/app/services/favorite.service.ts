@@ -12,23 +12,26 @@ export class FavoriteService {
 
   constructor(private http: HttpClient) {}
 
-  addFavoriteItem(favoriteId: string, item: FavoriteItem): Observable<any> {
-    const url = `${this.baseUrl}/FavouriteItem?favouriteId=${encodeURIComponent(favoriteId)}`;
-    return this.http.post<any>(url, { ...item }).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-  getFavoriteItems(favoriteId: string): Observable<Favorite> {
-    const url = `${this.baseUrl}/Favourite/${encodeURIComponent(favoriteId)}`;
-    return this.http.get<Favorite>(url).pipe(
-      catchError(this.handleError)
-    );
-  }
-
-
   private handleError(error: any) {
     console.error('API error occurred:', error);
     return throwError('Something bad happened; please try again later.');
   }
+
+  getFavorite(favouriteId: string): Observable<Favorite> {
+    return this.http.get<Favorite>(`${this.baseUrl}/Favourite/${favouriteId}`)
+    .pipe(catchError(this.handleError));
+  }
+
+  addFavoriteItem(favouriteId: string, item: FavoriteItem): Observable<Favorite> {
+    const url = `${this.baseUrl}/FavouriteItem?favouriteId=${favouriteId}`;
+    return this.http.post<Favorite>(url, item ).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  removeFavoriteItem(favouriteId: string, item: FavoriteItem): Observable<Favorite> {
+    return this.http.delete<Favorite>(`${this.baseUrl}/FavouriteItem/${favouriteId}`, { body: item })
+    .pipe(catchError(this.handleError));
+  }
+
 }

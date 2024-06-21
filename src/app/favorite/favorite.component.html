@@ -18,11 +18,11 @@
                 <td class="favourite-item-img"><img [src]="item.image" alt="{{item.mealName}}"></td>
                 <td class="favourite-item-name">{{item.mealName}}</td>
                 <td class="favourite-item-price">{{item.price}} EGP</td>
-                <td class="favourite-item-total">
-                  <button class="btn btn-cart">Add To Cart</button>
+                <td class="favourite-item-cart">
+                  <button class="btn btn-cart" (click)="addToCart(item)">Add To Cart</button>
                 </td>
                 <td class="favourite-item-close">
-                  <button class="btn">
+                  <button class="btn" (click)="removeFavoriteItem(item)">
                     <i class="fa fa-close"></i>
                   </button>
                 </td>
