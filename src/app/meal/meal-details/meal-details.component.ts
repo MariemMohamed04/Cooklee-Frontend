@@ -41,7 +41,7 @@ export class MealDetailsComponent implements OnInit {
     mealId: 0
   };
   cart: Cart = new Cart();
-  cartoId: string = `${this.authService.getClaims().UserId}-cart`;
+  cartId: string = `${this.authService.getClaims().UserId}-cart`;
 
   constructor(
     public mealService: MealService,
@@ -103,51 +103,22 @@ export class MealDetailsComponent implements OnInit {
     );
   }
 
-  createCartItem(meal: Meal): CartItem {
-    return {
-      id: meal.id,
-      mealName: meal.mealName,
-      image: meal.image,
+  addToCart(): void {
+    const cartItem: CartItem = {
+      id: this.meal.id,
+      mealName: this.meal.mealName,
+      image: this.meal.image,
       quantity: 1,
-      price: meal.price
+      price: this.meal.price
     };
-  }
 
-  addItemToCart(cartId: string, newItem: CartItem): void {
-    this.cartService.addCartItem(cartId, newItem)
-      .subscribe(
-        (cart: Cart) => {
-          console.log('Item added successfully:', cart);
-          // Handle success, maybe update UI
-        },
-        (error) => {
-          console.error('Error adding item to cart:', error);
-          // Handle error, show error message to user
-        }
-      );
+    this.cartService.addToCart(this.cartId, cartItem).subscribe(
+      (cart) => {
+        console.log('Item added to cart:', cart);
+      },
+      (error) => {
+        console.error('Error adding item to cart:', error);
+      }
+    );
   }
-
 }
-
-// cartId: string = `${this.authService.getClaims().UserId}-c`;
-// addToCart(cartId: string, meals: MealsToReturn) {
-//   this.cartId = cartId;
-//     //   const favoriteItem: FavoriteItem = {
-// //     id: meal.id,
-// //     mealName: meal.mealName,
-// //     image: meal.image,
-// //     price: meal.price
-// //   };
-// const qyt = 1;
-// const cartItem: CartItem = {
-//   id: meals.id,
-//   mealName: meals.mealName,
-//   image: meals.image,
-//   quantity: qyt,
-//   price: meals.price
-// }
-//   this.cartService.addCartItem(cartId, cartItem).subscribe({
-//     next: (res) => console.log(res),
-//     error: (err) => console.log(err)
-//   })
-// }

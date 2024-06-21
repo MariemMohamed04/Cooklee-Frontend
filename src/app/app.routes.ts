@@ -74,22 +74,22 @@ export const routes: Routes = [
   // { path: "register", component: RegisterFormComponent },
   // { path: "login", component: LoginFormComponent },
   // { path: 'ClientForm', component: ClientProfleFormComponent },
-  { path: "", redirectTo: "meals", pathMatch: "full" },
+  { path: "", redirectTo: "register", pathMatch: "full" },
   { path: "register", component: RegisterFormComponent },
   { path: "login", component: LoginFormComponent },
   { path: 'ClientForm', component: ClientProfleFormComponent },
+    {
+    path: 'profile', component: ClientProfleComponent, children: [
+
+      { path: '', component: ClientFavouriteComponent },
+      { path: 'Favourites', component: ClientFavouriteComponent },
+      { path: 'Orders', component: ClientOrderComponent },
+    ]
+  },
   { path: "checkout", component: CheckoutComponent },
   { path: "cart", component: CartComponent },
   { path: "favorite", component: FavoriteComponent },
   { path: "home", component: HomeMealsComponent },
-  // {
-  //   path: 'ChefPage', component: ChefPageComponent, children: [
-
-  //     { path: '', component: ChefMealsComponent },
-  //     { path: 'chefMeals', component: ChefMealsComponent },
-  //     { path: 'requestedMeals', component: RequestedMealsComponent },
-  //   ]
-  // },
   { path: "meals", component:MealListComponent },
   {
     path: 'Meals/Details/:id',
