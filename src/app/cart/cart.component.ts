@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from '../models/cart';
 import { CartItem } from '../models/cart-item';
 import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
@@ -20,25 +19,6 @@ export class CartComponent implements OnInit {
   cartSubscription: any;
 
   constructor(private cartService: CartService, private authService: AuthService) {}
-
-  // ngOnInit(): void {
-  //   this.loadCartItems();
-  // }
-
-  // loadCartItems(): void {
-  //   this.cartService.getCart(this.cartId).subscribe(
-  //     (cart) => {
-  //       this.cartItems = cart.items;
-  //     },
-  //     (error) => {
-  //       console.error('Error loading cart items:', error);
-  //     }
-  //   );
-  // }
-
-  // getCartItemsCount(): number {
-  //   return this.cartService.getCartItemsCount();
-  // }
 
   ngOnInit(): void {
     this.loadCartItems();
@@ -62,7 +42,6 @@ export class CartComponent implements OnInit {
     this.cartService.getCart(this.cartId).subscribe(
       (cart) => {
         this.cartItems = cart.items;
-        // Update cart items count in CartService
         this.cartService.updateCart(cart);
       },
       (error) => {
@@ -71,8 +50,37 @@ export class CartComponent implements OnInit {
     );
   }
 
-  // Function to get the number of cart items
+  removeItemFromCart(item: CartItem): void {
+    this.cartService.removeCartItem(this.cartId, item).subscribe(
+      (updatedCart) => {
+        console.log('Item removed from cart:', updatedCart);
+        this.cartItems = updatedCart.items;
+        this.cartService.updateCart(updatedCart);
+      },
+      (error) => {
+        console.error('Error removing item from cart:', error);
+      }
+    );
+  }
+
+  updateCartItemQuantity(item: CartItem, quantity: number): void {
+    if (item.quantity + quantity > 0) {
+      item.quantity += quantity;
+      this.cartService.updateCartItemQuantity(this.cartId, item).subscribe(
+        (updatedCart) => {
+          console.log('Item quantity updated in cart:', updatedCart);
+          this.cartItems = updatedCart.items;
+          this.cartService.updateCart(updatedCart);
+        },
+        (error) => {
+          console.error('Error updating item quantity in cart:', error);
+          item.quantity -= quantity;
+        }
+      );
+    }
+  }
+
   getCartItemsCount(): number {
-    return this.cartItems.length; // Use cartItems directly
+    return this.cartItems.length;
   }
 }

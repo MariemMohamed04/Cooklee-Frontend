@@ -54,11 +54,18 @@ export class CartService {
       );
     }
 
-  updateCartItemQuantity(cartId: string, item: CartItem): Observable<Cart> {
-    return this.http.patch<Cart>(`${this.baseUrl}/item/${cartId}`, item);
-  }
+    updateCartItemQuantity(cartId: string, item: CartItem): Observable<Cart> {
+      const url = `${this.baseUrl}/CartItem/${cartId}`;
+      return this.http.patch<Cart>(url, item).pipe(
+        catchError((error) => {
+          console.error('Error updating item quantity in cart:', error);
+          return throwError(error);
+        })
+      );
+    }
 
-  deleteCartItem(cartId: string, item: CartItem): Observable<Cart> {
-    return this.http.delete<Cart>(`${this.baseUrl}/item/${cartId}`, { body: item });
+  removeCartItem(cartId: string, item: CartItem): Observable<Cart> {
+    return this.http.delete<Cart>(`${this.baseUrl}/CartItem/${cartId}`, { body: item })
+    .pipe(catchError(this.handleError));
   }
 }

@@ -21,29 +21,18 @@
               </div>
               <div class="cart-item-content p-3 d-flex flex-column justify-content-between align-items-center ms-auto">
                 <div class="cart-item-remove ms-auto">
-                  <!-- Add remove item button -->
-                  <button>
+                  <button (click)="removeItemFromCart(item)">
                     <i class="fa fa-close"></i>
                   </button>
-                  <!-- <button (click)="removeFromCart(item)">
-                    <i class="fa fa-close"></i>
-                  </button> -->
                 </div>
                 <div class="cart-item-quantity d-flex align-items-center">
-                  <!-- Add quantity controls -->
-                  <button class="btn btn-outline-dark btn-sm me-2">
+                  <button class="btn btn-outline-dark btn-sm me-2" (click)="updateCartItemQuantity(item, -1)">
                     <i class="fa fa-minus"></i>
                   </button>
-                  <!-- <button class="btn btn-outline-dark btn-sm me-2" (click)="decreaseQuantity(item)">
-                    <i class="fa fa-minus"></i>
-                  </button> -->
                   <span class="quantity">{{item.quantity}}</span>
-                  <button class="btn btn-outline-dark btn-sm ms-2">
+                  <button class="btn btn-outline-dark btn-sm ms-2" (click)="updateCartItemQuantity(item, 1)">
                     <i class="fa fa-plus"></i>
                   </button>
-                  <!-- <button class="btn btn-outline-dark btn-sm ms-2" (click)="increaseQuantity(item)">
-                    <i class="fa fa-plus"></i>
-                  </button> -->
                 </div>
               </div>
             </div>
