@@ -1,0 +1,98 @@
+.content-inner {
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+.widget-title {
+  margin-bottom: 25px;
+  position: relative;
+  font-size: 1.25rem;
+  padding-bottom: 12px;
+}
+
+.widget-title:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 6px;
+  left: 0;
+  width: 6px;
+  border-radius: 30px;
+  background: var(--main-color);
+}
+
+.widget-title .title {
+  position: relative;
+  margin-bottom: 0px;
+}
+
+.widget-title:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 6px;
+  border-radius: 3px;
+  left: 12px;
+  width: 58px;
+  height: 4px;
+  background: var(--main-color);
+}
+
+.cart-number {
+  color: var(--main-color);
+}
+
+.cart-item {
+  display: flex;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: all 0.5s;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+img {
+  border-style: none;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.cart-item-image {
+  border-radius: 6px;
+}
+
+.cart-item-image img {
+  width: 100px;
+  border-radius: 6px;
+}
+
+.cart-item-name a {
+  color: var(--dark-color);
+  font-weight: 600;
+}
+
+.cart-item-content .price {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--main-color);
+}
+
+.cart-item-remove button {
+  border: none;
+  border-radius: 6px;
+  padding: 3px 9px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,34 +1,30 @@
 <div class="container">
   <h3>Meals</h3>
   <div class="container-card d-flex">
-    <div
-      *ngFor="let item of meals; let $index = index"
-      class="col-lg-3 col-md-6 col-sm-12"
-    >
-      <div
-        class="my-card bg-light border border-1 shadow-sm mb-5 bg-white rounded"
-      >
-        <!-- <img src="{{ item.Image }}" class="shadow-sm bg-dark rounded" alt="" /> -->
-         <!-- Joud -->
-        <img
-          src="{{ item.Image }}"
-          class="shadow-sm bg-dark rounded"
-          alt="Description of Image"
-        />
+    <div *ngFor="let meal of meals" class="col-lg-3 col-md-6 col-sm-12">
+      <div class="my-card bg-light border border-1 shadow-sm mb-5 bg-white rounded">
+        <img [src]="meal.image" class="shadow-sm bg-dark rounded" alt="{{meal.mealDescription}}" />
         <div class="details ps-1">
-          <h5 class="card-title">{{ item.MealName }}</h5>
-          <h6 class="text-muted">Card subtitle</h6>
-          <p class="card-text description">{{ item.MealDescription }}</p>
+          <h5 class="card-title">{{meal.mealName}}</h5>
+          <h6 class="text-muted">{{meal.chefPageName}}</h6>
+          <p class="card-text description">{{meal.mealDescription}}</p>
           <div class="">
-            <!--tags d-flex justify-content-between -->
             <div class="d-inline-flex me-3">
               <i class="fa-solid fa-coins"></i>
-              <p class="ps-1">{{ item.Price }} <span>Egp</span></p>
+              <p class="ps-1"><span>{{meal.price}}</span> Egp</p>
             </div>
             <div class="d-inline-flex">
               <i class="fa-solid fa-hand-holding"></i>
-              <p class="ps-10">60 <span>min</span></p>
+              <p class="ps-10">{{meal.rate}} <span>rate</span></p>
             </div>
+            <!-- <div class="d-inline-flex me-3">
+              <button class="me-5" (click)="addToFavorites(meal)">
+                <i class="fa fa-heart fs-4"></i>
+              </button>
+              <button class="" (click)="addToCart(meal)">
+                <i class="fa fa-cart-shopping fs-4"></i>
+              </button>
+            </div> -->
           </div>
         </div>
       </div>

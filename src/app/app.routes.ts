@@ -14,6 +14,10 @@ import { LoginFormComponent } from './Registeration/login-form/login-form.compon
 import { RegisterFormComponent } from './Registeration/register-form/register-form.component';
 import { HomeMealsComponent } from './home/home-meals/home-meals.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout/checkout.component';
 export const routes: Routes = [
 
 
@@ -59,18 +63,6 @@ export const routes: Routes = [
 
   { path: 'ClientForm', component: ClientProfleFormComponent },
   { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
-
-  {
-    path: 'profile', component: ClientProfleComponent, children: [
-
-      { path: '', component: ClientFavouriteComponent },
-      { path: 'Favourites', component: ClientFavouriteComponent },
-      { path: 'Orders', component: ClientOrderComponent },
-    ]
-  },
-  { path: 'ChefPageForm', component: ChefPageFormComponent },
-
-  { path: 'ChefPage', redirectTo: 'ChefPage/chefMeals', pathMatch: 'full' },
   {
     path: 'ChefPage', component: ChefPageComponent, children: [
 
@@ -79,4 +71,23 @@ export const routes: Routes = [
       { path: 'requestedMeals', component: RequestedMealsComponent },
     ]
   },
-];
+
+  // { path: "", redirectTo: "register", pathMatch: "full" },
+  // { path: "register", component: RegisterFormComponent },
+  // { path: "login", component: LoginFormComponent },
+  // { path: 'ClientForm', component: ClientProfleFormComponent },
+  { path: "", redirectTo: "checkout", pathMatch: "full" },
+  { path: "checkout", component: CheckoutComponent },
+  { path: "cart", component: CartComponent },
+  { path: "favorite", component: FavoriteComponent },
+  {
+    path: 'ChefPage', component: ChefPageComponent, children: [
+
+      { path: '', component: ChefMealsComponent },
+      { path: 'chefMeals', component: ChefMealsComponent },
+      { path: 'requestedMeals', component: RequestedMealsComponent },
+    ]
+  },
+  { path: "meals", component:MealListComponent },
+  { path:'**',component:NotfoundComponent }
+]
