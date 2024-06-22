@@ -1,0 +1,22 @@
+.preview {
+  background-image: url('../../../assets/imgs/logo/COOKLEE.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.order-preview {
+  padding: 100px 50px;
+}
+
+.order-preview h3 {
+  font-size: 26px;
+  font-family: var(--font-secondary);
+  /* color: var(--main-color); */
+
+}
+
+.order-preview h3 span {
+  /* color: var(--dark-color); */
+  font-family: var(--font-family);
+}

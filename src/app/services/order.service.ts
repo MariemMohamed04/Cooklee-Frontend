@@ -17,19 +17,20 @@ export class OrderService {
     return throwError('Something bad happened; please try again later.');
   }
 
-  createOrder(order: OrderToCreate): Observable<Order> {
+  createOrder(order: OrderToCreate): Observable<OrderToCreate> {
     const url = `${this.baseUrl}`;
     return this.http.post<Order>(url, order)
     .pipe(catchError(this.handleError));
   }
 
-  // getOrdersForClient(email: string): Observable<Order> {
-  //   const url = `${this.baseUrl}`;
-  //   return this.http.get<Order>(url, email)
-  //   .pipe(catchError(this.handleError));
-  // }
-
-  // getOrderByIdForClient(orderId: number, email: string): Observable<Order> {
-
-  // }
 }
+
+// getOrdersForClient(email: string): Observable<Order> {
+//   const url = `${this.baseUrl}`;
+//   return this.http.get<Order>(url, email)
+//   .pipe(catchError(this.handleError));
+// }
+
+// getOrderByIdForClient(orderId: number, email: string): Observable<Order> {
+
+// }
