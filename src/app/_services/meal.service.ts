@@ -20,20 +20,9 @@ export class MealService {
     return this.http.get<HomeMeal[]>(this.homeMealsApiUrl);
   }
 
-}
 
-export interface HomeMeal {
-  mealName: string;
-  mealDescription: string;
-  isHealthy: boolean;
-  isAvailable: boolean;
-  isSpecial: boolean;
-  price: number;
-  rate: number;
-  image: string;
-  tags: string[];
-  chefPageId: number;
-}
+
+
 
   getMealsOrderedByRate(): Observable<MealsToReturn[]> {
     return this.http.get<MealsToReturn[]>(`${this.baseUrl}`);
@@ -48,3 +37,16 @@ export interface HomeMeal {
   // getMealById(id:number){
   //   return this.http.get<Meal>(this.baseUrl+id);
   // }
+
+  export interface HomeMeal {
+    mealName: string;
+    mealDescription: string;
+    isHealthy: boolean;
+    isAvailable: boolean;
+    isSpecial: boolean;
+    price: number;
+    rate: number;
+    image: string;
+    tags: string[];
+    chefPageId: number;
+  }
