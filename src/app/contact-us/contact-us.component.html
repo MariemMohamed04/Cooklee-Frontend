@@ -1,0 +1,35 @@
+<div class="contact-background">
+  <div class="contact-overlay"></div>
+  <div class="contact-container">
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullName" [(ngModel)]="contactDto.fullName" name="fullName" required>
+        <div class="text-danger" *ngIf="!contactDto.fullName && formSubmitted">
+          Full Name is required
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" id="phoneNumber" [(ngModel)]="contactDto.phoneNumber" name="phoneNumber" placeholder="e.g., 1234567890" required pattern="[0-9]{10}">
+        <div class="text-danger" *ngIf="!contactDto.phoneNumber && formSubmitted">
+          Phone Number is required
+        </div>
+        <div class="text-danger" *ngIf="contactDto.phoneNumber && !validatePhoneNumber(contactDto.phoneNumber)">
+          Invalid Phone Number format. Please enter 10 digits.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="body" class="form-label">Message</label>
+        <textarea class="form-control" id="body" rows="4" [(ngModel)]="contactDto.body" name="body" required></textarea>
+        <div class="text-danger" *ngIf="!contactDto.body && formSubmitted">
+          Message is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-send" [disabled]="isSubmitting">Send</button>
+    </form>
+  </div>
+</div>

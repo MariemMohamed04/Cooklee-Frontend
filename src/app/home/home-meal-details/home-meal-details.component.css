@@ -1,0 +1,123 @@
+.meals-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px; 
+    padding: 20px;
+  }
+  
+  .meal-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+  }
+  
+  .rounded-corners {
+    border-radius: 15px;
+    background-color: #F2F2F2;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .meal-details {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #F2F2F2;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .meal-photo {
+    max-width: 200px;
+    border-radius: 10px;
+  }
+  
+  .meal-info {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .meal-name {
+    color: var(--dark-color);
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .meal-price {
+    color: var(--dark-color);
+    font-size: 1em;
+    margin-left: 10px;
+  }
+  
+  .meal-availability,
+  .meal-healthy,
+  .meal-description {
+    color: var(--dark-color);
+    font-size: 1em;
+    margin-top: 5px;
+  }
+  
+  .favorite-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: black;
+    transition: filter 0.3s ease;
+  }
+  
+  .favorite-icon:hover {
+    color: red;
+  }
+  
+  .order-now-btn {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    border: none;
+    padding: 10px 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .order-now-btn:hover {
+    background-color: var(--main-color);
+  }
+  
+  .highlight {
+    font-weight: bold;
+    color: var(--dark-color);
+  }
+  
+  @media screen and (max-width: 600px) {
+    .meals-container {
+      grid-template-columns: 1fr; 
+    }
+  
+    .meal-details {
+      flex-direction: column;
+      text-align: center;
+      height: auto;
+    }
+  
+    .meal-info {
+      margin-left: 0;
+      margin-top: 20px;
+      align-items: center;
+    }
+  
+    .meal-photo {
+      max-width: 100%;
+    }
+  
+    .order-now-btn {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+  

@@ -14,3 +14,19 @@
     padding: 10px;
   }
 }
+.btn {
+  background-color: transparent;
+  border: none;
+  color: var(--main-color);
+  cursor: pointer;
+  font-size: 1.2em;
+}
+.btn-contactus {
+  background-color: var(--light-color);
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+.btn-contactus:hover, .btn-wishlist:hover, .btn-cart:hover {
+  background-color: var(-light-color);
+}

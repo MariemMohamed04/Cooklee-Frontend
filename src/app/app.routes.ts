@@ -12,7 +12,8 @@ import { MealDetailsComponent } from './meal/meal-details/meal-details.component
 //import { NotfoundComponent } from './notfound/notfound.component';
 import { LoginFormComponent } from './Registeration/login-form/login-form.component';
 import { RegisterFormComponent } from './Registeration/register-form/register-form.component';
-import { HomeMealsComponent } from './home-meals/home-meals.component';
+import { HomeMealsComponent } from './home/home-meals/home-meals.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 export const routes: Routes = [
 
 
@@ -45,6 +46,7 @@ export const routes: Routes = [
   { path: "register", component: RegisterFormComponent },
 
   { path: "home", component: HomeMealsComponent },
+  {path :"contactus",component:ContactUsComponent},
 
   {path: '', component:ChefMealsComponent},
   {path: 'chefMeals', component:ChefMealsComponent},
