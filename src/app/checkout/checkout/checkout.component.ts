@@ -4,6 +4,7 @@ import { OrderFormComponent } from '../order-form/order-form.component';
 import { PaymentComponent } from '../payment/payment.component';
 import { OrderTotalComponent } from '../order-total/order-total.component';
 import { OrderPreviewComponent } from '../order-preview/order-preview.component';
+import { ShipmentDetails } from '../../models/shipment-details';
 
 @Component({
   selector: 'app-checkout',
@@ -19,5 +20,9 @@ import { OrderPreviewComponent } from '../order-preview/order-preview.component'
   styleUrl: './checkout.component.css'
 })
 export class CheckoutComponent {
+  shipmentDetails!: ShipmentDetails;
 
+  handleFormValueChanges(shipmentDetails: ShipmentDetails) {
+    this.shipmentDetails = shipmentDetails;
+  }
 }

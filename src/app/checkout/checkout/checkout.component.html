@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
-      <app-order-form></app-order-form>
+      <app-order-form (formValueChanges)="handleFormValueChanges($event)"></app-order-form>
     </div>
     <div class="col-lg-6">
-      <!-- <app-order-item></app-order-item> -->
-      <app-order-preview></app-order-preview>
+      <app-order-preview [shipmentDetails]="shipmentDetails"></app-order-preview>
     </div>
   </div>
   <!-- <div class="divider bg-secondary icon-center my-5">

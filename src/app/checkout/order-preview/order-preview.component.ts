@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ShipmentDetails } from '../../models/shipment-details';
 
 @Component({
   selector: 'app-order-preview',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './order-preview.component.css'
 })
 export class OrderPreviewComponent {
-
+  @Input() shipmentDetails!: ShipmentDetails;
 }

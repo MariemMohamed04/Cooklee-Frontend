@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrderToCreate } from '../../models/order-to-create';
 import { ShipmentDetails } from '../../models/shipment-details';
@@ -22,6 +22,8 @@ export class OrderFormComponent implements OnInit {
   clientEmail: string;
   cartId: string;
 
+  @Output() formValueChanges = new EventEmitter<ShipmentDetails>();
+
   constructor(
     private fb: FormBuilder,
     private orderService: OrderService,
@@ -39,14 +41,33 @@ export class OrderFormComponent implements OnInit {
       apartment: ['', Validators.required],
       floor: ['', Validators.required],
       country: ['Egypt', Validators.required],
-      state: ['Alexandria', Validators.required],
-      city: ['Alexandria Governorate', Validators.required],
+      state: ['Alexandria Governorate', Validators.required],
+      city: ['Alexandria', Validators.required],
       shippingmethod: ['PKG', Validators.required],
       postalCode: ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.orderForm.valueChanges.subscribe(value => {
+      const shipmentDetails = new ShipmentDetails(
+        value.fname,
+        value.lname,
+        value.email,
+        value.phone,
+        value.street,
+        value.building,
+        value.apartment,
+        value.floor,
+        value.city,
+        value.country,
+        value.state,
+        value.shippingmethod,
+        value.postalCode
+      );
+      this.formValueChanges.emit(shipmentDetails);
+    });
+  }
 
   onSubmit(): void {
     if (this.orderForm.invalid) {
