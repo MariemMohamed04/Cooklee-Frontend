@@ -45,11 +45,12 @@ import { MealService } from '../../_services/meal.service';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../Core/header/header.component';
 import { CommonModule } from '@angular/common';
+import { FooterComponent } from '../../Core/footer/footer.component';
 
 @Component({
   selector: 'app-meal-list',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule,FooterComponent],
   templateUrl: './meal-list.component.html',
   styleUrl: './meal-list.component.css',
 })

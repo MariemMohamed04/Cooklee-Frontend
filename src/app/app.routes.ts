@@ -16,6 +16,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CartComponent } from './cart/cart.component';
 import { SpecialMealComponent } from './SpecialMeal/special-meal/special-meal.component';
+import { Component } from '@angular/core';
+import { FooterComponent } from './Core/footer/footer.component';
 export const routes: Routes = [
   {
     path: 'ChefPage',
@@ -41,7 +43,7 @@ export const routes: Routes = [
   //   ]
   // },
   { path: 'SpecialMeal', component: SpecialMealComponent },
-  { path: 'meals', component: MealListComponent },
+  { path: 'meals', component: MealListComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotfoundComponent },
 ];

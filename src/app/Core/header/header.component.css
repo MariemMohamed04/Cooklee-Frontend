@@ -1,20 +1,30 @@
 /* Rounded corners for the header div */
+/* .header {
+  border-radius: 15px;
+  padding: 10px;
+  margin: 5px;
+  background-color: var(--main-color);
+} */
+ * {
+  box-sizing: border-box;
+ }
 .header {
-  border-radius: 15px; /* Adjust this value as needed */
-  padding: 10px; /* Reduce padding for a shorter header */
-  margin: 5px; /* Add some margin for spacing */
-  background-color: var(--main-color); /* Adding background color */
+  background-color: var(--main-color);
+    padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 /* Make Font Awesome icons white */
-.fa-heart, .fa-shopping-cart {
+.fa-heart,
+.fa-shopping-cart {
   color: white;
 }
 
 /* Styling for h1 and p elements */
-.header h1, .header p {
+.header h1,
+.header p {
   margin: 0 20px; /* Reduce margin between the elements */
-  color: white; /* Set text color to white */
+  color: white;
   font-weight: bold; /* Set text to bold */
 }
 
@@ -24,17 +34,15 @@
 }
 
 /* Bootstrap utility classes */
-.header {
-  padding-top: 1.5rem; /* Reduce padding as needed */
-  padding-bottom: 1.5rem; /* Reduce padding as needed */
-}
+
 
 @media (max-width: 600px) {
   .header {
     text-align: center; /* Center text */
   }
 
-  .header h1, .header p {
+  .header h1,
+  .header p {
     margin: 10px 0; /* Add some margin for vertical spacing */
   }
   .header p {
@@ -46,18 +54,19 @@
 
 /* Medium devices (portrait tablets and small desktops, 600px to 1024px) */
 @media (min-width: 601px) and (max-width: 1024px) {
-  .header h1, .header p {
+  .header h1,
+  .header p {
     margin: 5px 10px; /* Adjust margin for medium devices */
   }
 }
 
 /* Large devices (large desktops, 1025px and up) */
 @media (min-width: 1025px) {
-  .header h1, .header p {
+  .header h1,
+  .header p {
     margin: 0 10px; /* Default margin for large devices */
   }
 }
-
 .quote {
   font-size: 1.5em; /* Reduce font size for the quote */
   flex-grow: 1; /* Make the quote grow to fill available space */
@@ -84,8 +93,44 @@
   padding: 5px 15px;
   border-radius: 5px;
   font-size: 1em;
+  box-shadow: 0.2px 0.2px 10px 0px #80603599;
 }
 
-.btn-login:hover, .btn-wishlist:hover, .btn-cart:hover {
+.btn-login:hover,
+.btn-wishlist:hover,
+.btn-cart:hover {
   background-color: var(-light-color);
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 5px;
+  }
+  .container .quote {
+    display: none;
+  }
+  .container .header-buttons {
+    gap: 15px !important;
+  }
+  .container .header-buttons button {
+    padding: 0px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .quote {
+    font-size: 13px;
+  }
+  .container .header-buttons {
+    gap: 0px;
+  }
+}
+/* ============================================= */
+/* Start Nav */
+.my-nav {
+ position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow:  0px 4px 12px rgba(0, 0, 0, 0.1);
 }
