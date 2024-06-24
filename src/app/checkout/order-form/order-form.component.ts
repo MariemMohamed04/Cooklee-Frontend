@@ -5,6 +5,7 @@ import { OrderToCreate } from '../../models/order-to-create';
 import { ShipmentDetails } from '../../models/shipment-details';
 import { OrderService } from '../../services/order.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-form',
@@ -27,7 +28,8 @@ export class OrderFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private orderService: OrderService,
-    private authService: AuthService
+    private authService: AuthService,
+    public router:Router
   ) {
     this.clientEmail = this.authService.getClaims().Email;
     this.cartId = `${this.authService.getClaims().UserId}-cart`;
@@ -101,6 +103,8 @@ export class OrderFormComponent implements OnInit {
     this.orderService.createOrder(orderToCreate).subscribe({
       next: (order) => {
         console.log('Order created successfully:', order);
+        this.router.navigateByUrl("/Payment")
+        
       },
       error: (error) => {
         console.error('Error creating order:', error);

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ShipmentDetails } from '../../models/shipment-details';
 
 @Component({
   selector: 'app-payment',
@@ -13,17 +14,12 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
   styleUrl: './payment.component.css'
 })
 export class PaymentComponent {
-  orderForm: FormGroup;
+ 
   errorMessage: string = '';
-
+  shipmentDetails!:ShipmentDetails
+  paymentKey!:string
   constructor() {
-    this.orderForm = new FormGroup({
-      fname: new FormControl('', [Validators.required]),
-      lname: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
-      area: new FormControl('', [Validators.required]),
-      street: new FormControl('', [Validators.required]),
-    });
+   
   }
 
   onSubmit() {
@@ -33,4 +29,18 @@ export class PaymentComponent {
 
     // }
   }
+
+  PaywithCard(){
+
+ 
+ 
+    this.paymentKey = ""
+    window.location.href = `https://accept.paymobsolutions.com/api/acceptance/iframes/852393?payment_token=${this.paymentKey}`;
+
+
+  }
+
+ PaywithCash(){
+
+ }
 }

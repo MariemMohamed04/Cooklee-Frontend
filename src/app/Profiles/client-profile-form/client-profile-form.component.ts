@@ -32,7 +32,6 @@ constructor(public router:Router, private ClientService:ClientProfileService, pr
     console.log("client= "+ this.client, this.id)
   }
 
-
   UpdatePhoto(e:any){
     if(e.target.files){
    var reader = new FileReader();
@@ -63,3 +62,5 @@ logout() {
 }
 
 }
+
+
