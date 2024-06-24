@@ -18,6 +18,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout/checkout.component';
 import { PaymentComponent } from './checkout/payment/payment.component';
+import { PaymentDoneComponent } from './checkout/payment-done/payment-done.component';
 export const routes: Routes = [
 
 
@@ -97,6 +98,7 @@ export const routes: Routes = [
   { path: "home", component: HomeMealsComponent },
   { path: "meals", component:MealListComponent },
   { path: "Payment", component:PaymentComponent },
+  { path: "PaymentDone", component:PaymentDoneComponent},
   {
     path: 'Meals/Details/:id',
     component: MealDetailsComponent,

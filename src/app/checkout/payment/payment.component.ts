@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ShipmentDetails } from '../../models/shipment-details';
+import { PaymentService } from '../../services/payment.service';
+import { AuthService } from '../../services/auth.service';
+import { Cart } from '../../models/cart';
+import { routes } from '../../app.routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -13,29 +18,48 @@ import { ShipmentDetails } from '../../models/shipment-details';
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css'
 })
-export class PaymentComponent {
+export class PaymentComponent implements OnInit {
  
   errorMessage: string = '';
   shipmentDetails!:ShipmentDetails
   paymentKey!:string
-  constructor() {
+  constructor(
+    public router:Router,
+    public paymentService :PaymentService,
+    public authService: AuthService
+  ) {
    
   }
 
-  onSubmit() {
-    // if (success) {
+  
+  ngOnInit(): void {
+    let email = this.authService.getClaims().Email
+   this.paymentService.getshipmentDet(email).subscribe(
+    data=>{this.shipmentDetails = data
 
-    // } else {
-
-    // }
+    },
+    error => console.error('Error: ', error)
+   )
   }
+
 
   PaywithCard(){
 
- 
- 
-    this.paymentKey = ""
-    window.location.href = `https://accept.paymobsolutions.com/api/acceptance/iframes/852393?payment_token=${this.paymentKey}`;
+  
+    let cartId = this.authService.getClaims().UserId+"-cart"
+    let email = this.authService.getClaims().Email
+ this.paymentService.getPaymentKey(cartId, email ).subscribe(
+      data=> {  this.paymentKey = data
+        console.log(data)
+      window.location.href = `https://accept.paymobsolutions.com/api/acceptance/iframes/852393?payment_token=${this.paymentKey}`;
+      this.router.navigateByUrl("/PaymentDone")
+        
+      },
+
+      error => console.error('Error: ', error)
+
+ );
+    
 
 
   }
