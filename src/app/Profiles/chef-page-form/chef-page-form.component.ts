@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Client } from '../../models/client';
-import { Chef } from '../../models/chef';
+import { Chef, ChefPaymentMethod } from '../../models/chef';
 import { AuthService } from '../../services/auth.service';
 import { ChefPageService } from '../../services/chef-page.service';
 
@@ -17,6 +17,7 @@ import { ChefPageService } from '../../services/chef-page.service';
 export class ChefPageFormComponent  implements OnInit{
  chef!:Chef
   id!:string
+  paymentMethods = Object.values(ChefPaymentMethod)
   constructor(public router:Router,private authService:AuthService, private chefService:ChefPageService){
   }
 
@@ -28,6 +29,17 @@ export class ChefPageFormComponent  implements OnInit{
     );
 
   }
+
+  UpdatePhoto(e:any){
+    if(e.target.files){
+   var reader = new FileReader();
+  reader.readAsDataURL(e.target.files[0]);
+  reader.onload=(event:any)=>{
+  this.chef.IdImgURL=event.target.result;
+
+}}
+
+}
  
 
   UpdatePage(){
@@ -37,4 +49,6 @@ export class ChefPageFormComponent  implements OnInit{
     );
   
   }
+
+
 }

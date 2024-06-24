@@ -22,62 +22,70 @@
     
   
     <div class="row">
+      <!-- About Page Card -->
       <div class="col-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">
-            <h4 >About Page</h4>
+          <div class="card">
+              <div class="card-body">
+                  <div class="card-title">
+                      <h4>About Page</h4>
+                  </div>
+                  <br>
+                  <div>
+                      <h6 class="card-text">Page Name:</h6>
+                      <p class="card-text">{{chef.displayName}}</p>
+                  </div>
+                  <br>
+                  <div>
+                      <h6 class="card-text">Active Status:</h6>
+                      <p class="card-text">{{chef.isActive ? 'Active' : 'Inactive'}}</p>
+                  </div>
+                  <br>
+                  <div>
+                      <h6 class="card-text">Phone Number:</h6>
+                      <p class="card-text">{{chef.PhoneNumber}}</p>
+                  </div>
+                  <br>
+                  <div>
+                      <h6 class="card-text">Wallet Number:</h6>
+                      <p class="card-text">{{chef.walletNumber}}</p>
+                  </div>
+                  <br>
+                  <div>
+                      <h6 class="card-text">Full Address:</h6>
+                      <p class="card-text">{{chef.fullAddress}}</p>
+                  </div>
+                  <br>
+                  <div>
+                      <h6 class="card-text">Payment Method:</h6>
+                      <p class="card-text">{{chef.paymentMethod}}</p>
+                  </div>
+                  <br>
+              </div>
           </div>
-  
-             <br>
-            <div>
-              <h6 class="card-text">Page Name:</h6>
-              <p class="card-text">{{chef.displayName}} </p>
-            </div>
-             <br>
-            <div>
-              <h6 class="card-text">Active status:</h6>
-              <p class="card-text">{{chef.isActive}}</p>
-            </div>
-               <br>
-        
-  
-  
-          </div>
-        </div>
       </div>
   
+      <!-- Navigation and Content Card -->
       <div class="col-8">
-        <div class="card">
-          <div class="card-body">
-            <div class="container">
-              <div class="d-flex flex-row justify-content-evenly">
-                <div class="login-tab d-flex justify-content-evenly">
-                  <a
-                    [routerLink]="['/ChefPage', 'chefMeals']"
-                    routerLinkActive="active-link"
-                  class="fav-txt"
-                    >My meals</a
-                  >
-                </div>
-                <div class="login-tab d-flex justify-content-evenly">
-                  <a
-                    [routerLink]="['/ChefPage', 'requestedMeals']"
-                    routerLinkActive="active-link"
-                    class="fav-txt"
-                    >Requested Meals</a
-                  >
-                </div>
+          <div class="card">
+              <div class="card-body">
+                  <div class="container">
+                      <div class="d-flex flex-row justify-content-evenly">
+                          <div class="login-tab d-flex justify-content-evenly">
+                              <a [routerLink]="['/ChefPage', 'chefMeals']" routerLinkActive="active-link" class="fav-txt">My Meals</a>
+                          </div>
+                          <div class="login-tab d-flex justify-content-evenly">
+                              <a [routerLink]="['/ChefPage', 'requestedMeals']" routerLinkActive="active-link" class="fav-txt">Requested Meals</a>
+                          </div>
+                      </div>
+                      <div class="fav-form">
+                          <router-outlet></router-outlet>
+                      </div>
+                  </div>
               </div>
-                <div class="fav-form">
-                  <router-outlet></router-outlet>
-                </div>
-              </div>
-          
           </div>
-        </div>
       </div>
-    </div>
+  </div>
+  
   </div>
   
 

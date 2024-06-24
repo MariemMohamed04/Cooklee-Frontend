@@ -23,10 +23,9 @@ export class PaymentService {
   getPaymentKey(cartId:string ,orderEmail:string): Observable<string> {
    
     let params = new HttpParams()
-  .set('orderEmail', orderEmail)
-  .set('cartId', cartId);
+    .set('orderEmail', orderEmail)
+    .set('cartId', cartId);
  
-  
     return this.http.get<string>(this.baseUrl+"Payment",  {params} );
   }
 

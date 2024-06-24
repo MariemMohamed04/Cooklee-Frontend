@@ -14,6 +14,7 @@ export class AuthService {
   private baseUrl = "https://localhost:7212/api/Account";
   constructor(private http: HttpClient) { }
 
+
   register(email: string, password: string, confirmPassword: string): Promise<{ success: boolean, error?: string }> {
     const url = `${this.baseUrl}/register`;
     return new Promise<{ success: boolean, error?: string }>((resolve) => {
@@ -34,6 +35,9 @@ export class AuthService {
     });
   }
 
+
+
+  
   login(email: string, password: string): Promise<{ success: boolean, error?: string }> {
     const url = `${this.baseUrl}/login`;
     return new Promise<{ success: boolean, error?: string }>((resolve) => {
