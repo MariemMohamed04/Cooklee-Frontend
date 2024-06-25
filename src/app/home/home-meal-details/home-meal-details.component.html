@@ -1,0 +1,21 @@
+      <div class="meal-details">
+        <img src="https://img.freepik.com/free-vector/cartoon-character-sticker-with-chef-girl-cooking_1308-63960.jpg?size=626&ext=jpg&ga=GA1.1.1141335507.1718928000&semt=ais_user" alt="Meal Photo" class="meal-photo" />
+        <div class="meal-info">
+          <h2 class="meal-name">{{ homeMeal.mealName }}</h2>
+          <p class="meal-price">
+            <i class="fa-solid fa-coins"></i> {{ homeMeal.price }} EGP
+          </p>
+          <i class="fa fa-heart favorite-icon" [class.favorited]="homeMeal.isAvailable"></i>
+          <button class="order-now-btn">Order Now</button>
+          <p class="meal-availability">
+            <span class="highlight">Availability :</span>
+            {{ homeMeal.isAvailable ? "✔️" : "❌" }}
+          </p>
+          <p class="meal-healthy">
+            <span class="highlight">Healthy :</span>
+            {{ homeMeal.isHealthy ? "✔️" : "❌" }}
+          </p>
+          <p class="meal-description">This is a delicious meal description.</p>
+        </div>
+      </div>
+  

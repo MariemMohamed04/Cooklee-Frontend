@@ -1,0 +1,5 @@
+<div class="meals-container" *ngIf="meals.length > 0">
+  <div *ngFor="let meal of meals" class="meal-details-container rounded-corners">
+      <app-home-meal-details [homeMeal]="meal"></app-home-meal-details>
+    </div>
+  </div>
