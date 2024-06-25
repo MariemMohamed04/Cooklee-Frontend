@@ -1,19 +1,43 @@
 <div class="container mb-5">
   <!-- <h3>Meals</h3> -->
   <div class="container-card d-flex flex-wrap">
+    <div class="search w-100">
+      <input
+        [(ngModel)]="searchTerm"
+        type="text"
+        class="form-control w-25 d-inline"
+        placeholder="Search"
+        (keyup)="onSearch()"
+      />
+      <span class="ps-2"></span>
+      <button (click)="onReset()" class="btn border border-1 rounded-0">
+        Reset
+      </button>
+    </div>
+    <!-- ================================ filter by tag ================================-->
+
+    <ul class="w-100">
+      <li *ngFor="let tag of tags">
+        <input type="checkbox" [value]="tag" (change)="onTagSelected(tag)" />
+        {{ tag }}
+      </li>
+    </ul>
+
+    <!-- ================================ ================================-->
     <div
       *ngFor="let item of displayedMeals; let $index = index"
-        class="col-lg-3 col-md-6 col-sm-12 meal-card"
+      class="col-lg-3 col-md-6 col-sm-12 meal-card"
     >
-      <div
-        class="my-card bg-light border border-1 shadow-sm bg-white rounded"
-      >
-
-         <img src="{{ item.image }}" class="shadow-sm bg-dark " alt="Description of Image" />
+      <div class="my-card bg-light border border-1 shadow-sm bg-white rounded">
+        <img
+          src="{{ item.image }}"
+          class="shadow-sm bg-dark"
+          alt="Description of Image"
+        />
 
         <div class="details px-3">
           <h5 class="card-title">{{ item.mealName }}</h5>
-          <h6 class="tags text-muted">{{item.tags}}</h6>
+          <h6 class="tags text-muted">{{ item.tags }}</h6>
           <p class="card-text description">{{ item.mealDescription }}</p>
           <div class="tags d-flex justify-content-around">
             <div class="d-inline-flex me-3">

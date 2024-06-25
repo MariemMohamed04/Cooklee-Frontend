@@ -21,24 +21,24 @@
   max-width: 450px; */
   margin-bottom: 25px; /* Adjust based on your design needs */
 }
-.my-card .tags{
+.my-card .tags {
   font-size: 12px;
 }
 .my-card img {
   width: 100%;
   height: 100px;
   height: auto;
-   border-radius: 7px 7px 0 0;
+  border-radius: 7px 7px 0 0;
 }
-.my-card .card-title{
-    display: -webkit-box;
+.my-card .card-title {
+  display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical; /* This is required for -webkit-line-clamp to work */
   overflow: hidden;
 }
 .my-card .description {
   font-size: 0.9rem;
-    display: -webkit-box;
+  display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical; /* This is required for -webkit-line-clamp to work */
   overflow: hidden;
@@ -56,3 +56,76 @@
 
 /* --bs-card-border-width: var(--bs-border-width); */
 /* shadow-sm p-3 mb-5 bg-white rounded */
+
+/* ================================================ */
+/* Search Input and Button */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px; /* Adds space below the search bar */
+}
+
+.search input[type="text"] {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: width 0.3s ease-in-out;
+}
+
+.search input[type="text"]:focus {
+  width: 200px; /* Expands the input field on focus */
+  border-color: #007bff;
+}
+
+.search button {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.search button:hover {
+  color: #0056b3;
+}
+
+/* Tag Filter Section */
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px; /* Adds space below the tag filter */
+}
+
+.tag-filter li {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  border-radius: 20px;
+  border: 1px solid #e9ecef;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.tag-filter li:hover {
+  background-color: #e9ecef;
+}
+
+.tag-filter input[type="checkbox"] {
+  display: none;
+}
+
+.tag-filter input[type="checkbox"]:checked + span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 50%;
+}

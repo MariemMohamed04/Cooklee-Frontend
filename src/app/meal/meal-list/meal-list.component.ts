@@ -39,6 +39,8 @@
 //   templateUrl: './meal-list.component.html',
 //   styleUrls: ['./meal-list.component.css'], // Note: use 'styleUrls' instead of 'styleUrl'
 // })
+
+
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Meal } from '../../models/meal';
 import { MealService } from '../../_services/meal.service';
@@ -46,21 +48,25 @@ import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../../Core/header/header.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../../Core/footer/footer.component';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-meal-list',
   standalone: true,
-  imports: [RouterLink, CommonModule,FooterComponent],
+  imports: [RouterLink, CommonModule, FooterComponent, FormsModule],
   templateUrl: './meal-list.component.html',
   styleUrl: './meal-list.component.css',
 })
 export class MealListComponent implements OnInit {
   meals: Meal[] = [];
   displayedMeals: Meal[] = [];
+  searchTerm: string = '';
   currentPage = 1;
   itemsPerPage = 8;
   totalItems = 0;
-
+  //filter by tag
+  selectedTags: string[] = [];
+  tags: string[] = [];
+  //=====================
   constructor(
     public mealServices: MealService,
     private cdr: ChangeDetectorRef
@@ -68,6 +74,7 @@ export class MealListComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchMeals();
+    this.fetchMealsAndTags();
   }
 
   fetchMeals(): void {
@@ -78,12 +85,45 @@ export class MealListComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
-
+  fetchMealsAndTags(): void {
+    this.mealServices.getAll().subscribe((allData) => {
+      this.meals = allData;
+      this.tags = [...new Set(allData.flatMap((meal) => meal.tags))];
+      this.updateDisplayedMeals();
+    });
+  }
   updateDisplayedMeals(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = this.currentPage * this.itemsPerPage;
-    this.displayedMeals = this.meals.slice(startIndex, endIndex);
+
+    // Filter meals based on search term
+    let filteredMeals = this.meals.filter(
+      (meal) =>
+        meal.mealName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        this.searchTerm === ''
+    );
+
+    // Further filter meals based on selected tags
+    if (this.selectedTags.length > 0) {
+      filteredMeals = filteredMeals.filter((meal) =>
+        this.selectedTags.every((tag) => meal.tags.includes(tag))
+      );
+    }
+
+    this.displayedMeals = filteredMeals.slice(startIndex, endIndex);
   }
+
+  // updateDisplayedMeals(): void {
+  //   const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+  //   const endIndex = this.currentPage * this.itemsPerPage;
+  //   this.displayedMeals = this.meals
+  //     .filter(
+  //       (meal) =>
+  //         meal.mealName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+  //         this.searchTerm === ''
+  //     )
+  //     .slice(startIndex, endIndex); // Apply filter based on search term
+  // }
 
   nextPage(): void {
     if (this.currentPage < Math.ceil(this.totalItems / this.itemsPerPage)) {
@@ -97,5 +137,23 @@ export class MealListComponent implements OnInit {
       this.currentPage--;
       this.updateDisplayedMeals();
     }
+  }
+
+  onSearch(): void {
+    this.updateDisplayedMeals(); // Update displayed meals based on search term
+  }
+
+  onReset(): void {
+    this.searchTerm = ''; // Clear search term
+    this.updateDisplayedMeals(); // Re-fetch all meals without filtering
+  }
+  onTagSelected(tag: string): void {
+    const index = this.selectedTags.indexOf(tag);
+    if (index > -1) {
+      this.selectedTags.splice(index, 1);
+    } else {
+      this.selectedTags.push(tag);
+    }
+    this.updateDisplayedMeals();
   }
 }
