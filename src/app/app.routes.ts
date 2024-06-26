@@ -9,16 +9,16 @@ import { ChefMealsComponent } from './Profiles/chef-meals/chef-meals.component';
 import { RequestedMealsComponent } from './Profiles/requested-meals/requested-meals.component';
 import { MealListComponent } from './meal/meal-list/meal-list.component';
 import { MealDetailsComponent } from './meal/meal-details/meal-details.component';
-//import { NotfoundComponent } from './notfound/notfound.component';
 import { LoginFormComponent } from './Registeration/login-form/login-form.component';
 import { RegisterFormComponent } from './Registeration/register-form/register-form.component';
-import { HomeMealsComponent } from './home-meals/home-meals.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout/checkout.component';
 import { PaymentComponent } from './checkout/payment/payment.component';
 import { PaymentDoneComponent } from './checkout/payment-done/payment-done.component';
+import { ResetPasswordComponent } from './Registeration/reset-password/reset-password.component';
+import { HomeMealsComponent } from './home/home-meals/home-meals.component';
 export const routes: Routes = [
 
 
@@ -69,9 +69,11 @@ export const routes: Routes = [
   // { path: "register", component: RegisterFormComponent },
   // { path: "login", component: LoginFormComponent },
   // { path: 'ClientForm', component: ClientProfleFormComponent },
-  { path: "", redirectTo: "register", pathMatch: "full" },
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "home", component: HomeMealsComponent },
   { path: "register", component: RegisterFormComponent },
   { path: "login", component: LoginFormComponent },
+  { path: "reset", component: ResetPasswordComponent },
   { path: 'ClientForm', component: ClientProfleFormComponent },
 
   { path: 'Orders', component: ClientOrderComponent },
@@ -95,7 +97,7 @@ export const routes: Routes = [
   { path: "checkout", component: CheckoutComponent },
   { path: "Cart", component: CartComponent },
   { path: "favorite", component: FavoriteComponent },
-  { path: "home", component: HomeMealsComponent },
+
   { path: "meals", component:MealListComponent },
   { path: "Payment", component:PaymentComponent },
   { path: "PaymentDone", component:PaymentDoneComponent},

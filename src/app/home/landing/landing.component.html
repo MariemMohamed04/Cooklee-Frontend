@@ -1,0 +1,65 @@
+<!-- <div class="landing vh-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 bg-danger">
+        <h2>Great quality food for your healthy & daily life.</h2>
+      </div>
+      <div class="col-6 bg-success vh-100">
+        <div class="slider-container">
+          <div class="slider-item" *ngFor="let image of images; let i = index"
+            [ngClass]="{
+              'selected': i === selectedIndex,
+              'prev': i === selectedIndex - 1,
+              'next': i === selectedIndex + 1,
+              'hideLeft': i < selectedIndex - 1,
+              'hideRight': i > selectedIndex + 1,
+            }"
+            (panleft)="showNext()"
+            (panright)="showPrev()">
+            <img
+              [src]="image.src"
+              [alt]="image.title"
+              class="slider-img"
+            >
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="landing d-flex justify-content-center align-items-center my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 p-5 bg-danger">
+        <div class="caption d-flex flex-column justify-content-center align-items-center">
+          <h2 class="text-capitalize mb-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          </h2>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At magnam saepe numquam ipsum quidem, molestiae provident obcaecati. Enim, ad quia distinctio molestias suscipit quasi deserunt eum reprehenderit repudiandae harum quibusdam!</p>
+        </div>
+      </div>
+      <div class="col-lg-6 p-5 bg-success">
+        <div class="slider-container">
+          <div *ngFor="let image of images; let i = index"
+            [ngClass]="{
+              'selected': i === selectedIndex,
+              'prev': i === (selectedIndex - 1 + images.length) % images.length,
+              'next': i === (selectedIndex + 1) % images.length,
+              'hideLeft': i < selectedIndex - 1,
+              'hideRight': i > selectedIndex + 1,
+            }"
+            class="slider-item"
+            (panleft)="showNext()"
+            (panright)="showPrev()">
+            <img
+              [src]="image.src"
+              [alt]="image.title"
+              class="slider-img w-75"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

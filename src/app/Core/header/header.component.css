@@ -3,7 +3,7 @@
   border-radius: 15px; /* Adjust this value as needed */
   padding: 10px; /* Reduce padding for a shorter header */
   margin: 5px; /* Add some margin for spacing */
-  background-color: var(--main-color); /* Adding background color */
+  /* background-color: var(--main-color); */
 }
 
 /* Make Font Awesome icons white */

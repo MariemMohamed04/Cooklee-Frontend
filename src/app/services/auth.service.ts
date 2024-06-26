@@ -37,7 +37,7 @@ export class AuthService {
 
 
 
-  
+
   login(email: string, password: string): Promise<{ success: boolean, error?: string }> {
     const url = `${this.baseUrl}/login`;
     return new Promise<{ success: boolean, error?: string }>((resolve) => {
@@ -82,5 +82,43 @@ export class AuthService {
       this.claims.Roles = this.user.Roles
     }
     return this.claims;
+  }
+
+  forgotPassword(email: string): Promise<{ success: boolean, message?: string, error?: string }> {
+    const url = `${this.baseUrl}/forgotpassword`;
+    return new Promise<{ success: boolean, message?: string, error?: string }>((resolve) => {
+      this.http.post(url, { email }).subscribe(
+        (response: any) => {
+          resolve({ success: true, message: response.message });
+        },
+        (error) => {
+          console.error("Error occurred during password reset request:", error);
+          let errorMessage = 'An error occurred. Please try again.';
+          if (error.error && error.error.error) {
+            errorMessage = error.error.error;
+          }
+          resolve({ success: false, error: errorMessage });
+        }
+      );
+    });
+  }
+
+  resetPassword(email: string, resetCode: string, password: string, confirmPassword: string): Promise<{ success: boolean, message?: string, error?: string }> {
+    const url = `${this.baseUrl}/resetpassword`;
+    return new Promise<{ success: boolean, message?: string, error?: string }>((resolve) => {
+      this.http.post(url, { email, resetCode, password, confirmPassword }).subscribe(
+        (response: any) => {
+          resolve({ success: true, message: response.message });
+        },
+        (error) => {
+          console.error("Error occurred during password reset:", error);
+          let errorMessage = 'An error occurred. Please try again.';
+          if (error.error && error.error.errors && error.error.errors.length > 0) {
+            errorMessage = error.error.errors[0];
+          }
+          resolve({ success: false, error: errorMessage });
+        }
+      );
+    });
   }
 }
