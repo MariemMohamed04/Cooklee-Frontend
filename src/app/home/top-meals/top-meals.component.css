@@ -98,9 +98,15 @@ h5, .h5, .h5 {
 
  */
 
- .card {
+.card {
   position: relative;
   overflow: hidden;
+  border: 3px solid var(--shadow);
+  transition: all 0.5s ease-in-out;
+}
+
+.card:hover {
+  border: 3px dashed var(--main-color)
 }
 
 .card-img {
@@ -117,35 +123,6 @@ h5, .h5, .h5 {
   animation: rotate 10s linear infinite;
 }
 
-.card-img::before {
-  content: "";
-  position: absolute;
-  width: 366px;
-  height: 356px;
-  border-radius: 50%;
-  background-color: #f5f5f5;
-  z-index: 1;
-  top: -169px;
-  left: -20px;
-  transition: all 0.5s ease-in-out;
-}
-
-.card:hover .card-img::before  {
-  background-color: var(--main-color);
-}
-
-.card-img::after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background-color: white;
-  z-index: 1;
-  top: 33px;
-  left: 12%;
-}
-
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -155,11 +132,28 @@ h5, .h5, .h5 {
   }
 }
 
+.btn-main {
+  padding: 15px 30px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 25px;
+  background-color: var(--main-color);
+  transition: all 0.4s ease-in-out;
+}
 
+.btn-main:hover {
+  border: 3px dashed var(--main-color);
+  background-color: var(--light-color);
+}
 
-
-
-
+.main-heading {
+  font-family: var(--font-secondary);
+  font-size: 50px;
+}
+/*
+.chef-section {
+  background-color: #F5EED9;
+} */
 
 
 

@@ -1,0 +1,8 @@
+.carousel-indicators [data-bs-target] {
+  background-color: var(--dark-color);
+}
+
+.main-heading {
+  font-family: var(--font-secondary);
+  font-size: 50px;
+}

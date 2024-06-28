@@ -1,6 +1,6 @@
-.caption h2 {
-  font-size: 50px;
-  letter-spacing: 8px;
+.caption h1 {
+  font-size: 60px;
+  // letter-spacing: 8px;
 }
 
 .slider-container {
@@ -59,7 +59,6 @@
     .slider-img {
       opacity: 1;
       transform: translateX(0%) scale(1);
-      cursor: grab;
     }
   }
 
@@ -76,3 +75,26 @@
     transform: translateX(50%) scale(0);
   }
 }
+
+.slider {
+  height: 70vh;
+}
+
+.text-main {
+  color: var(--main-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
