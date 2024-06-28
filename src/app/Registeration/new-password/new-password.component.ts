@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './new-password.component.html',
   styleUrl: './new-password.component.css'
 })
+
 export class NewPasswordComponent implements OnInit {
   email: string = '';
   resetCode: string = '';
@@ -26,20 +27,27 @@ export class NewPasswordComponent implements OnInit {
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
+    // Retrieve email from query parameters
     this.route.queryParams.subscribe(params => {
       this.email = params['email'] || '';
     });
   }
 
   resetPassword() {
-    this.authService.resetPassword(this.email, this.resetCode, this.newPassword, this.confirmPassword).then((response) => {
-      if (response.success) {
-        this.message = response.message!;
-        // Optionally redirect to login page after successful reset
-        setTimeout(() => this.router.navigate(['/login']), 3000);
-      } else {
-        this.error = response.error!;
-      }
-    });
+    // Call AuthService to reset password
+    this.authService.resetPassword(this.email, this.resetCode, this.newPassword, this.confirmPassword)
+      .then((response) => {
+        if (response.success) {
+          this.message = response.message!;
+          // Optionally redirect to login page after successful reset
+          setTimeout(() => this.router.navigate(['/login']), 3000);
+        } else {
+          this.error = response.error!;
+        }
+      })
+      .catch((error) => {
+        console.error("Error occurred during password reset:", error);
+        this.error = 'An error occurred. Please try again.';
+      });
   }
 }

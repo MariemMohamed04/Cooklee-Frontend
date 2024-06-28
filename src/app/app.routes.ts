@@ -19,6 +19,8 @@ import { PaymentComponent } from './checkout/payment/payment.component';
 import { PaymentDoneComponent } from './checkout/payment-done/payment-done.component';
 import { ResetPasswordComponent } from './Registeration/reset-password/reset-password.component';
 import { HomeMealsComponent } from './home/home-meals/home-meals.component';
+import { NewPasswordComponent } from './Registeration/new-password/new-password.component';
+import { OrderStatusComponent } from './checkout/order-status/order-status.component';
 export const routes: Routes = [
 
 
@@ -74,6 +76,7 @@ export const routes: Routes = [
   { path: "register", component: RegisterFormComponent },
   { path: "login", component: LoginFormComponent },
   { path: "reset", component: ResetPasswordComponent },
+  { path: "repassword", component: NewPasswordComponent },
   { path: 'ClientForm', component: ClientProfleFormComponent },
 
   { path: 'Orders', component: ClientOrderComponent },
@@ -94,12 +97,13 @@ export const routes: Routes = [
       { path: 'requestedMeals', component: RequestedMealsComponent },
     ]
   },
-  { path: "checkout", component: CheckoutComponent },
-  { path: "Cart", component: CartComponent },
+  { path: "order", component: CheckoutComponent },
+  { path: "cart", component: CartComponent },
   { path: "favorite", component: FavoriteComponent },
 
   { path: "meals", component:MealListComponent },
   { path: "Payment", component:PaymentComponent },
+  { path: "checkout", component:OrderStatusComponent},
   { path: "PaymentDone", component:PaymentDoneComponent},
   {
     path: 'Meals/Details/:id',

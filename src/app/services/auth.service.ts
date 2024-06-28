@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { session } from '../models/session';
 import { jwtDecode } from 'jwt-decode';
+import { Session } from '../interfaces/Session';
 
 @Injectable({
   providedIn: 'root'
@@ -103,18 +104,35 @@ export class AuthService {
     });
   }
 
+  getNewClaims(): any {
+    let token = localStorage.getItem("token");
+    if (typeof token === 'string' && token) {
+      this.claims.isAuthenticated = true;
+      this.user = jwtDecode(token);
+      this.claims.Email = this.user?.Email;
+      this.claims.Name = this.user.Name;
+      this.claims.UserId = this.user.UserId;
+      this.claims.Roles = this.user.Roles;
+    }
+    return this.claims;
+  }
+
   resetPassword(email: string, resetCode: string, password: string, confirmPassword: string): Promise<{ success: boolean, message?: string, error?: string }> {
     const url = `${this.baseUrl}/resetpassword`;
+    const userId = this.getNewClaims().UserId; // Get the userId from claims
+
     return new Promise<{ success: boolean, message?: string, error?: string }>((resolve) => {
-      this.http.post(url, { email, resetCode, password, confirmPassword }).subscribe(
+      this.http.post(url, { email, resetCode, password, confirmPassword, userId }).subscribe(
         (response: any) => {
           resolve({ success: true, message: response.message });
         },
-        (error) => {
+        (error: HttpErrorResponse) => {
           console.error("Error occurred during password reset:", error);
           let errorMessage = 'An error occurred. Please try again.';
           if (error.error && error.error.errors && error.error.errors.length > 0) {
             errorMessage = error.error.errors[0];
+          } else if (error.error && error.error.error) {
+            errorMessage = error.error.error;
           }
           resolve({ success: false, error: errorMessage });
         }
