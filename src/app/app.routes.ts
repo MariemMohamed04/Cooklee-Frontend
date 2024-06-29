@@ -21,6 +21,7 @@ import { ResetPasswordComponent } from './Registeration/reset-password/reset-pas
 import { HomeMealsComponent } from './home/home-meals/home-meals.component';
 import { NewPasswordComponent } from './Registeration/new-password/new-password.component';
 import { OrderStatusComponent } from './checkout/order-status/order-status.component';
+import { OrderComponent } from './checkout/order/order.component';
 export const routes: Routes = [
 
 
@@ -98,6 +99,7 @@ export const routes: Routes = [
     ]
   },
   { path: "order", component: CheckoutComponent },
+  { path: "Check-Order", component: OrderComponent },
   { path: "cart", component: CartComponent },
   { path: "favorite", component: FavoriteComponent },
 

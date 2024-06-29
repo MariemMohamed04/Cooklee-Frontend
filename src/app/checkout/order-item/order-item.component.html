@@ -8,24 +8,15 @@
     <tr>
       <th>Meal</th>
       <th>Meal Name</th>
-      <th>Total</th>
+      <th>Price</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngFor="let item of cartItems">
     <tr>
-      <td class="favourite-item-img"><img src="../../assets/imgs/Meals/pic1.jpg" alt="/"></td>
-      <td class="favourite-item-name">Cheese Pizza</td>
-      <td class="favourite-item-price">$35.00</td>
-    </tr>
-    <tr>
-      <td class="favourite-item-img"><img src="../../assets/imgs/Meals/pic1.jpg" alt="/"></td>
-      <td class="favourite-item-name">Cheese Pizza</td>
-      <td class="favourite-item-price">$35.00</td>
-    </tr>
-    <tr>
-      <td class="favourite-item-img"><img src="../../assets/imgs/Meals/pic1.jpg" alt="/"></td>
-      <td class="favourite-item-name">Cheese Pizza</td>
-      <td class="favourite-item-price">$35.00</td>
+      <td class="favourite-item-img"><img [src]="item.image" alt="{{item.mealName}}" /></td>
+      <td class="favourite-item-name">{{item.mealName}}</td>
+      <td class="favourite-item-price">{{item.price}}$</td>
     </tr>
   </tbody>
 </table>
+<a routerLink="/cart" routerLinkActive="active" class="fs-5 btn btn-dark w-100">Change</a>

@@ -52,8 +52,8 @@ export class LoginFormComponent /*implements OnInit*/ {
       .then(({ success, error }) => {
         if (success) {
           this.isLoading = true;
-          this._router.navigate(['/ClientForm']);
-          //this._router.navigate(['/meals']);
+          // this._router.navigate(['/ClientForm']);
+          this._router.navigate(['/meals']);
         } else {
           this.errorMessage = error || 'Logging in failed. Please try again.';
           // this.isNotValidForm = true;

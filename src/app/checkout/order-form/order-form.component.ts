@@ -103,8 +103,8 @@ export class OrderFormComponent implements OnInit {
     this.orderService.createOrder(orderToCreate).subscribe({
       next: (order) => {
         console.log('Order created successfully:', order);
-        this.router.navigateByUrl("/Payment")
-        
+        this.router.navigateByUrl("/Check-Order")
+
       },
       error: (error) => {
         console.error('Error creating order:', error);
