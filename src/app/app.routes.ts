@@ -19,6 +19,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout/checkout.component';
 import { PaymentComponent } from './checkout/payment/payment.component';
 import { PaymentDoneComponent } from './checkout/payment-done/payment-done.component';
+import { ChefswithtopratedmealsComponent } from './chefswithtopratedmeals/chefswithtopratedmeals.component';
 export const routes: Routes = [
 
 
@@ -104,5 +105,6 @@ export const routes: Routes = [
     component: MealDetailsComponent,
     title: 'Details of meal',
   },
+  {path :'chefswithmeals', component: ChefswithtopratedmealsComponent},
   { path:'**',component:NotfoundComponent }
 ]
