@@ -1,48 +1,58 @@
-.my-card {
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 30px);
-    gap: 20px;
-    /* padding: 20px; */
-    /* justify-content: center; */
-    align-items: center;
-    /* width: calc(100%/3); */
-  }
-  .my-card img {
+.chef-card {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  padding: 20px;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chef-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.chef-details {
+  text-align: center;
+}
+
+.chef-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.meal-details {
+  margin-top: 10px;
+}
+
+.meal-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.meal-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.meal-price,
+.meal-rate {
+  display: flex;
+  align-items: center;
+}
+
+.meal-price i,
+.meal-rate i {
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .chef-card {
     width: 100%;
-    height: auto;
   }
-  .my-card .description {
-    font-size: 0.9rem;
-  }
-  .my-card .tags {
-    font-size: 0.8rem;
-  }
-  
-  @media (max-width: 768px) {
-    .container .card {
-      width: 100%;
-      /* max-width: 500px; */
-    }
-  }
-  
-  .btn-favorite {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .btn-favorite i.fa-heart {
-    color: #ccc; /* Default heart color */
-  }
-  
-  .btn-favorite i.fa-heart.active {
-    color: red; /* Red color when active (meal is in favorites) */
-  }
-  
-  .btn-favorite[disabled] {
-    cursor: not-allowed;
-  }
-  
+}

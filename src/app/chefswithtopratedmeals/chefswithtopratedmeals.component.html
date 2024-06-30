@@ -1,29 +1,21 @@
 <div *ngFor="let chef of chefs" class="chef-card">
-    <div>
-      <div>
-        <img [src]="chef.idImgURL" alt="Chef Image" />
-      </div>
-      <div>
-        <div class="page-name">
-          {{chef.name}}
+  <div class="chef-image">
+    <img [src]="chef.idImgURL" alt="Chef Image" />
+  </div>
+  <div class="chef-details">
+    <h2 class="chef-name">{{ chef.name }}</h2>
+    <div *ngFor="let chefMeal of chef.topMeals" class="meal-details">
+      <h5 class="meal-name">{{ chefMeal.mealName }}</h5>
+      <div class="meal-info">
+        <div class="meal-price">
+          <i class="fa-solid fa-coins"></i>
+          <p>{{ chefMeal.price }} Egp</p>
         </div>
-        <!-- <div *ngIf="chef.TopMeals.length > 0"> -->
-          <div *ngFor="let chefMeal of chef.topMeals">
-            <div class="details ps-1">
-              <h5 class="card-title">{{chefMeal.mealName}}</h5>
-              <div>
-                <div class="d-inline-flex me-3">
-                  <i class="fa-solid fa-coins"></i>
-                  <p class="ps-1"><span>{{chefMeal.price}}</span> Egp</p>
-                </div>
-                <div class="d-inline-flex">
-                  <i class="fa-solid fa-hand-holding"></i>
-                  <p class="ps-10">{{chefMeal.rate}} <span>rate</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="meal-rate">
+          <i class="fa-solid fa-hand-holding"></i>
+          <p>{{ chefMeal.rate }} <span>rate</span></p>
+        </div>
       </div>
     </div>
   </div>
-  
+</div>

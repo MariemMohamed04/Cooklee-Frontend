@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ChefswithtopratedmealsComponent implements OnInit {
   chefs: ChefsWithTopRatedMealsDto[] = [];
+  isLoading = true;
+  error = '';
 
   constructor(private chefsWithTopRatedMealsService: ChefsWithTopRatedMealsService) { }
 
@@ -19,11 +21,16 @@ export class ChefswithtopratedmealsComponent implements OnInit {
   }
 
   getAllChefsWithTopRatedMeals(): void {
-    this.chefsWithTopRatedMealsService.getAllChefsWithTopRatedMeals().subscribe((data: ChefsWithTopRatedMealsDto[]) => {
-      this.chefs = data;
-      console.log(data); // Ensure data is logged correctly
-      console.log(this.chefs); // Ensure data is logged correctly
-
+    this.chefsWithTopRatedMealsService.getAllChefsWithTopRatedMeals().subscribe({
+      next: (data: ChefsWithTopRatedMealsDto[]) => {
+        this.chefs = data;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.error = 'Failed to load chefs data';
+        this.isLoading = false;
+        console.error(err);
+      }
     });
   }
 }
