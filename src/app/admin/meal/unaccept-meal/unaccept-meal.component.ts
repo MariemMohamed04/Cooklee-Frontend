@@ -3,12 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { Meal } from '../../../models/meal';
 import { CommonModule } from '@angular/common';
 import { Chef } from '../../../models/chef';
+import { Feedback } from '../../../models/feedback';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-unaccept-meal',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './unaccept-meal.component.html',
   styleUrl: './unaccept-meal.component.css'
@@ -53,4 +56,25 @@ export class UnacceptMealComponent implements OnInit {
       }
     );
   }
+
+  declinePage(mealId: number): void {
+    this.declinedMap[mealId] = true;
+  }
+
+  sendFeedback(chefId: number, mealId: number): void {
+    const feedback: Feedback = {
+      body : this.feedbackText
+    }
+    this.adminMealService.SendFeedback(chefId, mealId, feedback).subscribe(
+      (response) => {
+        console.log(response);
+        alert('Feedback sent successfully.');
+      },
+      (error) => {
+        console.error('Error sending feedback', error);
+        alert('Failed to send feedback.');
+      }
+    );
+  }
+
 }

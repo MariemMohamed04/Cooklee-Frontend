@@ -23,15 +23,14 @@ export class AdminMealService {
   }
 
   AcceptMeal(chefId: number, mealId: number): Observable<boolean> {
-    return this.http.put<boolean>(`${this.baseUrl}/ActivatePage`, null, {
-      params: { chefId: chefId.toString(), mealId: mealId.toString() }
-    }).pipe(catchError(this.handleError));
+    const url = `${this.baseUrl}/AcceptMeal?chefId=${chefId}&mealId=${mealId}`;
+    return this.http.post<boolean>(url, null).pipe(catchError(this.handleError));
   }
 
-  // SendFeedback(chefId: number, body: Feedback): Observable<any> {
-  //   const url = `${this.baseUrl}/SendFeedback?chefId=${chefId}`;
-  //   return this.http.post<any>(url, body)
-  //     .pipe(catchError(this.handleError));
-  // }
+  SendFeedback(chefId: number,  mealId: number, body: Feedback): Observable<any> {
+    const url = `${this.baseUrl}/SendFeedback?chefId=${chefId}&mealId=${mealId}`;
+    return this.http.post<any>(url, body)
+      .pipe(catchError(this.handleError));
+  }
 
 }

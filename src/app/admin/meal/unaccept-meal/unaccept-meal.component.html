@@ -49,6 +49,12 @@
                       <div class="fw-bold">{{meal.tags}}</div>
                     </div>
                   </div>
+                  <div class="mb-3">
+                    <div class="d-flex flex-column">
+                      <div class="fw-light mb-1">Chef Id:</div>
+                      <div class="fw-bold">{{meal.chefPageId}}</div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-6">
                   <div class="fw-light mb-1">Meal Image:</div>
@@ -67,9 +73,9 @@
                 </button>
               </div>
               <div class="col-6">
-                <!-- <button type="button" class="btn btn-danger w-100" (click)="declinePage(chef.id)">
+                <button type="button" class="btn btn-danger w-100" (click)="declinePage(meal.id)">
                   Decline
-                </button> -->
+                </button>
               </div>
             </div>
           </div>
@@ -77,11 +83,11 @@
         <div [id]="'flush-collapseOne' + meal.id" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
             <div class="row">
-              <!-- <textarea [(ngModel)]="feedbackText" class="form-control" placeholder="Enter feedback"
-                [disabled]="!declinedMap[chef.id]"></textarea>
-              <button class="btn btn-primary mt-2" [disabled]="!declinedMap[chef.id]" (click)="sendFeedback(chef.id)">
+              <textarea [(ngModel)]="feedbackText" class="form-control" placeholder="Enter feedback"
+                [disabled]="!declinedMap[meal.id]"></textarea>
+              <button class="btn btn-primary mt-2" [disabled]="!declinedMap[meal.id]" (click)="sendFeedback(meal.chefPageId, meal.id)">
                 Send Feedback
-              </button> -->
+              </button>
             </div>
           </div>
         </div>
@@ -90,4 +96,3 @@
   </li>
   </ul>
 </div>
-<!--  -->

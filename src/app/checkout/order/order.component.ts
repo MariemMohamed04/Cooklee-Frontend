@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { PaymentService } from '../../services/payment.service';
 import { OrderItemComponent } from '../order-item/order-item.component';
 import { OrderTotalComponent } from '../order-total/order-total.component';
+import { OrderPaymentComponent } from '../order-payment/order-payment.component';
 
 @Component({
   selector: 'app-order',
@@ -14,7 +15,8 @@ import { OrderTotalComponent } from '../order-total/order-total.component';
     [
       RouterLink,
       OrderItemComponent,
-      OrderTotalComponent
+      OrderTotalComponent,
+      OrderPaymentComponent
     ],
   templateUrl: './order.component.html',
   styleUrl: './order.component.css'

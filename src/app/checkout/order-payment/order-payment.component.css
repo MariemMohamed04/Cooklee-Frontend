@@ -28,23 +28,7 @@
   height: 6px;
   border-radius: 3px;
   left: 12px;
-  width: 70px;
+  width: 40px;
   height: 4px;
   background: var(--main-color);
-}
-
-.meal-preview {
-  padding: 50px 50px;
-}
-
-.meal-preview h3 {
-  font-size: 26px;
-  font-family: var(--font-secondary);
-  /* color: var(--main-color); */
-
-}
-
-.meal-preview h3 span {
-  /* color: var(--dark-color); */
-  font-family: var(--font-family);
 }

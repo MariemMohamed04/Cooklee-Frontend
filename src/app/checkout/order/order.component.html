@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row gy-5">
     <div class="col-md-6">
       <div class="d-flex justify-content-between">
         <div class="widget-title">
@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="wrapper">
-        <div class="card" style="">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">{{shipmentDetails.firstName}} {{shipmentDetails.lastName}}</h5>
             <h5 class="card-title">{{shipmentDetails.phoneNumber}}</h5>
@@ -20,9 +20,13 @@
       </div>
     </div>
     <div class="col-md-6">
+      <app-order-total></app-order-total>
+    </div>
+    <div class="col-md-6">
       <app-order-item></app-order-item>
     </div>
-    <div class="col-md-6"></div>
-    <div class="col-md-6"><app-order-total></app-order-total></div>
+    <div class="col-md-6">
+      <app-order-payment></app-order-payment>
+    </div>
   </div>
 </div>
