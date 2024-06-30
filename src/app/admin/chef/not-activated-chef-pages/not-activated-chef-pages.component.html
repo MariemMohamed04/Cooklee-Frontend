@@ -72,19 +72,15 @@
           <div class="accordion-body">
             <div class="row">
               <textarea [(ngModel)]="feedbackText" class="form-control" placeholder="Enter feedback"
-              [disabled]="!declinedMap[chef.id]"></textarea>
-    <button class="btn btn-primary mt-2" [disabled]="!declinedMap[chef.id]"
-            (click)="sendFeedback(chef.id)">
-      Send Feedback
-    </button>
+                [disabled]="!declinedMap[chef.id]"></textarea>
+              <button class="btn btn-primary mt-2" [disabled]="!declinedMap[chef.id]" (click)="sendFeedback(chef.id)">
+                Send Feedback
+              </button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </li>
-
-
   </ul>
 </div>

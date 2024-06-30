@@ -3,6 +3,7 @@ import { Chef } from './../../../models/chef';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Feedback } from '../../../models/feedback';
 
 @Component({
   selector: 'app-not-activated-chef-pages',
@@ -58,139 +59,18 @@ export class NotActivatedChefPagesComponent implements OnInit {
   }
 
   sendFeedback(chefId: number): void {
-    if (!this.feedbackText.trim()) {
-      console.error('Feedback text is empty.');
-      return;
+    const feedback: Feedback = {
+      body : this.feedbackText
     }
-
-    this.adminChefService.sendFeedback(chefId, this.feedbackText).subscribe(
+    this.adminChefService.SendFeedback(chefId, feedback).subscribe(
       (response) => {
-        console.log('Feedback sent successfully:', response);
-        // Optionally handle success feedback, clear fields, etc.
+        console.log(response);
+        alert('Feedback sent successfully.');
       },
       (error) => {
-        console.error('Error sending feedback:', error);
-        // Handle error feedback if needed
+        console.error('Error sending feedback', error);
+        alert('Failed to send feedback.');
       }
     );
   }
 }
-
-
-  // sendFeedback(chefId:number): void {
-  //   if (!this.feedbackText) {
-  //     alert('Please enter feedback text.');
-  //     return;
-  //   }
-
-  //   this.adminChefService.SendFeedback(chefId, this.feedbackText).subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       alert('Feedback sent successfully.');
-  //     },
-  //     (error) => {
-  //       console.error('Error sending feedback', error);
-  //       alert('Failed to send feedback.');
-  //     }
-  //   );
-  // }
-
-  // sendFeedback(chefId: number): void {
-  //   if (!this.feedbackText) {
-  //     alert('Please enter feedback text.');
-  //     return;
-  //   }
-
-  //   this.adminChefService.SendFeedback(chefId, this.feedbackText).subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       alert('Feedback sent successfully.');
-  //     },
-  //     (error) => {
-  //       console.error('Error sending feedback', error);
-  //       alert('Failed to send feedback.');
-  //     }
-  //   );
-  // }
-
-
-  // submitFeedback(chefId: number, feedbackText: string) {
-  //   if (!this.feedbackText) {
-  //     alert('Please enter feedback text.');
-  //     return;
-  //   }
-  //   this.adminChefService.sendFeedback(chefId, feedbackText).subscribe(
-  //     response => {
-  //       console.log('Feedback sent successfully:', response);
-  //       // Handle success, e.g., show a success message
-  //     },
-  //     error => {
-  //       console.error('Error sending feedback:', error);
-  //       // Handle error, e.g., show an error message
-  //     }
-  //   );
-  // }
-
-  // submitFeedback(chefId: number, feedbackText: string) {
-  //   if (!feedbackText.trim()) {
-  //     alert('Please enter feedback text.');
-  //     return;
-  //   }
-
-  //   const formData = new FormData();
-  //   formData.append('chefId', chefId.toString());
-  //   formData.append('feedback', feedbackText);
-
-  //   this.adminChefService.sendFeedback(chefId, formData).subscribe(
-  //     response => {
-  //       console.log('Feedback sent successfully:', response);
-  //       // Handle success, e.g., show a success message
-  //     },
-  //     error => {
-  //       console.error('Error sending feedback:', error);
-  //       // Handle error, e.g., show an error message
-  //     }
-  //   );
-  // }
-
-  // submitFeedback(chefId: number, feedbackText: string) {
-  //   if (!feedbackText.trim()) {
-  //     alert('Please enter feedback text.');
-  //     return;
-  //   }
-
-  //   const formData = new FormData();
-  //   formData.append('chefId', chefId.toString());
-  //   formData.append('feedback', feedbackText);
-
-  //   this.adminChefService.se(chefId, formData).subscribe(
-  //     response => {
-  //       console.log('Feedback sent successfully:', response);
-  //       // Handle success, e.g., show a success message
-  //     },
-  //     error => {
-  //       console.error('Error sending feedback:', error);
-  //       // Handle error, e.g., show an error message
-  //     }
-  //   );
-  // }
-
-  // sendFeedback(): void {
-  //   if (!this.feedbackText) {
-  //     alert('Please enter feedback text.');
-  //     return;
-  //   }
-
-  //   this.adminChefService.SendFeedback(chefId, this.feedbackText).subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       alert('Feedback sent successfully.');
-  //     },
-  //     (error) => {
-  //       console.error('Error sending feedback', error);
-  //       alert('Failed to send feedback.');
-  //     }
-  //   );
-  // }
-
-
