@@ -11,10 +11,11 @@
   --font-title: "Lobster", sans-serif;
   --font-secondary: "Poetsen One", sans-serif;
   --small-font: 18px;
+  --light-grey-color: #DEE2E6;
 }
 
 body {
-  font-family: var(--font-secondary) !important;
+  font-family: var(--font-family) !important;
 }
 
 a {

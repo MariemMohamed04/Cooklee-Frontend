@@ -1,7 +1,7 @@
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-md-3 border-right mt-5 mr-2">
-          
+
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
@@ -12,11 +12,11 @@
                         <h6 class="card-text">Page Name:</h6>
                         <p class="card-text">{{chef.displayName}}</p>
                     </div>
-                  
+
                     <br>
                     <div>
                         <h6 class="card-text">Phone Number:</h6>
-                        <p class="card-text">{{chef.PhoneNumber}}</p>
+                        <p class="card-text">{{chef.phoneNumber}}</p>
                     </div>
                     <br>
                     <div>
@@ -36,7 +36,7 @@
                     <br>
                 </div>
             </div>
-        
+
         </div>
         <!-- <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -51,7 +51,7 @@
                             <div *ngIf="PageName.errors?.['required']">Page Name is required.</div>
                         </div>
                     </div>
-               
+
                     <div class="mt-5 text-center">
                         <button class="btn btn-primary profile-button" type="submit" [disabled]="profileForm.invalid">Update Page</button>
                     </div>
@@ -74,20 +74,20 @@
                             <div *ngIf="PageName.errors?.['required']">Page Name is required.</div>
                         </div>
                     </div>
-        
+
                     <div class="col-md-12 mt-3">
                         <label class="labels">Phone Number</label>
-                        <input type="text" class="form-control" name="PhoneNumber" [(ngModel)]="chef.PhoneNumber" #PhoneNumber="ngModel"  required>
+                        <input type="text" class="form-control" name="PhoneNumber" [(ngModel)]="chef.phoneNumber" #PhoneNumber="ngModel"  required>
                         <div *ngIf="PhoneNumber.invalid && (PhoneNumber.dirty || PhoneNumber.touched)" class="text-danger">
                             <div *ngIf="PhoneNumber.errors?.['required']">Phone Number is required.</div>
                         </div>
                     </div>
-        
+
                     <div class="col-md-12 mt-3">
                         <label class="labels">Wallet Number</label>
                         <input type="text" class="form-control" name="WalletNumber" [(ngModel)]="chef.walletNumber">
                     </div>
-        
+
                     <div class="col-md-12 mt-3">
                         <label class="labels">Full Address</label>
                         <textarea class="form-control" name="FullAddress" [(ngModel)]="chef.fullAddress" #FullAddress="ngModel" required></textarea>
@@ -95,7 +95,7 @@
                             <div *ngIf="FullAddress.errors?.['required']">Full Address is required.</div>
                         </div>
                     </div>
-        
+
                     <div class="col-md-12 mt-3">
                         <label class="labels">Payment Method</label>
                         <select class="form-control" name="PaymentMethod" [(ngModel)]="chef.paymentMethod"  #PaymentMethod="ngModel" required>
@@ -105,7 +105,7 @@
                             <div *ngIf="PaymentMethod.errors?.['required']">Payment Method is required.</div>
                         </div>
                     </div>
-        
+
                     <div class="mt-5 text-center">
                         <button class="btn btn-primary profile-button" type="submit" [disabled]="profileForm.invalid">Update Page</button>
                     </div>
@@ -116,13 +116,13 @@
 
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img class="rounded-circle mt-5" width="150px" [src]="chef.IdImgURL">
+                <img class="rounded-circle mt-5" width="150px" [src]="chef.idImgURL">
                 <span class="font-weight-bold">{{chef.displayName}} </span>
 
                 <span><input type="file" class="file-input" (change)="UpdatePhoto($event)"></span>
             </div>
         </div>
-        
+
     </div>
 </div>
 

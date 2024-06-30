@@ -22,6 +22,9 @@ import { HomeMealsComponent } from './home/home-meals/home-meals.component';
 import { NewPasswordComponent } from './Registeration/new-password/new-password.component';
 import { OrderStatusComponent } from './checkout/order-status/order-status.component';
 import { OrderComponent } from './checkout/order/order.component';
+import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
+import { ActivatedCheffPagesComponent } from './admin/chef/activated-cheff-pages/activated-cheff-pages.component';
+import { NotActivatedChefPagesComponent } from './admin/chef/not-activated-chef-pages/not-activated-chef-pages.component';
 export const routes: Routes = [
 
 
@@ -72,7 +75,7 @@ export const routes: Routes = [
   // { path: "register", component: RegisterFormComponent },
   // { path: "login", component: LoginFormComponent },
   // { path: 'ClientForm', component: ClientProfleFormComponent },
-  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "", redirectTo: "admin", pathMatch: "full" },
   { path: "home", component: HomeMealsComponent },
   { path: "register", component: RegisterFormComponent },
   { path: "login", component: LoginFormComponent },
@@ -111,6 +114,14 @@ export const routes: Routes = [
     path: 'Meals/Details/:id',
     component: MealDetailsComponent,
     title: 'Details of meal',
+  },
+  {
+    path: 'admin', component: AdminLayoutComponent, children: [
+
+      { path: '', component: ActivatedCheffPagesComponent },
+      { path: 'active-chefs', component: ActivatedCheffPagesComponent },
+      { path: 'inactive-chefs', component: NotActivatedChefPagesComponent },
+    ]
   },
   { path:'**',component:NotfoundComponent }
 ]

@@ -1,17 +1,19 @@
 export class Chef {
     constructor(
+        public id: number,
         public displayName:string,
         public isActive:boolean,
-        public IdImgURL:string,
-        public PhoneNumber:string,
+        public idImgURL:string,
+        public phoneNumber:string,
         public walletNumber:string,
         public fullAddress:string,
         public paymentMethod:ChefPaymentMethod,
+        public email:string
     ){}
 }
 
 
-export enum ChefPaymentMethod { 
+export enum ChefPaymentMethod {
     Cash="Cash",
     MobileWallet="Mobile Wallet",
     Card="Card",

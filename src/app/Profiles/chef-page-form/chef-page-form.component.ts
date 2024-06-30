@@ -35,19 +35,19 @@ export class ChefPageFormComponent  implements OnInit{
    var reader = new FileReader();
   reader.readAsDataURL(e.target.files[0]);
   reader.onload=(event:any)=>{
-  this.chef.IdImgURL=event.target.result;
+  this.chef.id=event.target.result;
 
 }}
 
 }
- 
+
 
   UpdatePage(){
     this.chefService.updatePage(this.id,this.chef).subscribe(
       data => this.router.navigateByUrl("/ChefPage"),
       error => console.error('Error: ', error)
     );
-  
+
   }
 
 

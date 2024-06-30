@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { addTokenInterceptor } from './add-token-interceptor.interceptor';
+import { provideAnimations } from '@angular/platform-browser/animations';
 export const appConfig: ApplicationConfig = {
   providers:
   [
@@ -12,6 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     BrowserModule,
     provideHttpClient(withInterceptors([addTokenInterceptor])),
-    HammerModule
+    HammerModule,
+    provideAnimations(),
   ]
 };

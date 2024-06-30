@@ -1,0 +1,116 @@
+<div class="wrapper d-flex align-items-stretch">
+  <nav id="sidebar" [class.active]="isSidebarActive">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn" (click)="toggleSidebar()">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+        </button>
+    </div>
+    <div class="p-3">
+        <div class="d-flex align-items-center mb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+            <a href="index.html" class="brand-link mb-3 text-center">
+              <img src="../../../assets/imgs/logo/8.png" class="w-50" alt="">
+            </a>
+        </div>
+        <ul class="list-unstyled components mb-5 mt-3">
+            <li>
+                <a>
+                  <i class="fa-solid fa-house pr-3"></i> Home
+                </a>
+            </li>
+            <li>
+              <a (click)="toggleDropdown('chefPages')" aria-expanded="false" class="dropdown-toggle d-flex align-items-center">
+                <div>
+                  <i class="fa-solid fa-user-ninja pe-2"></i>Chef Pages
+                </div>
+                <div class="ms-auto">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </a>
+              <ul [@toggleDropdown]="isDropdownExpanded['chefPages'] ? 'expanded' : 'collapsed'" class="list-unstyled">
+                <li>
+                  <a [routerLink]="['/admin', 'active-chefs']" routerLinkActive="active">Activated Chef Pages</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/admin','inactive-chefs']" routerLinkActive="active">Not Activated Chef Pages</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a (click)="toggleDropdown('meals')" aria-expanded="false" class="dropdown-toggle d-flex align-items-center">
+                <div>
+                  <i class="fa-solid fa-bowl-food pe-2"></i>Meals
+                </div>
+                <div class="ms-auto">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </a>
+              <ul [@toggleDropdown]="isDropdownExpanded['meals'] ? 'expanded' : 'collapsed'" class="list-unstyled">
+                <li>
+                  <a>Accepted Meals</a>
+                </li>
+                <li>
+                  <a>Unaccepted Meals</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a (click)="toggleDropdown('orders')" aria-expanded="false" class="dropdown-toggle d-flex align-items-center">
+                <div>
+                  <i class="fa-solid fa-file-lines pe-2"></i>Orders
+                </div>
+                <div class="ms-auto">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </a>
+
+              <ul [@toggleDropdown]="isDropdownExpanded['orders'] ? 'expanded' : 'collapsed'" class="list-unstyled">
+                <li>
+                  <a>Accepted Meals</a>
+                </li>
+                <li>
+                  <a>Unaccepted Meals</a>
+                </li>
+              </ul>
+            </li>
+
+
+        </ul>
+    </div>
+</nav>
+
+
+  <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5 pt-5">
+    <div id="content" class="p-4 p-md-5 pt-5">
+      <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+          <!-- <section class="content-header">
+              <div class="container-fluid">
+                  <div class="row mb-2">
+                      <div class="col-sm-6">
+                          <ol class="breadcrumb float-sm-right">
+                              <li class="breadcrumb-item"><a href="#" class="text-secondary">Home</a></li>
+                          </ol>
+                      </div>
+                  </div>
+              </div>
+          </section> -->
+
+          <section class="content mb-3">
+            <div class="container">
+              <router-outlet></router-outlet>
+              <!-- <app-activated-cheff-pages></app-activated-cheff-pages> -->
+              <!-- <app-not-activated-chef-pages></app-not-activated-chef-pages> -->
+            </div>
+          </section>
+      </div>
+  </div>
+  </div>
+
+</div>
+<footer class="footer mt-auto py-3">
+<div class="container text-center">
+  <span class="text-black text-uppercase">© 2024 - All Right Reserved.</span>
+</div>
+</footer>
