@@ -25,6 +25,7 @@ import { OrderComponent } from './checkout/order/order.component';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 import { ActivatedCheffPagesComponent } from './admin/chef/activated-cheff-pages/activated-cheff-pages.component';
 import { NotActivatedChefPagesComponent } from './admin/chef/not-activated-chef-pages/not-activated-chef-pages.component';
+import { UnacceptMealComponent } from './admin/meal/unaccept-meal/unaccept-meal.component';
 export const routes: Routes = [
 
 
@@ -121,6 +122,7 @@ export const routes: Routes = [
       { path: '', component: ActivatedCheffPagesComponent },
       { path: 'active-chefs', component: ActivatedCheffPagesComponent },
       { path: 'inactive-chefs', component: NotActivatedChefPagesComponent },
+      { path: 'meals-requests', component: UnacceptMealComponent },
     ]
   },
   { path:'**',component:NotfoundComponent }
