@@ -30,10 +30,10 @@ export class UnacceptMealComponent implements OnInit {
     this.adminMealService.GetUnAcceptedMeals().subscribe(
       (data: Meal[]) => {
         this.meals = data;
-        alert('Meals loaded');
+        console.log('Meals loaded');
       },
       (error) => {
-        alert('Error loading meals');
+        console.error('Error loading meals', error);
       }
     );
   }
@@ -42,7 +42,7 @@ export class UnacceptMealComponent implements OnInit {
     this.adminMealService.AcceptMeal(chefId, mealId).subscribe(
       (result: boolean) => {
         if (result) {
-          alert('Page activated successfully.');
+          alert('Meal accepted successfully.');
           this.loadMeals();
         } else {
           alert('Failed to accept meal.');
