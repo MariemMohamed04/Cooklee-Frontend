@@ -14,7 +14,6 @@ import { Chef } from '../../../models/chef';
   styleUrl: './unaccept-meal.component.css'
 })
 export class UnacceptMealComponent implements OnInit {
-  chefs: Chef[] = [];
   meals: Meal[] = [];
   feedbackText: string = '';
   declinedMap: { [key: number]: boolean } = {};
