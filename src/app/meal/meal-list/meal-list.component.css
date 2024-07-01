@@ -1,131 +1,231 @@
-.my-card {
-  border-radius: 10px;
+/* Start: Global Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* End: Global Styles */
+
+/* Start: Root Variables */
+:root {
+  --main-color: #cf6127;
+}
+
+/* End: Root Variables */
+
+/* Start: Page Layout */
+.page {
+  min-height: 100vh;
+  flex-direction: row;
+}
+
+/* End: Page Layout */
+
+/* Start: Sidebar Styles */
+aside.bg-light {
   display: flex;
   flex-direction: column;
-  width: calc(100% - 30px);
-  gap: 20px;
-  /* padding: 20px; */
-  /* justify-content: center; */
-  align-items: center;
-  /* width: calc(100%/3); */
-}
-.container-card {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  /* max-width: 300px; */
+  /* width: 30%; */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
 }
 
-.meal-card {
-  /* flex: 0 0 calc(25% - 15px); /*Adjusting for margins*/
-  /* min-width: 250px;
-  max-width: 450px; */
-  margin-bottom: 25px; /* Adjust based on your design needs */
-}
-.my-card .tags {
-  font-size: 12px;
-}
-.my-card img {
-  width: 100%;
-  height: 100px;
-  height: auto;
-  border-radius: 7px 7px 0 0;
-}
-.my-card .card-title {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical; /* This is required for -webkit-line-clamp to work */
-  overflow: hidden;
-}
-.my-card .description {
-  font-size: 0.9rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; /* This is required for -webkit-line-clamp to work */
-  overflow: hidden;
-}
-.my-card .tags {
-  font-size: 0.8rem;
-}
-
-@media (max-width: 768px) {
-  .container .card {
+@media (max-width: 576px) {
+  .page {
+    flex-direction: column;
+  }
+  aside {
     width: 100%;
-    /* max-width: 500px; */
   }
 }
 
-/* --bs-card-border-width: var(--bs-border-width); */
-/* shadow-sm p-3 mb-5 bg-white rounded */
+@media (min-width: 993px) {
+  aside {
+    max-width: 300px;
+    width: 30%;
+  }
+  .search,
+  .tag-filter {
+    display: block;
+  }
+}
 
-/* ================================================ */
-/* Search Input and Button */
+/* End: Sidebar Styles */
+
+/* Start: Search Input and Button */
 .search {
-  display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px; /* Adds space below the search bar */
+  margin-bottom: 20px;
+  width: calc(100% - 20px);
 }
 
 .search input[type="text"] {
+  margin: 0 10px 10px;
   padding: 8px 12px;
   font-size: 14px;
   border-radius: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #cf6127;
   outline: none;
   transition: width 0.3s ease-in-out;
 }
 
 .search input[type="text"]:focus {
-  width: 200px; /* Expands the input field on focus */
-  border-color: #007bff;
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 0.25rem #d4c2b9;
 }
 
 .search button {
-  background-color: transparent;
-  color: #007bff;
-  border: none;
+  margin-left: 10px;
+  padding: 7px 20px;
+  color: var(--main-color);
+  border-color: var(--main-color);
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
 
 .search button:hover {
-  color: #0056b3;
+  background-color: var(--main-color);
+  color: #fff;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
-/* Tag Filter Section */
-.tag-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px; /* Adds space below the tag filter */
+/* End: Search Input and Button */
+
+/* Start: Tag Filter Section */
+.tag-filter ul {
+  padding-left: 0;
 }
 
 .tag-filter li {
-  display: inline-block;
-  padding: 8px 12px;
+  padding: 7px 0px;
   background-color: #f8f9fa;
-  border-radius: 20px;
-  border: 1px solid #e9ecef;
+  font-size: 18px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
 
 .tag-filter li:hover {
-  background-color: #e9ecef;
+  color: #cf6127;
+}
+@media (max-width: 608px) {
+  aside {
+    padding: 0 !important;
+    margin: 0;
+    background-color: transparent !important;
+    box-shadow: none;
+    height: 0;
+  }
+  .search input {
+    width: 50%;
+    margin-bottom: 5px;
+    margin-top: -48px !important;
+    position: relative;
+    z-index: 1111;
+    transform: translatex(50%);
+    border-color: #ccc !important;
+  }
+  .search button {
+    display: none;
+  }
+  .tag-filter {
+    display: none;
+  }
+  .dropdown-toggle {
+    width: fit-content;
+    display: inline;
+    padding: 0 2px;
+    position: absolute;
+    right: 20px;
+    top: 150px;
+    background-color: transparent;
+    color: #000;
+  }
+  .dropdown-menu {
+    padding: 10px;
+  }
+}
+@media (min-width: 750px) {
+  .dropdown-toggle {
+    display: none !important;
+  }
+}
+/* End: Tag Filter Section */
+
+/* Start: Sort Section */
+.page .container {
+  margin: 30px;
+  flex-grow: 1;
+}
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.tag-filter input[type="checkbox"] {
-  display: none;
+/* End: Sort Section */
+
+/* Start: Card Styling */
+
+.container-card {
+  /* gap: 30px; */
+  flex-wrap: wrap;
+  flex-grow: 1;
 }
 
-.tag-filter input[type="checkbox"]:checked + span::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  background-color: #007bff;
-  border-radius: 50%;
+.meal-card {
+  /* flex-grow: 1; */
+  margin-right: 20px;
+  margin-bottom: 20px;
+  min-height: 460px;
+}
+.meal-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 7px 7px 0 0;
+}
+.meal-card .details {
+  min-height: 185px;
+}
+.meal-card .details .card-title {
+  font-size: 1.7rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.details .tags {
+  font-size: 1rem;
+}
+
+.meal-card .description {
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* End: Card Styling */
+
+/* Start: Media Queries */
+@media (max-width: 768px) {
+  .containercard {
+    width: 100%;
+  }
+}
+
+/* End: Media Queries */
+
+.pagination-container {
+  font-size: 1.2rem;
+}
+
+.arrow {
+  background-color: transparent;
+  border: none;
 }
