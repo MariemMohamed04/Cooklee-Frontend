@@ -45,9 +45,9 @@
     <div class="container">
       <h3 class="reviews-title mb-3">Customer Reviews</h3>
       <div class="review d-flex align-items-center mb-3" *ngFor="let review of reviews">
-        <img [src]="newReview.clientId" alt="User Photo" class="review-user-photo me-3" />
-
+        <img [src]="review.imgURL" alt="User Photo" class="review-user-photo me-3" />
         <div>
+          <p class="review-client-name mb-1">{{ review.clientName }}</p>
           <p class="review-text mb-1">"{{ review.comment }}"</p>
         </div>
       </div>

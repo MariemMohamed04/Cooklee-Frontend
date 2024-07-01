@@ -38,10 +38,13 @@ export class MealDetailsComponent implements OnInit {
   meal: Meal = new Meal(0, "", "", false, 0, 0, "", [], "", 0);
   reviews: Review[] = [];
   newReview: Review = {
+    id:0,
     comment: '',
     rate: 1,
     clientId: 2,
-    mealId: 0
+    mealId: 0,
+    clientName: '',
+    imgURL: ''
   };
   cart: Cart = new Cart();
   cartId: string = `${this.authService.getClaims().UserId}-cart`;
@@ -54,7 +57,8 @@ export class MealDetailsComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     public cartService: CartService,
     public authService: AuthService,
-    public favoriteService: FavoriteService
+    public favoriteService: FavoriteService,
+    private cdRef: ChangeDetectorRef //this added
   ) {}
 
   ngOnInit(): void {
@@ -96,10 +100,13 @@ export class MealDetailsComponent implements OnInit {
         console.log('Review submitted successfully:', response);
         this.getReviews(this.newReview.mealId);
         this.newReview = {
+          id:0,
           comment: '',
           rate: 1,
           clientId: 2,
-          mealId: this.meal.id??0
+          mealId: this.meal.id??0,
+          clientName: '',
+          imgURL: ''
         };
       },
       (error) => {
@@ -125,6 +132,43 @@ export class MealDetailsComponent implements OnInit {
       }
     );
   }
+  deleteReview(reviewId: number): void {
+    this.reviewService.deleteReview(reviewId).subscribe(
+      () => {
+        console.log('Review deleted successfully');
+        // Refresh the list of reviews after successful deletion
+        this.getReviews(this.meal.id?? 0);
+      },
+      (error) => {
+        if (error.status === 404) {
+          console.error('Review not found or already deleted');
+          // Handle the error, e.g., display a message to the user
+        } else {
+          console.error('Error deleting review:', error);
+        }
+      }
+    );
+  }
+
+
+  // deleteReview(reviewId: number): void {
+  //   this.reviewService.deleteReview(reviewId).subscribe(
+  //     () => {
+  //       console.log('Review deleted successfully');
+  //       // Optionally update your local data after successful deletion
+  //       this.reviews = this.reviews.filter(r => r.id !== reviewId);
+  //     },
+  //     (error) => {
+  //       if (error.status === 404) {
+  //         console.error('Review not found or already deleted');
+  //         // Handle the error, e.g., display a message to the user
+  //       } else {
+  //         console.error('Error deleting review:', error);
+  //       }
+  //     }
+  //   );
+  // }
+
 
   addToFavorite(): void {
     const favoriteItem: FavoriteItem = {

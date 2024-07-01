@@ -1,7 +1,9 @@
 export interface Review {
-  id?: number;      // Optional ID property, as it might not be needed when creating a new review
+  id: number;
   comment: string;
   rate: number;
   clientId: number;
   mealId: number;
+  clientName: string;
+  imgURL: string;
 }

@@ -1,61 +1,165 @@
-<!-- <div class="container">
-  <h3>Meals</h3>
-  <div class="container-card d-flex">
-    <div *ngFor="let meal of meals" class="col-lg-3 col-md-6 col-sm-12">
-      <div class="my-card bg-light border border-1 shadow-sm mb-5 bg-white rounded" style="cursor: pointer;">
-        <img [src]="meal.image" class="shadow-sm bg-dark rounded" alt="{{meal.mealDescription}}" (click)="goToMealDetails(meal.id)" />
-        <div class="details ps-1">
-          <h5 class="card-title">{{meal.mealName}}</h5>
-          <h6 class="text-muted">{{meal.chefPageName}}</h6>
-          <p class="card-text description">{{meal.mealDescription}}</p>
-          <div>
-            <div class="d-inline-flex me-3">
-              <i class="fa-solid fa-coins"></i>
-              <p class="ps-1"><span>{{meal.price}}</span> Egp</p>
-            </div>
-            <div class="d-inline-flex">
-              <i class="fa-solid fa-hand-holding"></i>
-              <p class="ps-10">{{meal.rate}} <span>rate</span></p>
-            </div>
-            <button (click)="addToFavorite(meal)" [disabled]="isMealInFavorites(meal.id)">Add to Favorites</button>
-          </div>
-        </div>
+<div class="page d-flex">
+  <aside class="bg-light pt-5">
+    <!-- ================================ start search by Name  ================================-->
+    <div class="search">
+      <input
+        [(ngModel)]="searchTerm"
+        type="text"
+        class="form-control d-block"
+        placeholder="Search"
+        (keyup)="onSearch()"
+      />
+      <!-- <span class="ps-2"></span> -->
+      <button
+        (click)="onReset()"
+        class="btn btn-outline-primary main-color rounded-3"
+      >
+        Reset
+      </button>
+    </div>
+    <!-- ================================ End search by Name   ================================-->
+
+    <!-- ================================ Start filter by tag ================================-->
+    <ul class="tag-filter">
+      <li class="d-flex ps-3" *ngFor="let tag of tags; let i = index">
+        <input
+          type="checkbox"
+          id="tag-{{ i }}"
+          [value]="tag"
+          (change)="onTagSelected(tag)"
+        />
+        <label class="ps-2" for="tag-{{ i }}">{{ tag }}</label>
+      </li>
+    </ul>
+
+    <!-- Button to Trigger Dropdown -->
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Tags
+    </button>
+
+    <!-- Dropdown Menu -->
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <li class="d-flex p-0 ps-1 m-0" *ngFor="let tag of tags; let i = index">
+        <input
+          type="checkbox"
+          id="tag-{{ i }}"
+          [value]="tag"
+          (change)="onTagSelected(tag)"
+        />
+        <label class="ps-2" for="tag-{{ i }}">{{ tag }}</label>
+      </li>
+    </ul>
+
+    <!-- ================================ End filter by tag ================================-->
+  </aside>
+
+  <div class="container mb-5">
+    <!-- <h3>Meals</h3> -->
+    <!-- ================================ start sort meals ================================-->
+    <div class="sort-container mb-3">
+      <!-- Sort By Dropdown -->
+      <div class="d-block">
+        <label class="pe-2 d-inline-block" for="sortCriterion">Sort By:</label>
+        <select
+          id="sortCriterion"
+          [(ngModel)]="selectedSortCriterion"
+          (change)="updateSortOptions()"
+        >
+          <option value="">Select Criterion</option>
+          <option value="price">Price</option>
+          <option value="name">Name</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+
+      <!-- Direction Dropdown -->
+      <div *ngIf="selectedSortCriterion">
+        <label for="sortDirection">Direction:</label>
+        <select
+          id="sortDirection"
+          [(ngModel)]="selectedSortDirection"
+          (change)="sortMeals(selectedSortCriterion, selectedSortDirection)"
+        >
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
       </div>
     </div>
-  </div>
-</div> -->
 
-<div class="container">
-  <h3>Meals</h3>
-  <div class="container-card d-flex">
-    <div *ngFor="let meal of meals" class="col-lg-3 col-md-6 col-sm-12">
-      <div class="my-card bg-light border border-1 shadow-sm mb-5 bg-white rounded" style="cursor: pointer;">
-        <img [src]="meal.image" class="shadow-sm bg-dark rounded" alt="{{meal.mealDescription}}" (click)="goToMealDetails(meal.id)" />
-        <div class="details ps-1">
-          <h5 class="card-title">{{meal.mealName}}</h5>
-          <h6 class="text-muted">{{meal.chefPageName}}</h6>
-          <p class="card-text description">{{meal.mealDescription}}</p>
-          <div>
-            <div class="d-inline-flex me-3">
-              <i class="fa-solid fa-coins"></i>
-              <p class="ps-1"><span>{{meal.price}}</span> Egp</p>
-            </div>
-            <div class="d-inline-flex">
-              <i class="fa-solid fa-hand-holding"></i>
-              <p class="ps-10">{{meal.rate}} <span>rate</span></p>
-            </div>
-            <!-- <button class="btn-favorite" (click)="addToFavorite(meal)" [disabled]="isMealInFavorites(meal.id)">
-              <i class="fa fa-heart" [class.active]="isMealInFavorites(meal.id)"></i> Add to Favorites
-            </button> -->
-            <!-- <button class="btn-favorite" (click)="addToFavorite(meal)" [disabled]="isMealInFavorites(meal.id)">
-              <i class="fa fa-heart" [class.active]="isMealInFavorites(meal.id)"></i> Add to Favorites
-            </button> -->
+    <!-- ================================ end sort meals ================================-->
 
+    <div class="container-card d-flex">
+      <!-- ================================ Start Meals Section ================================-->
+      <div
+        *ngFor="let item of displayedMeals; let $index = index"
+        class="my-card col-lg-3 col-md-6 col-sm-12"
+      >
+        <a [routerLink]="['/Meals/Details', item.id]">
+          <div
+            class="meal-card bg-light border border-1 shadow-sm bg-white rounded"
+          >
+            <img
+              src="{{ item.image }}"
+              class="shadow-sm bg-dark"
+              alt="Description of Image"
+            />
+
+            <div class="details p-3">
+              <div class="details-order d-flex justify-content-between">
+                <h5 class="card-title mb-2">{{ item.mealName }}</h5>
+                <div class="d-inline-flex">
+                  <i class="fa-solid fa-coins"></i>
+                  <p class="ps-1 ">{{ item.price }} <span>Egp</span></p>
+                </div>
+              </div>
+
+              <!-- <p class="tags text-muted">{{ item.tags }}</p> -->
+              <p class="card-text mt-2 mb-3 description">
+                {{ item.mealDescription }}
+              </p>
+
+              <!-- <div class="d-inline-flex">
+                <i class="pe-1 fa-solid fa-hand-holding"></i>
+                <p class="ps-10">60 <span>min</span></p>
+              </div> -->
+            </div>
           </div>
-        </div>
+        </a>
       </div>
+
+      <!-- ================================ End Meals Section ================================-->
     </div>
+
+    <!-- ================================ Pagination Container ================================-->
+    <div class="pagination-container w-100 d-flex justify-content-center my-5">
+      <button class="arrow" (click)="prevPage()" [disabled]="currentPage <= 1">
+        &#171;
+      </button>
+
+      <span
+        class="px-1"
+        *ngFor="let page of totalPagesArray; let i = index"
+        [class.active]="page === currentPage"
+        (click)="goToPage(page + 1)"
+      >
+        {{ page }}
+      </span>
+
+      <button
+        class="arrow"
+        (click)="nextPage()"
+        [disabled]="currentPage >= totalPagesArray[totalPagesArray.length - 1]"
+      >
+        &#187;
+      </button>
+    </div>
+    <!-- ================================ End of Pagination Container ================================-->
   </div>
 </div>
-
-
+<footer></footer>

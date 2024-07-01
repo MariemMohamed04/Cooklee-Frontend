@@ -38,53 +38,53 @@ import { UpdateComponent } from './SpecialMeal/update/update.component';
 export const routes: Routes = [
 
 
-  // { path: '', redirectTo: 'ClientForm', pathMatch: 'full' },
-  // { path: 'ClientForm', component: ClientProfleFormComponent },
+  { path: '', redirectTo: 'ClientForm', pathMatch: 'full' },
+  { path: 'ClientForm', component: ClientProfleFormComponent },
 
-  // { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
-  // {
-  //   path: 'profile', component: ClientProfleComponent, children: [
+  { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
+  {
+    path: 'profile', component: ClientProfleComponent, children: [
 
-  //     { path: '', component: ClientFavouriteComponent },
-  //     { path: 'Favourites', component: ClientFavouriteComponent },
-  //     { path: 'Orders', component: ClientOrderComponent },
-  //   ]
-  // },
+      { path: '', component: ClientFavouriteComponent },
+      { path: 'Favourites', component: ClientFavouriteComponent },
+      { path: 'Orders', component: ClientOrderComponent },
+    ]
+  },
    { path: 'ChefPageForm', component: ChefPageFormComponent },
 
-  // { path: 'ChefPage', redirectTo: 'ChefPage/chefMeals', pathMatch: 'full' },
-  // {
-  //   path: 'ChefPage', component: ChefPageComponent, children: [
+  { path: 'ChefPage', redirectTo: 'ChefPage/chefMeals', pathMatch: 'full' },
+  {
+    path: 'ChefPage', component: ChefPageComponent, children: [
 
-  //     { path: '', component: ChefMealsComponent },
-  //     { path: 'chefMeals', component: ChefMealsComponent },
-  //     { path: 'requestedMeals', component: RequestedMealsComponent },
-  //   ]
-  // },
+      { path: '', component: ChefMealsComponent },
+      { path: 'chefMeals', component: ChefMealsComponent },
+      { path: 'requestedMeals', component: RequestedMealsComponent },
+    ]
+  },
 
-//   { path: "", redirectTo: "login", pathMatch: "full" },
-//   { path: "login", component: LoginFormComponent },
-//   { path: "register", component: RegisterFormComponent },
-//   { path: "home", component: HomeMealsComponent },
-
-
-//   {path: '', component:ChefMealsComponent},
-//   {path: 'chefMeals', component:ChefMealsComponent},
-//   {path: 'requestedMeals', component:RequestedMealsComponent},
-
-// { path: 'Meals', component: MealListComponent },
-// //  {path:'Meals/Details/:id',component:MealDetailsComponent,title:"Details of meal"}
-// {path:'Meals/Details',component:MealDetailsComponent,title:"Details of meal"},
-//   // {path:'**',component:NotfoundComponent} //component notfound
-
-//   { path: 'ClientForm', component: ClientProfleFormComponent },
-//   { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
+  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "login", component: LoginFormComponent },
+  { path: "register", component: RegisterFormComponent },
+  { path: "home", component: HomeMealsComponent },
 
 
-  // { path: "", redirectTo: "register", pathMatch: "full" },
-  // { path: "register", component: RegisterFormComponent },
-  // { path: "login", component: LoginFormComponent },
-  // { path: 'ClientForm', component: ClientProfleFormComponent },
+  {path: '', component:ChefMealsComponent},
+  {path: 'chefMeals', component:ChefMealsComponent},
+  {path: 'requestedMeals', component:RequestedMealsComponent},
+
+{ path: 'Meals', component: MealListComponent },
+//  {path:'Meals/Details/:id',component:MealDetailsComponent,title:"Details of meal"}
+{path:'Meals/Details',component:MealDetailsComponent,title:"Details of meal"},
+  // {path:'**',component:NotfoundComponent} //component notfound
+
+  { path: 'ClientForm', component: ClientProfleFormComponent },
+  { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
+
+
+  { path: "", redirectTo: "register", pathMatch: "full" },
+  { path: "register", component: RegisterFormComponent },
+  { path: "login", component: LoginFormComponent },
+  { path: 'ClientForm', component: ClientProfleFormComponent },
   { path: "", redirectTo: "admin", pathMatch: "full" },
   { path: "home", component: HomeMealsComponent },
   { path: "register", component: RegisterFormComponent },

@@ -1,24 +1,59 @@
 <div class="header rounded-corners py-2">
-  <div class="container">
+  <div class="container-fluid">
     <div class="d-flex align-items-center justify-content-between">
-      <a href="/" class="logo m-0"><h1 class="m-0">COOKLEE</h1></a>
+      <a href="/" class="logo m-0"><h1 class="logo m-0">COOKLEE</h1></a>
       <p class="quote m-0">
         Where Home Chefs Meet Hungry Hearts <i class="fas fa-heart"></i>
       </p>
       <div class="header-buttons ms-auto">
-        <button class="btn btn-login">Login</button>
-        <button
+         <button
           class="btn btn-login"
           title="Double click for dark mode"
           (click)="handleClick()"
         >
           Speak with Cookla!
         </button>
-        <button class="btn btn-wishlist"><i class="fas fa-heart"></i></button>
-        <button class="btn btn-cart">
+        <button class="m-sm-1 p-sm-1 btn btn-login p-1">Login</button>
+        <button class="p-sm-1 btn btn-wishlist">
+          <i class="fas fa-heart"></i>
+        </button>
+        <button class="p-sm-1 btn btn-cart">
           <i class="fas fa-shopping-cart"></i>
         </button>
       </div>
     </div>
   </div>
 </div>
+
+<nav class="my-nav navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home" routerLinkActive="active"
+      >Home</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/" routerLinkActive="active"
+          >profile</a
+        >
+        <a class="nav-link" href="/meals" routerLinkActive="active"
+          >meals</a
+        >
+        <a class="nav-link" href="/ChefPage" routerLinkActive="active"
+          >chefs</a
+        >
+        <a class="nav-link disabled" aria-disabled="true">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</nav>
