@@ -1,1 +1,101 @@
-<p>deliverd-orders works!</p>
+<h2>All Orders</h2>
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <h4 class="fw-bold p-2">All Orders</h4>
+    </li>
+    <li class="list-group-item p-5" *ngFor="let order of orders">
+      <div class="accordion accordion-flush mb-4" id="accordionFlushExample">
+        <div class="accordion-item border-bottom border-start border-end border-secondary-subtle">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              [attr.data-bs-target]="'#flush-collapseOne' + order.id" aria-expanded="false" [attr.aria-controls]="'flush-collapseOne' + order.id">
+              <div class="d-flex flex-column">
+                <div class="fw-light mb-2">Client Email:</div>
+                <div class="fw-bold">{{order.clientEmail}}</div>
+              </div>
+              <div class="d-flex flex-column ms-auto">
+                <div class="fw-light mb-2">Delivered:</div>
+                <div *ngIf="order.status === Status.Pending" class="text-danger fw-bold">Pending</div>
+                <div *ngIf="order.status === Status.OutforDelivery" class="text-primary fw-bold">Out for Delivery</div>
+                <div *ngIf="order.status === Status.Delivered" class="text-success fw-bold">Delivered</div>
+              </div>
+            </button>
+          </h2>
+          <div [id]="'flush-collapseOne' + order.id" class="accordion-collapse collapse border-bottom"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-6 ">
+                  <div class="mb-3">
+                    <div class="d-flex flex-column">
+                      <div class="fw-light mb-1">Subtotal:</div>
+                      <div class="fw-bold">{{order.subtotal}}</div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="d-flex flex-column">
+                      <div class="fw-light mb-1">Meal Description:</div>
+                      <!-- <div class="fw-bold">{{meal.mealDescription || 'N/A'}}</div> -->
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="d-flex flex-column">
+                      <div class="fw-light mb-1">Meal Price:</div>
+                      <!-- <div class="fw-bold">{{meal.price}}</div> -->
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="d-flex flex-column">
+                      <div class="fw-light mb-1">Meal Tags:</div>
+                      <!-- <div class="fw-bold">{{meal.tags}}</div> -->
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="d-flex flex-column">
+                      <div class="fw-light mb-1">Chef Id:</div>
+                      <!-- <div class="fw-bold">{{meal.chefPageId}}</div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="fw-light mb-1">Meal Image:</div>
+                  <!-- <img [src]="meal.image" class="w-75" alt="ID Image"> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div [id]="'flush-collapseOne' + order.id" class="accordion-collapse collapse border-bottom"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="row">
+              <!-- <div class="col-6">
+                <button type="button" class="btn btn-success w-100" (click)="acceptMeal(meal.chefPageId, meal.id)">
+                  Accept
+                </button>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn btn-danger w-100" (click)="declinePage(meal.id)">
+                  Decline
+                </button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div [id]="'flush-collapseOne' + order.id" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="row">
+              <!-- <textarea [(ngModel)]="feedbackText" class="form-control" placeholder="Enter feedback"
+                [disabled]="!declinedMap[meal.id]"></textarea>
+              <button class="btn btn-primary mt-2" [disabled]="!declinedMap[meal.id]" (click)="sendFeedback(meal.chefPageId, meal.id)">
+                Send Feedback
+              </button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  </ul>
+</div>
+
