@@ -15,7 +15,7 @@ export class ReviewService {
     return this.http.get<Review[]>(this.baseurl+ mealId);
   }
   addReview(review: Review): Observable<any> {
-
+console.log('before url');
     return this.http.post<any>(this.baseurl, review);
   }
   deleteReview(reviewId: number): Observable<void> {

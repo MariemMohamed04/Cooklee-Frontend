@@ -95,6 +95,7 @@ export class MealDetailsComponent implements OnInit {
   }
 
   submitReview(): void {
+    console.log('before service');
     this.reviewService.addReview(this.newReview).subscribe(
       (response) => {
         console.log('Review submitted successfully:', response);
