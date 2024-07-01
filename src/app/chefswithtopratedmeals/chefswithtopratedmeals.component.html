@@ -1,21 +1,27 @@
-<div *ngFor="let chef of chefs" class="chef-card">
+<div class="container d-flex justify-content-evenly">
+<div *ngFor="let chef of chefs" class="chef-card m-4 bg-light col-lg-4 col-sm-12">
   <div class="chef-image">
-    <img [src]="chef.idImgURL" alt="Chef Image" />
+    <img [src]="chef.idImgURL" class="w-100" alt="Chef Image" />
   </div>
-  <div class="chef-details">
+  <div class="chef-details ">
     <h2 class="chef-name">{{ chef.name }}</h2>
-    <div *ngFor="let chefMeal of chef.topMeals" class="meal-details">
-      <h5 class="meal-name">{{ chefMeal.mealName }}</h5>
-      <div class="meal-info">
-        <div class="meal-price">
-          <i class="fa-solid fa-coins"></i>
-          <p>{{ chefMeal.price }} Egp</p>
-        </div>
-        <div class="meal-rate">
-          <i class="fa-solid fa-hand-holding"></i>
-          <p>{{ chefMeal.rate }} <span>rate</span></p>
-        </div>
+    <div *ngFor="let chefMeal of chef.topMeals" class="card-meal  pb-4">
+        <h5 class="meal-name py-2">{{ chefMeal.mealName }}</h5>
+        <div class="meal-info">
+          <div class="meal-price d-flex">
+            <i class="me-1 fa-solid fa-coins"></i>
+            <p>{{ chefMeal.price }} Egp</p>
+          </div>
+          <div class="rating">
+            <ng-container *ngFor="let star of getStars(chefMeal.rate).filled">
+              <i class="fas fa-star" style="color: gold;"></i>
+            </ng-container>
+            <ng-container *ngFor="let star of getStars(chefMeal.rate).empty">
+              <i class="far fa-star"></i>
+            </ng-container>
+          </div>
       </div>
     </div>
   </div>
+</div>
 </div>

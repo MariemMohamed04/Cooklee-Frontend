@@ -33,4 +33,14 @@ export class ChefswithtopratedmealsComponent implements OnInit {
       }
     });
   }
+
+  getStars(rate: number): { filled: number[], empty: number[] } {
+    const totalStars = 5;
+    const filledStars = Math.floor(rate);
+    const emptyStars = totalStars - filledStars;
+    return {
+      filled: Array(filledStars).fill(0),
+      empty: Array(emptyStars).fill(0)
+    };
+  }
 }
