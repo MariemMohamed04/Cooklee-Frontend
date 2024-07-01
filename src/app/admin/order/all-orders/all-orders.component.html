@@ -1,0 +1,86 @@
+<h2>All Orders</h2>
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <h4 class="fw-bold p-2">All Orders</h4>
+    </li>
+    <li class="list-group-item p-5">
+      <div class="accordion accordion-flush mb-4" id="accordionFlushExample">
+        <div class="accordion-item border-bottom border-start border-end border-secondary-subtle">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              [attr.data-bs-target]="'#flush-collapseOne'" aria-expanded="false" [attr.aria-controls]="'flush-collapseOne'">
+              <div class="d-flex flex-column">
+                <div class="fw-light mb-2">Order Id:</div>
+                <!-- <div class="fw-bold">{{order.id}}</div> -->
+              </div>
+              <div class="d-flex flex-column ms-auto">
+                <!-- <div class="fw-light mb-2">Accepted:</div>
+                <div class="text-danger fw-bold">Not Accepted</div> -->
+              </div>
+            </button>
+          </h2>
+          <div [id]="'flush-collapseOne'" class="accordion-collapse collapse border-bottom"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-6 ">
+                  <div class="mb-3">
+                    <div class="d-flex flex-column">
+                      <div class="fw-light mb-1">Client Email:</div>
+                      <!-- <div class="fw-bold">{{order.clientEmail}}</div> -->
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="d-flex flex-column">
+                      <div class="fw-light mb-1">Meal Description:</div>
+                      <!-- <div class="fw-bold">{{order.status}}</div> -->
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="d-flex flex-column">
+                      <div class="fw-light mb-1">Meal Price:</div>
+                      <!-- <div class="fw-bold">{{order.subtotal}}</div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="fw-light mb-1">Meal Image:</div>
+                  <!-- <img [src]="order.image" class="w-75" alt="ID Image"> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div [id]="'flush-collapseOne'" class="accordion-collapse collapse border-bottom"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="row">
+              <div class="col-6">
+                <!-- <button type="button" class="btn btn-success w-100" (click)="acceptMeal(order.chefPageId, order.id)">
+                  Accept
+                </button> -->
+              </div>
+              <div class="col-6">
+                <!-- <button type="button" class="btn btn-danger w-100" (click)="declinePage(order.id)">
+                  Decline
+                </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div [id]="'flush-collapseOne'" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="row">
+              <!-- <textarea [(ngModel)]="feedbackText" class="form-control" placeholder="Enter feedback"
+                [disabled]="!declinedMap[order.id]"></textarea>
+              <button class="btn btn-primary mt-2" [disabled]="!declinedMap[order.id]" (click)="sendFeedback(order.chefPageId, order.id)">
+                Send Feedback
+              </button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  </ul>
+</div>

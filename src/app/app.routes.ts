@@ -28,6 +28,9 @@ import { NotActivatedChefPagesComponent } from './admin/chef/not-activated-chef-
 import { UnacceptMealComponent } from './admin/meal/unaccept-meal/unaccept-meal.component';
 import { SpecialMeal } from './models/special-meal';
 import { SpecialMealComponent } from './SpecialMeal/special-meal/special-meal.component';
+import { AllOrdersComponent } from './admin/order/all-orders/all-orders.component';
+import { UndeliverdOrdersComponent } from './admin/order/undeliverd-orders/undeliverd-orders.component';
+import { DeliverdOrdersComponent } from './admin/order/deliverd-orders/deliverd-orders.component';
 export const routes: Routes = [
 
 
@@ -127,6 +130,9 @@ export const routes: Routes = [
       { path: 'active-chefs', component: ActivatedCheffPagesComponent },
       { path: 'inactive-chefs', component: NotActivatedChefPagesComponent },
       { path: 'meals-requests', component: UnacceptMealComponent },
+      { path: 'all-orders', component: AllOrdersComponent },
+      { path: 'undelivered-orders', component: UndeliverdOrdersComponent },
+      { path: 'delivered-orders', component: DeliverdOrdersComponent },
     ]
   },
   { path:'**',component:NotfoundComponent }

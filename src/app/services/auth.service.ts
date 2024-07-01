@@ -19,6 +19,7 @@ export class AuthService {
   register(email: string, password: string, confirmPassword: string): Promise<{ success: boolean, error?: string }> {
     const url = `${this.baseUrl}/register`;
     return new Promise<{ success: boolean, error?: string }>((resolve) => {
+      console.log('before post');
       this.http.post(url, { email, password, confirmPassword }).subscribe(
         (response: any) => {
           localStorage.setItem("token", response.token);

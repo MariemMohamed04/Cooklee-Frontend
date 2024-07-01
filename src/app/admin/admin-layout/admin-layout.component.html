@@ -63,13 +63,15 @@
                   <i class="fa-solid fa-chevron-down"></i>
                 </div>
               </a>
-
               <ul [@toggleDropdown]="isDropdownExpanded['orders'] ? 'expanded' : 'collapsed'" class="list-unstyled">
                 <li>
-                  <a>Accepted Meals</a>
+                  <a [routerLink]="['/admin','all-orders']" routerLinkActive="active">All Orders</a>
                 </li>
                 <li>
-                  <a>Unaccepted Meals</a>
+                  <a [routerLink]="['/admin','undelivered-orders']" routerLinkActive="active">Undelivered Orders</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/admin','delivered-orders']" routerLinkActive="active">Delivered Orders</a>
                 </li>
               </ul>
             </li>
@@ -84,24 +86,11 @@
   <div id="content" class="p-4 p-md-5 pt-5">
     <div id="content" class="p-4 p-md-5 pt-5">
       <div class="content-wrapper">
-          <!-- Content Header (Page header) -->
-          <!-- <section class="content-header">
-              <div class="container-fluid">
-                  <div class="row mb-2">
-                      <div class="col-sm-6">
-                          <ol class="breadcrumb float-sm-right">
-                              <li class="breadcrumb-item"><a href="#" class="text-secondary">Home</a></li>
-                          </ol>
-                      </div>
-                  </div>
-              </div>
-          </section> -->
-
           <section class="content mb-3">
             <div class="container">
               <div class="mb-5">
                 <div class="row gx-2 gap-2">
-                  <div class="col-lg-3 p-3 rounded-2 border border-2" style="width: 24.4%;">
+                  <div class="col-lg-3 p-3 rounded-2 border-end border-start border-bottom" style="width: 24.4%;">
                     <div class="card-admin d-flex align-items-center">
                       <i class="fa fa-bag-shopping pe-3"></i>
                       <div class="d-flex flex-column">
@@ -110,7 +99,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 p-3 rounded-2 border border-2"  style="width: 24.4%;">
+                  <div class="col-lg-3 p-3 rounded-2 border-end border-start border-bottom"  style="width: 24.4%;">
                     <div class="card-admin d-flex align-items-center">
                       <i class="fa fa-hashtag pe-3"></i>
                       <div class="d-flex flex-column">
@@ -119,7 +108,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 p-3 rounded-2 border border-2"  style="width: 24.4%;">
+                  <div class="col-lg-3 p-3 rounded-2 border-end border-start border-bottom"  style="width: 24.4%;">
                     <div class="card-admin d-flex align-items-center">
                       <i class="fa fa-wallet pe-3"></i>
                       <div class="d-flex flex-column">
@@ -128,7 +117,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 p-3 rounded-2 border border-2"  style="width: 24.4%;">
+                  <div class="col-lg-3 p-3 rounded-2 border-end border-start border-bottom"  style="width: 24.4%;">
                     <div class="card-admin d-flex align-items-center">
                       <i class="fa fa-money-check-dollar pe-3"></i>
                       <div class="d-flex flex-column">
