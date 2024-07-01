@@ -1,8 +1,55 @@
-.chef-meals{
+.fav-meals{
     width: 20vw;
-    height: 20vh;
+    height: 25vh;
     background-color: var(--shadow);
     text-align:center ;
   
+
+}
+
+.meal-card{
+    border: 1px solid var(--shadow);
+    margin: 2rem;
+
+}
+
+
+
+.profile-button {
+    background: var(--main-color);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button-delete {
+    background:red;
+    box-shadow: none;
+    border: none;
+    margin-left: 2rem;
+    
+}
+
+
+.profile-button:hover {
+    background: var(--main-color);
+}
+
+.profile-button:focus {
+    background:var(--main-color);
+    box-shadow: none
+}
+
+.profile-button:active {
+    background:var(--main-color);
+    box-shadow: none
+}
+
+.all-meals{
+   overflow-y: scroll;
+  justify-content: flex-start;
+  height: 50vh;
+  padding-top: 10rem;
+  
+    
 
 }

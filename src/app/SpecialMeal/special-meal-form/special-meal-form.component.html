@@ -1,58 +1,177 @@
-<div class="Order-form">
-  <div class="widget-title">
-    <h5 class="title fw-bold">Special Meal Request</h5>
-  </div>
-  <div *ngIf="errorMessage" class="error" role="alert">
-    <i class="fa fa-close pe-2"></i>
-    <span>{{ errorMessage }}</span>
-  </div>
-  <form [formGroup]="specialMealForm" (ngSubmit)="onSubmit()"
-    class=" p-4 rounded-3 border border-1 border-secondary-subtle">
-    <div class="row mb-4">
-      <div class="form-group col-md-12">
-        <label for="s_MealName" class="mb-2">Meal Name <span class="text-danger">*</span></label>
-        <input name="s_MealName" id="s_MealName" type="text" class="form-control" placeholder="Enter meal name..."
-          formControlName="s_MealName" />
-        <div *ngIf="specialMealForm.get('s_MealName')?.errors && specialMealForm.get('s_MealName')?.touched" class="error" role="alert">
-          <i class="fa fa-close pe-2"></i>
-          <span *ngIf="specialMealForm.get('s_MealName')?.getError('required')">This input is required!!!</span>
-        </div>
-      </div>
-    </div>
-    <div class="row mb-4">
-      <div class="form-group col-md-12">
-        <label for="description" class="mb-2">Meal Description <span class="text-danger">*</span></label>
-          <textarea class="form-control" name="description" id="description" rows="3" formControlName="description" placeholder="Enter meal description..."></textarea>
-        <div *ngIf="specialMealForm.get('description')?.errors && specialMealForm.get('description')?.touched" class="error" role="alert">
-          <i class="fa fa-close pe-2"></i>
-          <span *ngIf="specialMealForm.get('description')?.getError('required')">This input is required!!!</span>
-        </div>
-      </div>
-    </div>
-    <div class="row mb-4">
-      <div class="form-group col-md-6">
-        <label for="minPrice" class="mb-2">Minimum Price <span class="text-danger">*</span></label>
-        <input name="minPrice" id="minPrice" type="number" class="form-control" formControlName="minPrice"
-          placeholder="Enter minimum price..." />
-        <div *ngIf="specialMealForm.get('minPrice')?.errors && specialMealForm.get('minPrice')?.touched" class="error" role="alert">
-          <i class="fa fa-close pe-2"></i>
-          <span *ngIf="specialMealForm.get('minPrice')?.getError('required')">This input is required!!!</span>
-        </div>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="maxPrice" class="mb-2">Maximum Price <span class="text-danger">*</span></label>
-        <input name="maxPrice" id="maxPrice" type="number" class="form-control" placeholder="Enter maximum price..."
-          formControlName="maxPrice" />
-        <div *ngIf="specialMealForm.get('maxPrice')?.errors && specialMealForm.get('maxPrice')?.touched" class="error" role="alert">
-          <i class="fa fa-close pe-2"></i>
-          <span *ngIf="specialMealForm.get('maxPrice')?.getError('required')">This input is required!!!</span>
-        </div>
-      </div>
-    </div>
-    <div class="form-group mb-4">
-      <button class="btn w-100" type="submit">Submit</button>
-    </div>
-  </form>
-</div>
+<!-- //(ngSubmit)="onSubmit()" -->
 
+ <!-- <form [formGroup]="mealForm" >
+  <div class="mb-3">
+    <label for="mealName" class="form-label">Meal Name</label>
+    <input type="text" class="form-control" id="mealName" formControlName="s_MealName" placeholder="Enter Meal Name">
+  </div>
+  <div class="mb-3">
+    <label for="mealDesc" class="form-label">Meal Description</label>
+    <textarea class="form-control" id="mealDesc" formControlName="description" rows="3" placeholder="Enter Meal Description"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="mealMin" class="form-label">Minimum Price</label>
+    <input type="number" class="form-control" id="mealMin" formControlName="minPrice" placeholder="Enter Minimum Price">
+  </div>
+  <div class="mb-3">
+    <label for="mealMax" class="form-label">Maximum Price</label>
+    <input type="number" class="form-control" id="mealMax" formControlName="maxPrice" placeholder="Enter Maximum Price">
+  </div>
+
+  < <div class="mb-3">
+    <label for="chefPageId" class="form-label">Chef</label>
+    <select class="form-select" id="chefPageId" formControlName="chefPageId">
+      <option value="" disabled selected>Choose a Chef</option>
+      <option *ngFor="let chef of chefs" [value]="chef.id">{{ chef.displayName }}</option>
+    </select>
+  </div> -->
+
+    <!-- <div class="mb-3">
+    <label for="chefPageId" class="form-label">chef id</label>
+    <input type="number" class="form-control" id="chefPageId" formControlName="chefPageId" placeholder="Enter Minimum Price">
+  </div>
+  <div class="row">
+    <div class="col-lg-6 mb-3">
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">Apply</button>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <button type="button"(click)="onEdit()" class="btn btn-primary">Edit</button>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <button type="button"(click)="onDelete()" class="btn btn-primary">Delete</button>
+    </div>
+  </div>
+</form>  -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Done -->
+//////////////////////////////////////////////////
+<!--
+<div class="card mb-3 note-card">
+  <div class="card-header">
+    Special Meal Form
+  </div>
+  <div class="card-body">
+    <form [formGroup]="mealForm"   >
+      <div class="mb-3">
+        <label for="mealName" class="form-label">Meal Name</label>
+        <input type="text" class="form-control" id="mealName" [(ngModel)]="MealName" formControlName="s_MealName" placeholder="Enter Meal Name">
+      </div>
+      <div class="mb-3">
+        <label for="mealDesc" class="form-label">Meal Description</label>
+        <textarea class="form-control" id="mealDesc" formControlName="description" rows="3"  [(ngModel)]="Description"placeholder="Enter Meal Description"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="mealMin" class="form-label">Minimum Price</label>
+        <input type="number" class="form-control" id="mealMin" [(ngModel)]="MinPrice"formControlName="minPrice" placeholder="Enter Minimum Price">
+      </div>
+      <div class="mb-3">
+        <label for="mealMax" class="form-label">Maximum Price</label>
+        <input type="number" class="form-control" id="mealMax" [(ngModel)]="MaxPrice" formControlName="maxPrice" placeholder="Enter Maximum Price">
+      </div>
+      <div class="mb-3">
+        <label for="chefPageId" class="form-label">Chef Id</label>
+        <input type="number" class="form-control" id="chefPageId" formControlName="chefPageId" placeholder="Enter Chef Id">
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mb-3">
+           <button type="submit" class="btn btn-primary" (click)="onSubmi()">Apply</button>
+
+        </div>
+        <div class="col-lg-6 mb-3">
+          <button type="button" (click)="onEdit()" class="btn btn-primary">Edit</button>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <button type="button" (click)="onDelete()" class="btn btn-primary">Delete</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+   -->
+
+
+
+////////////////////////////
+
+<!-- <app-special-meal-card
+[MealName]="submittedMealName"
+[Description]="submittedDescription"
+[MinPrice]="submittedMinPrice"
+[MaxPrice]="submittedMaxPrice"
+< [Chef]="submittedchef" -->
+<!-- ></app-special-meal-card>   -->
+
+<app-special-meal-card
+[MealName]="submittedMealName"
+[Description]="submittedDescription"
+[MinPrice]="submittedMinPrice"
+[MaxPrice]="submittedMaxPrice"
+></app-special-meal-card>
+
+<div class="card mb-3 note-card">
+  <div class="card-header">
+    Special Meal Form
+  </div>
+  <div class="card-body">
+    <form [formGroup]="mealForm" (ngSubmit)="onSubmit()" >
+      <div class="mb-3">
+        <label for="mealName" class="form-label">Meal Name</label>
+        <input type="text" class="form-control" id="mealName" [(ngModel)]="MealName" formControlName="s_MealName" placeholder="Enter Meal Name">
+      </div>
+      <div class="mb-3">
+        <label for="mealDesc" class="form-label">Meal Description</label>
+        <textarea class="form-control" id="mealDesc" formControlName="description" rows="3"  [(ngModel)]="Description"placeholder="Enter Meal Description"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="mealMin" class="form-label">Minimum Price</label>
+        <input type="number" class="form-control" id="mealMin" [(ngModel)]="MinPrice"formControlName="minPrice" placeholder="Enter Minimum Price">
+      </div>
+      <div class="mb-3">
+        <label for="mealMax" class="form-label">Maximum Price</label>
+        <input type="number" class="form-control" id="mealMax" [(ngModel)]="MaxPrice" formControlName="maxPrice" placeholder="Enter Maximum Price">
+      </div>
+      <!-- <div class="mb-3">
+        <label for="chefPageId" class="form-label">Chef page</label>
+        <input type="number" class="form-control" id="chefPageId" formControlName="chefPageId" placeholder="Enter Chef Id">
+      </div> -->
+      <div class="mb-3">
+        <label for="chefPageId" class="form-label">Chef</label>
+        <select class="form-select" id="chefPageId" formControlName="chefPageId">
+
+          <!-- <option *ngFor=" " value="" disabled selected>Choose a Chef</option> -->
+          <option *ngFor="let chef of chefs" [value]="chef.id">{{ chef.displayName }}</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mb-3">
+           <button type="button" class="btn btn-primary " id="btn1" (click)="onSubmi()">submit</button>
+
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-lg-6 mb-3">
+             <button type="submit" class="btn btn-primary" (click)="onSubmit()" id="btn4">apply</button>
+
+          </div>
+        <div class="col-lg-6 mb-3">
+          <button type="button" (click)="onEdit()" class="btn btn-primary" id="btn3">Edit</button>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <button type="button" (click)="onDelete()" class="btn btn-primary" id="btn2">Delete</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 

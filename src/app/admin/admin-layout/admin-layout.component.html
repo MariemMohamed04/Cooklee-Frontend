@@ -54,6 +54,27 @@
                 </li>
               </ul>
             </li>
+
+
+            <li>
+              <a (click)="toggleDropdown('SpecialMeals')" aria-expanded="false" class="dropdown-toggle d-flex align-items-center">
+                <div>
+                  <i class="fa-solid fa-bowl-food pe-2"></i>   Special Meals
+                </div>
+                <div class="ms-auto">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </a>
+              <ul [@toggleDropdown]="isDropdownExpanded['SpecialMeals'] ? 'expanded' : 'collapsed'" class="list-unstyled">
+                <li>
+                  <a [routerLink]="['/admin','SpecialMeals']" routerLinkActive="active"> All Special Meals</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/admin','SpecialMeals']" routerLinkActive="active">Special Meals</a>
+                </li>
+              </ul>
+            </li>
+
             <li>
               <a (click)="toggleDropdown('orders')" aria-expanded="false" class="dropdown-toggle d-flex align-items-center">
                 <div>
