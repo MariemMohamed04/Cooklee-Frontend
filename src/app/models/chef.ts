@@ -2,13 +2,15 @@ export class Chef {
     constructor(
         public id: number,
         public displayName:string,
-        public isActive:boolean,
+        public email:string,
         public idImgURL:string,
         public phoneNumber:string,
         public walletNumber:string,
         public fullAddress:string,
         public paymentMethod:ChefPaymentMethod,
-        public email:string
+        public isActive:boolean,
+       
+       
     ){}
 }
 

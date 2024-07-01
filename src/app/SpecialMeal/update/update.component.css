@@ -1,0 +1,111 @@
+.note-card {
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  }
+  
+  
+  
+  .form-label {
+    color: #000;
+  }
+  
+  .form-control {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #e8af8e;
+  
+  
+  }
+  
+  .btn-primary {
+    background-color: #FC8019;
+    border-color: #e8ae8e;
+   }
+  
+  
+  .btn-primary:hover {
+    background-color: #d0ae77;
+    border-color: #d0ae77;
+  }
+  
+  .container{
+    position: relative;
+    bottom: 201px;
+  
+  }
+  .custom-form {
+    max-width: 50%;
+    margin-left: 0;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-form .btn {
+    width: 48%;
+  }
+  #btn1{
+    
+    bottom: -24px;
+    left: 1176px;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #FC8019;
+    border-color: #e8ae8e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+    width: 48%;
+  }
+  #btn2{
+  
+
+      bottom: 87px;
+      left: 999px;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background-color: #FC8019;
+      border-color: #e8ae8e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      flex: 1;
+      width: 48%;
+    }
+  
+    #btn3{
+
+      bottom: 56px;
+      left: -129px;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background-color: #FC8019;
+      border-color: #e8ae8e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      flex: 1;
+      width: 48%;
+    }
+    #btn4{
+     
+      bottom: 59px;
+      left: 5px;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background-color: #FC8019;
+      border-color: #e8ae8e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      flex: 1;
+      width: 48%;
+    }

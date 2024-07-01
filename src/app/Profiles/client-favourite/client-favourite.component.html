@@ -1,5 +1,33 @@
 
-<div class="d-flex justify-content-center align-items-center flex-column" >
-    <div class="fav-meals mt-2"></div>
-    <div class="fav-meals mt-2"></div>
-  </div>
+<div class="d-flex justify-content-center align-items-center flex-column all-meals" >
+ 
+  <div *ngFor="let sMeal of specialMeals" class=" d-flex flex-column justify-content-between meal-card ">
+    <div class="fav-meals mt-2">
+      <br>
+            <div>
+              <h6 class="card-text">Name:</h6>
+              <p class="card-text">{{sMeal.s_MealName}}</p>
+            </div>
+  <br>
+            <div>
+              <h6 class="card-text">isAccepted:</h6>
+              <p class="card-text">{{sMeal.isAccepted}}</p>
+            </div>
+  <br>
+            <div>
+              <h6 class="card-text">isTaken:</h6>
+              <p class="card-text">{{sMeal.isTaken}}</p>
+            </div>
+    </div>
+    <div class=" d-flex justify-content-center align-items-center flex-row " >
+      <button (click)="update(sMeal.id)" class="btn btn-primary profile-button position-relative z-3"> update</button>
+      <button (click)="Delete(sMeal.id)" class="btn btn-primary profile-button-delete position-relative z-3"> delete</button>
+    </div>
+  
+  
+</div>
+
+
+
+</div>
+ 
