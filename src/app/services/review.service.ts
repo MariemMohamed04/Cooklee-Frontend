@@ -15,18 +15,16 @@ export class ReviewService {
     return this.http.get<Review[]>(this.baseurl+ mealId);
   }
   addReview(review: Review): Observable<any> {
-    
+
     return this.http.post<any>(this.baseurl, review);
   }
-  getAllReviews(): Observable<Review[]> {
-    return this.http.get<Review[]>(this.baseurl + 'reviews');
+  deleteReview(reviewId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseurl}${reviewId}`);
   }
 
   getReview(id: number): Observable<Review> {
     return this.http.get<Review>(this.baseurl + id);
   }
 
-  deleteReview(id: number): Observable<any> {
-    return this.http.delete<any>(this.baseurl + id + '/reviews');
-  }
+
 }
