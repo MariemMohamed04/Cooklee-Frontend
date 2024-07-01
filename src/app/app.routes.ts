@@ -28,6 +28,11 @@ import { NotActivatedChefPagesComponent } from './admin/chef/not-activated-chef-
 import { UnacceptMealComponent } from './admin/meal/unaccept-meal/unaccept-meal.component';
 
 import { SpecialMealComponent } from './SpecialMeal/special-meal/special-meal.component';
+
+import { AllOrdersComponent } from './admin/order/all-orders/all-orders.component';
+import { UndeliverdOrdersComponent } from './admin/order/undeliverd-orders/undeliverd-orders.component';
+import { DeliverdOrdersComponent } from './admin/order/deliverd-orders/deliverd-orders.component';
+
 import { SpecialMealsComponent } from './admin/SpecialMeal/special-meals/special-meals.component';
 import { UpdateComponent } from './SpecialMeal/update/update.component';
 export const routes: Routes = [
@@ -127,7 +132,12 @@ export const routes: Routes = [
       { path: 'active-chefs', component: ActivatedCheffPagesComponent },
       { path: 'inactive-chefs', component: NotActivatedChefPagesComponent },
       { path: 'meals-requests', component: UnacceptMealComponent },
+      { path: 'all-orders', component: AllOrdersComponent },
+      { path: 'undelivered-orders', component: UndeliverdOrdersComponent },
+      { path: 'delivered-orders', component: DeliverdOrdersComponent },
+
       { path: "SpecialMeals", component:SpecialMealsComponent },
+
     ]
   },
   { path:'Update/:id',component:UpdateComponent },
