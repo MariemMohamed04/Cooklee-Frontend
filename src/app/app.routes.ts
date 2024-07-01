@@ -26,11 +26,15 @@ import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.componen
 import { ActivatedCheffPagesComponent } from './admin/chef/activated-cheff-pages/activated-cheff-pages.component';
 import { NotActivatedChefPagesComponent } from './admin/chef/not-activated-chef-pages/not-activated-chef-pages.component';
 import { UnacceptMealComponent } from './admin/meal/unaccept-meal/unaccept-meal.component';
-import { SpecialMeal } from './models/special-meal';
+
 import { SpecialMealComponent } from './SpecialMeal/special-meal/special-meal.component';
+
 import { AllOrdersComponent } from './admin/order/all-orders/all-orders.component';
 import { UndeliverdOrdersComponent } from './admin/order/undeliverd-orders/undeliverd-orders.component';
 import { DeliverdOrdersComponent } from './admin/order/deliverd-orders/deliverd-orders.component';
+
+import { SpecialMealsComponent } from './admin/SpecialMeal/special-meals/special-meals.component';
+import { UpdateComponent } from './SpecialMeal/update/update.component';
 export const routes: Routes = [
 
 
@@ -91,8 +95,7 @@ export const routes: Routes = [
 
   { path: 'Orders', component: ClientOrderComponent },
     {
-    path: 'profile', component: ClientProfleComponent, children: [
-
+    path: 'profile',  component: ClientProfleComponent, children: [
       { path: '', component: ClientFavouriteComponent },
       { path: 'Favourites', component: ClientFavouriteComponent },
       { path: 'Orders', component: ClientOrderComponent },
@@ -107,12 +110,12 @@ export const routes: Routes = [
       { path: 'requestedMeals', component: RequestedMealsComponent },
     ]
   },
+
   { path: "order", component: CheckoutComponent },
   { path: "Check-Order", component: OrderComponent },
   { path: "checkout", component: OrderStatusComponent },
   { path: "cart", component: CartComponent },
   { path: "favorite", component: FavoriteComponent },
-
   { path: "SpecialMeal", component:SpecialMealComponent },
   { path: "meals", component:MealListComponent },
   { path: "Payment", component:PaymentComponent },
@@ -125,7 +128,6 @@ export const routes: Routes = [
   },
   {
     path: 'admin', component: AdminLayoutComponent, children: [
-
       { path: '', component: ActivatedCheffPagesComponent },
       { path: 'active-chefs', component: ActivatedCheffPagesComponent },
       { path: 'inactive-chefs', component: NotActivatedChefPagesComponent },
@@ -133,7 +135,11 @@ export const routes: Routes = [
       { path: 'all-orders', component: AllOrdersComponent },
       { path: 'undelivered-orders', component: UndeliverdOrdersComponent },
       { path: 'delivered-orders', component: DeliverdOrdersComponent },
+
+      { path: "SpecialMeals", component:SpecialMealsComponent },
+
     ]
   },
+  { path:'Update/:id',component:UpdateComponent },
   { path:'**',component:NotfoundComponent }
 ]

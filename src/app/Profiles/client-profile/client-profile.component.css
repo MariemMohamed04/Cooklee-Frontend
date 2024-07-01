@@ -5,6 +5,7 @@
 
 .cover {
     background-color:  rgb(217, 217, 217) ;
+    background: linear-gradient(to right, #e96443, #904e95);
     background-size: cover;
     background-repeat: no-repeat;
     

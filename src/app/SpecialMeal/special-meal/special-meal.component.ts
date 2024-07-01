@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SpecialMealCardComponent } from '../special-meal-card/special-meal-card.component';
 import { SpecialMealFormComponent } from '../special-meal-form/special-meal-form.component';
-import { SpecialMeal } from '../../models/special-meal';
 
 @Component({
   selector: 'app-special-meal',
@@ -14,9 +13,5 @@ import { SpecialMeal } from '../../models/special-meal';
   styleUrl: './special-meal.component.css'
 })
 export class SpecialMealComponent {
-  specialMeal!: SpecialMeal;
 
-  handleFormValueChanges(specialMeal: SpecialMeal) {
-    this.specialMeal = specialMeal;
-  }
 }

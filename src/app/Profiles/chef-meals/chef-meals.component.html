@@ -1,4 +1,25 @@
-<div class="d-flex justify-content-center align-items-center flex-column" >
-    <div class="chef-meals mt-2"></div>
-    <div class="chef-meals mt-2"></div>
-  </div>
+<div class="d-flex justify-content-center align-items-center flex-column all-meals" >
+ 
+  <div *ngFor="let sMeal of specialMeals" class=" d-flex flex-column justify-content-between meal-card ">
+    <div class="fav-meals mt-2">
+      <br>
+            <div>
+              <h6 class="card-text">Name:</h6>
+              <p class="card-text">{{sMeal.s_MealName}}</p>
+            </div>
+  <br>
+            <div>
+              <h6 class="card-text">isAccepted:</h6>
+              <p class="card-text">{{sMeal.isAccepted}}</p>
+            </div>
+  <br>
+            <div>
+              <h6 class="card-text">isTaken:</h6>
+              <p class="card-text">{{sMeal.isTaken}}</p>
+            </div>
+    </div>
+</div>
+
+
+
+</div>

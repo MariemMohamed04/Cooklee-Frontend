@@ -19,6 +19,7 @@ export class ChefPageFormComponent  implements OnInit{
   id!:string
   paymentMethods = Object.values(ChefPaymentMethod)
   constructor(public router:Router,private authService:AuthService, private chefService:ChefPageService){
+    console.log(this.paymentMethods)
   }
 
   ngOnInit(): void {

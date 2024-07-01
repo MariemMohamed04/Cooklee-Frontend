@@ -1,0 +1,56 @@
+<div class="m-5">
+    <div class="row">
+      <div class="col-lg-6">
+  
+        
+        <div class="card mb-8 note-card">
+          <div class="card-header">
+            Special Meal Form
+          </div>
+          <div class="card-body">
+        
+              <div class="mb-3">
+                <label for="mealName" class="form-label">Meal Name</label>
+                <input type="text" class="form-control" id="mealName" [ngModel]="spcialMeal.s_MealName"  placeholder="Enter Meal Name">
+              </div>
+              <div class="mb-3">
+                <label for="mealDesc" class="form-label">Meal Description</label>
+                <textarea class="form-control" id="mealDesc"  rows="3"  [ngModel]="spcialMeal.description"placeholder="Enter Meal Description"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="mealMin" class="form-label">Minimum Price</label>
+                <input type="number" class="form-control" id="mealMin" [ngModel]="spcialMeal.minPrice" placeholder="Enter Minimum Price">
+              </div>
+              <div class="mb-3">
+                <label for="mealMax" class="form-label">Maximum Price</label>
+                <input type="number" class="form-control" id="mealMax" [ngModel]="spcialMeal.maxPrice"  placeholder="Enter Maximum Price">
+              </div>
+           
+              <div class="mb-3">
+                <label for="chefPageId" class="form-label">Chef</label>
+                <select class="form-select" id="chefPageId">
+        
+                  <!-- <option *ngFor=" " value="" disabled selected>Choose a Chef</option> -->
+                </select>
+              </div>
+              <div class="row">
+              
+              </div>
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                     <button type="submit" class="btn btn-primary" (click)="onSubmit()" id="btn4">update</button>
+        
+                  </div>
+             
+                <div class="col-lg-6 mb-3">
+                  <button type="button" (click)="onDelete()" class="btn btn-primary" id="btn2">Delete</button>
+                </div>
+              </div>
+   
+          </div>
+        </div>
+        
+    </div>
+
+    </div>
+  </div>
