@@ -40,8 +40,8 @@ export class MealDetailsComponent implements OnInit {
   newReview: Review = {
     id:0,
     comment: '',
-    rate: 0,
-    clientId: 7,
+    rate: 1,
+    clientId: 2,
     mealId: 0,
     clientName: '',
     imgURL: ''
@@ -96,14 +96,21 @@ export class MealDetailsComponent implements OnInit {
 
   submitReview(): void {
     this.reviewService.addReview(this.newReview).subscribe(
-      review => {
-        console.log('Review added successfully', review);
-        this.reviews.push(review); // Update local reviews list
-        this.newReview.comment = ''; // Clear the form
-        this.newReview.rate = 0; // Clear the form
+      (response) => {
+        console.log('Review submitted successfully:', response);
+        this.getReviews(this.newReview.mealId);
+        this.newReview = {
+          id:0,
+          comment: '',
+          rate: 1,
+          clientId: 2,
+          mealId: this.meal.id??0,
+          clientName: '',
+          imgURL: ''
+        };
       },
-      error => {
-        console.error('Error adding review', error);
+      (error) => {
+        console.log('Error submitting review:', error);
       }
     );
   }
