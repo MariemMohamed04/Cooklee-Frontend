@@ -38,7 +38,7 @@ import { UpdateComponent } from './SpecialMeal/update/update.component';
 export const routes: Routes = [
 
 
-  { path: '', redirectTo: 'ClientForm', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'ClientForm', component: ClientProfleFormComponent },
 
   { path: 'profile', redirectTo: 'profile/Favourites', pathMatch: 'full' },
