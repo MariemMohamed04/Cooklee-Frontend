@@ -13,11 +13,18 @@
         >
           Speak with Cookla!
         </button>
-        <button class="m-sm-1 p-sm-1 btn btn-login p-1">Login</button>
-        <button class="p-sm-1 btn btn-wishlist">
+
+
+        @if(!Islogin){
+        <button   class="m-sm-1 p-sm-1 btn btn-login p-1" routerLink="/login" routerLinkActive="active">Login</button>
+        }
+        @if(Islogin){
+        <button  class="m-sm-1 p-sm-1 btn btn-login p-1" (click)="logout()" routerLinkActive="active">Logout</button>
+        }
+        <button class="p-sm-1 btn btn-wishlist" routerLink="/favorite" routerLinkActive="active">
           <i class="fas fa-heart"></i>
         </button>
-        <button class="p-sm-1 btn btn-cart">
+        <button class="p-sm-1 btn btn-cart" routerLink="/cart" routerLinkActive="active">
           <i class="fas fa-shopping-cart"></i>
         </button>
       </div>
